@@ -7,7 +7,10 @@
     Console.Write(exersicetwo.Choose()); Console.WriteLine("\n");
 
     Console.WriteLine("Third Exersice:"); ExersiceThree exersicethree = new ExersiceThree();
-    Console.Write(exersicethree.Prime()); Console.WriteLine("blabla");
+    Console.Write(exersicethree.Prime()); Console.WriteLine("\n");
+
+    Console.WriteLine("Fourth Exersice:"); ExersiceFour exersicefour = new ExersiceFour();
+    Console.Write(exersicefour.Multiply()); Console.WriteLine("blabla");
 
 
     Console.ReadLine();
