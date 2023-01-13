@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_04
+namespace Session_05
 {
     public class ExersiceOne
     {
