@@ -6,5 +6,10 @@
     Console.WriteLine("Second Exersice:"); ExersiceTwo exersicetwo = new ExersiceTwo();
     Console.Write(exersicetwo.Choose()); Console.WriteLine("\n");
 
+    Console.WriteLine(("Third Exersice:")); Exthree exersicethree = new Exthree();
+    Console.Write(exersicethree.Prime()); Console.WriteLine(" \n");
+
+
+
     Console.ReadLine();
 }
