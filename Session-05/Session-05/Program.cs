@@ -9,5 +9,8 @@
     Console.WriteLine(("Third Exersice:")); ExThree exersicethree = new ExThree();
     Console.Write(exersicethree.Prime()); Console.WriteLine(" \n");
 
+    Console.WriteLine(("Fourth Exersice:")); ExFour exercisefour = new ExFour();
+    Console.Write(exercisefour.Multi()); Console.WriteLine(" \n");
+
     Console.ReadLine();
 }

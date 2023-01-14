@@ -16,7 +16,7 @@ namespace Session_05
             int n = Convert.ToInt32(Console.ReadLine());
             bool primen = true;
             int i, j;
-            Console.WriteLine("The Prime Numbers of {0} are : ", n);
+            Console.WriteLine("\nThe Prime Numbers of {0} are : ", n);
             for (i = 2; i < n; i++)
             {
                 for (j = 2; j < n; j++)
