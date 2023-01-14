@@ -12,7 +12,8 @@
     Console.WriteLine("Fourth Exersice:"); ExFour exercisefour = new ExFour();
     Console.Write(exercisefour.Multi()); Console.WriteLine(" \n");
 
-    Console.WriteLine("Fifth Exersice:");
+    Console.WriteLine("Fifth Exersice:"); ExFive exercisefive = new ExFive();
+    Console.Write(exercisefive.Lohi()); Console.WriteLine(" \n");
 
     Console.ReadLine();
 }
