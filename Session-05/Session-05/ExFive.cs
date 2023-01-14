@@ -13,13 +13,11 @@ namespace Session_05
         public int Lohi()
         {
             int[] arr = new int[] { 0, -2, 1, 20, -31, 50, -4, 17, 89, 100 };
-
-            // Sort array in ascending order.
             Array.Sort(arr);
-            Console.WriteLine("Ascending: ");
-            foreach (int value in arr)
+            Console.WriteLine("Lowest to Highest: ");
+            foreach (int num in arr)
             {
-                Console.Write(value + " ");
+                Console.Write(num + " ");
             }
             return 0;
         }
