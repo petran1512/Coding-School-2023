@@ -6,11 +6,13 @@
     Console.WriteLine("Second Exersice:"); ExersiceTwo exersicetwo = new ExersiceTwo();
     Console.Write(exersicetwo.Choose()); Console.WriteLine("\n");
 
-    Console.WriteLine(("Third Exersice:")); ExThree exersicethree = new ExThree();
+    Console.WriteLine("Third Exersice:"); ExThree exersicethree = new ExThree();
     Console.Write(exersicethree.Prime()); Console.WriteLine(" \n");
 
-    Console.WriteLine(("Fourth Exersice:")); ExFour exercisefour = new ExFour();
+    Console.WriteLine("Fourth Exersice:"); ExFour exercisefour = new ExFour();
     Console.Write(exercisefour.Multi()); Console.WriteLine(" \n");
+
+    Console.WriteLine("Fifth Exersice:");
 
     Console.ReadLine();
 }
