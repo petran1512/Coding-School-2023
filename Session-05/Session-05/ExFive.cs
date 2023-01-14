@@ -12,10 +12,10 @@ namespace Session_05
     {
         public int Lohi()
         {
-            int[] arr = new int[] { 0, -2, 1, 20, -31, 50, -4, 17, 89, 100 };
-            Array.Sort(arr);
+            int[] ar = new int[] { 0, -2, 1, 20, -31, 50, -4, 17, 89, 100 };
+            Array.Sort(ar);
             Console.WriteLine("Lowest to Highest: ");
-            foreach (int num in arr)
+            foreach (int num in ar)
             {
                 Console.Write(num + " ");
             }
