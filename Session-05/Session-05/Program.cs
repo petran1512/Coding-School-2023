@@ -10,7 +10,7 @@
     Console.Write(exersicethree.Prime()); Console.WriteLine("\n");
 
     Console.WriteLine("Fourth Exersice:"); ExersiceFour exersicefour = new ExersiceFour();
-    Console.Write(exersicefour.Multiply()); Console.WriteLine("blabla");
+    Console.Write(exersicefour.Multiply()); Console.WriteLine(" ");
 
 
     Console.ReadLine();
