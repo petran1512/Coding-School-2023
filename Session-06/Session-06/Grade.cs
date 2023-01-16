@@ -13,7 +13,7 @@ namespace Session_06
         public Guid ID { get; set; }
         public Guid StudenID { get; set; }
         public Guid CourseID { get; set; }
-        public int Grade { get; set; }
+        public int GraDe { get; set; }
 
         public Grade()
         {
@@ -43,7 +43,7 @@ namespace Session_06
             ID = id;
             StudenID = studenid;
             CourseID = courseid;
-            Grade = grade;
+            GraDe = grade;
 
 
         }
