@@ -22,9 +22,9 @@ namespace Session_05
             for (int i = 0; i < r[0].Length; i++)
             {
                 for (int j = 0; j < r[1].Length; j++)
-                    Console.Write(r[0][i] * r[1][j] + " ");
+                    return Console.Write(r[0][i] * r[1][j] + " ");
             }
-            return 0;
+            //return 0;
         }
     }
 }

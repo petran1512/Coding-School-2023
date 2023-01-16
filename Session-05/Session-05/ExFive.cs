@@ -19,7 +19,7 @@ namespace Session_05
             {
                 Console.Write(num + " ");
             }
-            return 0;
+            //return 0;
         }
     }
 }
