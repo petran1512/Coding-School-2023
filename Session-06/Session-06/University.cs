@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Session_06
 {
     public class University : Institute {
-        public Student[] Students { get; set; }
-        public Course[] Courses { get; set; }
-        public Grade[] Grades { get; set; }
+        public Student[]? Students { get; set; }
+        public Course[]? Courses { get; set; }
+        public Grade[]? Grades { get; set; }
         public Schedule[]? ScheduledCourse { get; set; }
 
         public University() {

@@ -8,8 +8,8 @@ namespace Session_06
 {
     public class Course {
         public Guid ID { get; set; }
-        public String Code { get; set; }
-        public String Subject { get; set; }
+        public String? Code { get; set; }
+        public String? Subject { get; set; }
 
         public Course() {
 
