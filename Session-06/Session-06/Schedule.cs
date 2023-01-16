@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    public class Grade {
+    internal class Schedule {
 
         public Guid ID { get; set; }
-        public Guid StudenID { get; set; }
         public Guid CourseID { get; set; }
-        public int grade { get; set; }
+        public Guid ProfessorID { get; set; }
+        public DateTime Calendar { get; set; }
     }
 }
