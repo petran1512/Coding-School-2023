@@ -10,12 +10,21 @@ namespace Session_06
         public string Rank { get; set; }
         public Course[] Courses { get; set; }
 
+        public Professor()
+        {
 
+        }
 
+        public Professor(string rank)
+        {
+            Rank= rank ;
+        }
 
-
-
-
+        public Professor(string rank, Course[] courses)
+        {
+            Rank = rank;
+            Courses = courses;
+        }
 
 
         public void Teach(string course,DateTime datetime) {

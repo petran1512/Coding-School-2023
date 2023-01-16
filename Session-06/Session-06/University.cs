@@ -12,8 +12,32 @@ namespace Session_06
         public Grade[] Grades { get; set; }
         public Schedule[]? ScheduledCourse { get; set; }
 
+        public University() {
 
+        }
 
+        public University(Student[] students) {
+            Students = students;
+        }
+
+        public University(Student[] students, Course[] courses) {
+            Students = students;
+            Courses = courses;
+        }
+
+        public University(Student[] students, Course[] courses, Grade[] grades) {
+            Students = students;
+            Courses = courses;
+            Grades = grades;
+        }
+
+        public University(Student[] students, Course[] courses, Grade[] grades, Schedule[]? scheduledcourse) {
+            Students = students;
+            Courses = courses;
+            Grades = grades;
+            ScheduledCourse = scheduledcourse;
+
+        }
 
         public void GetStudents() {
 

@@ -11,23 +11,19 @@ namespace Session_06
         public String Code { get; set; }
         public String Subject { get; set; }
 
-        public Course()
-        {
+        public Course() {
 
         }
-        public Course(Guid id)
-        {
+        public Course(Guid id) {
             ID = id;
         }
 
-        public Course(Guid id, String code)
-        {
+        public Course(Guid id, String code) {
             ID = id;
             Code = code;
         }
 
-        public Course(Guid id, String code, String subject)
-        {
+        public Course(Guid id, String code, String subject) {
             ID = id;
             Code = code;
             Subject = subject;
