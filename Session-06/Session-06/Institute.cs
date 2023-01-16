@@ -6,41 +6,34 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    public class Institute
-    {
+    public class Institute {
         public Guid ID { get; set; }
         public String Name { get; set; }
         public int YearsInService { get; set; }
 
-        public Institute()
-        {
+        public Institute() {
 
         }
 
-        public Institute(Guid id)
-        {
+        public Institute(Guid id) {
             ID = id;
         }
 
-        public Institute(Guid id, string name)
-        {
+        public Institute(Guid id, string name) {
             ID = id;
             Name = name;
         }
 
-        public Institute(Guid id, string name, int yearsinservice)
-        {
+        public Institute(Guid id, string name, int yearsinservice) {
             ID = id;
             Name = name;
             YearsInService = yearsinservice;
         }
 
-        public void GetName()
-        {
+        public void GetName() {
 
         }
-        public void SetName(string name)
-        {
+        public void SetName(string name) {
 
         }
     }

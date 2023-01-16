@@ -6,23 +6,25 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    public class Professor : Person
-    {
+    public class Professor : Person {
         public string Rank { get; set; }
         public Course[] Courses { get; set; }
 
 
-        public void Teach(string course,DateTime dateime)
-        {
+
+
+
+
+
+
+
+        public void Teach(string course,DateTime datetime) {
 
         }
-
-        public void GetName()
-        {
+        public void SetGrade(int studentID,int courseID, int grade) {
 
         }
-        public void SetName(string "Dr.")
-        {
+        public void GetName() {
 
         }
 

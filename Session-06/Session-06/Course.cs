@@ -11,7 +11,10 @@ namespace Session_06
         public String Code { get; set; }
         public String Subject { get; set; }
 
+        public Course()
+        {
 
+        }
         public Course(Guid id)
         {
             ID = id;
