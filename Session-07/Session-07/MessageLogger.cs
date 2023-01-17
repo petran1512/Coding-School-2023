@@ -8,12 +8,12 @@ namespace Session_07
 {
     public class MessageLogger {
         //props
-        public Message Messages { get; set; }
+        public Message[] Messages { get; set; }
 
         //consts
         public MessageLogger() { 
         }
-        public MessageLogger(Message messages)
+        public MessageLogger(Message[] messages)
         {
             Messages = messages;    
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Session_07
 {
-    public class ActionResponse
+    public class ActionResponse : ActionResolver
     {
         //props
         public Guid RequestID { get; set; }
