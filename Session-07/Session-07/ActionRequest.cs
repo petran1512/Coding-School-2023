@@ -8,11 +8,39 @@ namespace Session_07
 {
     public class ActionRequest
     {
+        public enum ActionEnum
+        {
+            Convert,
+            Uppercase,
+            Reverse
+        }
+
+        //props
         public Guid RequestID { get; set; }   
         public String Input { get; set; }
 
+        public ActionEnum Action { get; set; }
 
- 
+        //consts
+        public ActionRequest()
+        {
+
+        }
+        public ActionRequest(Guid requestid)
+        {
+            RequestID = requestid;
+        }
+        public ActionRequest(Guid requestid,String input)
+        {
+            RequestID = requestid;
+            Input = input;
+        }
+        public ActionRequest(Guid requestid, String input,ActionEnum action)
+        {
+            RequestID = requestid;
+            Input = input;
+            Action = action;
+        }
 
 
 

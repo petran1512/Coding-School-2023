@@ -8,16 +8,23 @@ namespace Session_07
 {
     public class ActionResolver
     {
+        //props
         public MessageLogger Logger { get; set; }
 
+        //consts
         public ActionResolver()
         {
 
         }
+        public ActionResolver(MessageLogger logger)
+        {
+            Logger = logger;    
+
+        }
+
+        //meths
         public ActionResponse Execute(ActionRequest request)
         {
-
-
             return null;
         }
 
