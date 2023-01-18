@@ -15,7 +15,7 @@ namespace Session_07
         //consts
         public MessageLogger() { 
         }
-        public MessageLogger(Message m)
+        public MessageLogger(Message message)
         {
             Messages = new Message[1000];    
         }

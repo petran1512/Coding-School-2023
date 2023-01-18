@@ -85,11 +85,9 @@ namespace Session_07
 
         private void Log(string text)
         {
-
-            Logger.Write(new Message("------------"));
-
-            Message message = new Message(text);
-            Logger.Write(message);
+            //Logger.Write(new Message(" "));
+            //Message message = new Message(text);
+            //Logger.Write(message);
         }
 
         public string Convert(string input)
@@ -106,8 +104,8 @@ namespace Session_07
             // “Uppercase” you must check if the Input is a string and has more than
             // one words(separated by a space), then find the longest word in the
             // Input string and convert it to uppercase.
-
-
+            StringUppercase uppercase= new StringUppercase();
+            uppercase.Text = input;
 
             return input.ToUpper();
         }
@@ -115,44 +113,15 @@ namespace Session_07
         public string Reverse(string input)
         {
             // “Reverse” you must check if the Input is a string and reverse it.
+            StringReverse reverse = new StringReverse();
+            reverse.Text = input;
 
             return string.Empty;
 
         }
-        //public string ActionReverse(string reverse)
-        //{
-        //    string action = " ";
-        //    Console.Write(" Input the string : ");
-        //    action = Console.ReadLine();
-        //    Console.Write(" The reverse of the string is : ");
-        //    Console.Write(action);
-        //    Console.ReadKey();
-        //    Console.Write("\n");
+        
 
-        //    if (action.Length > 0)
-        //        return action[action.Length - 1] + (action.Substring(0, action.Length - 1));
-        //    else
-        //        return action;
-        //}
-
-        //public string ActionConvert(decimal convert)
-        //{
-        //    decimal action = 0;
-        //    int n, i;
-        //    int[] a = new int[10];
-        //    Console.Write("Enter the number to convert: ");
-        //    n = int.Parse(Console.ReadLine());
-        //    for (i = 0; n > 0; i++)
-        //    {
-        //        a[i] = n % 2;
-        //        n = n / 2;
-        //    }
-        //    Console.Write("Binary of the given number= ");
-        //    for (i = i - 1; i >= 0; i--)
-        //    {
-        //        Console.Write(a[i]);
-        //    }
-        //    return action + "";
+  
 
     }
 }
