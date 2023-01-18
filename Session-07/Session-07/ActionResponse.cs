@@ -9,7 +9,7 @@ namespace Session_07
     public class ActionResponse : ActionEntity
     {
         //props
-        public Guid Response { get; set; }
+        public Guid ResponseID { get; set; }
         public string Output { get; set; }
         public ActionResponse()
         {

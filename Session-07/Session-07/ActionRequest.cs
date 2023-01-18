@@ -27,10 +27,7 @@ namespace Session_07
         }
 
         //consts
-        public ActionRequest()
-        {
 
-        }
         public ActionRequest(Guid requestid)
         {
             RequestID = requestid;

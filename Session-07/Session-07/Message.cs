@@ -16,7 +16,7 @@ namespace Session_07
         public string MessagE { get; set; }
 
         //consts
-        public Message()
+        public Message(string v)
         {
         }
 

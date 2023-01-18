@@ -1,18 +1,20 @@
 ﻿using Session_07;
-using Action = Session_07.Action;
-{
-    Console.WriteLine("Hello, World!");
 
-    ActionRequest request = new ActionRequest();
+
+   
+ActionRequest request = new ActionRequest()
+{
+    Input="Peter",
+    Action = Action.Enum.Reverse
+}
+
     ActionResponse response = new ActionResponse();
 
     ActionResolver resolver = new ActionResolver();
 
     response = resolver.Execute(request);
 
-
-
+    resolver.Logger.ReadAll();
 
     Console.ReadLine();
 
-}
