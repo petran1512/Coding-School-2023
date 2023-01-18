@@ -8,8 +8,8 @@ namespace Session_06
 {
     public class Course {
         public Guid ID { get; set; }
-        public String? Code { get; set; }
-        public String? Subject { get; set; }
+        public string Code { get; set; }
+        public string Subject { get; set; }
 
         public Course() {
 
@@ -18,12 +18,12 @@ namespace Session_06
             ID = id;
         }
 
-        public Course(Guid id, String code) {
+        public Course(Guid id, string code) {
             ID = id;
             Code = code;
         }
 
-        public Course(Guid id, String code, String subject) {
+        public Course(Guid id, string code, string subject) {
             ID = id;
             Code = code;
             Subject = subject;

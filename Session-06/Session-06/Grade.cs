@@ -13,7 +13,8 @@ namespace Session_06
         public Guid ID { get; set; }
         public Guid StudenID { get; set; }
         public Guid CourseID { get; set; }
-        public int GraDe { get; set; }
+        //change from class diagram: Grade property can't be the same as class name.
+        public int GradeText { get; set; }
 
         public Grade()
         {
@@ -38,12 +39,12 @@ namespace Session_06
             CourseID = courseid;
         }
 
-        public Grade(Guid id, Guid studenid, Guid courseid, int grade)
+        public Grade(Guid id, Guid studenid, Guid courseid, int gradetext)
         {
             ID = id;
             StudenID = studenid;
             CourseID = courseid;
-            GraDe = grade;
+            GradeText = gradetext;
 
 
         }

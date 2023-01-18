@@ -8,7 +8,7 @@ namespace Session_06
 {
     public class Student : Person {
         public int RegistrationNumber { get; set; }
-        public Course[]? Courses { get; set; }
+        public Course[] Courses { get; set; }
 
         public Student()
         {

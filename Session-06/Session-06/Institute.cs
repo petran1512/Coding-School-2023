@@ -8,7 +8,7 @@ namespace Session_06
 {
     public class Institute {
         public Guid ID { get; set; }
-        public String? Name { get; set; }
+        public string Name { get; set; }
         public int YearsInService { get; set; }
 
         public Institute() {
@@ -19,12 +19,12 @@ namespace Session_06
             ID = id;
         }
 
-        public Institute(Guid id, String name) {
+        public Institute(Guid id, string name) {
             ID = id;
             Name = name;
         }
 
-        public Institute(Guid id, String name, int yearsinservice) {
+        public Institute(Guid id, string name, int yearsinservice) {
             ID = id;
             Name = name;
             YearsInService = yearsinservice;

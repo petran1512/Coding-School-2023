@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 namespace Session_06
 {
     public class Person {
+        //props
         public Guid ID { get; set; }
-        public String? Name{ get; set; }
+        public string Name{ get; set; }
         public int Age { get; set; }
 
+        //consts
         public Person() {
 
         }
@@ -20,17 +22,18 @@ namespace Session_06
             ID = id;
         }
 
-        public Person(Guid id, String name) {
+        public Person(Guid id, string name) {
             ID = id;
             Name = name;
         }
 
-        public Person(Guid id, String name, int age) {
+        public Person(Guid id, string name, int age) {
             ID = id;
             Name = name;
             Age = age;
         }
 
+        //meths
         public void GetName() {
 
         }
