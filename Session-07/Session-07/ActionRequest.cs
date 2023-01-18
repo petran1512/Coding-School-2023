@@ -19,7 +19,7 @@ namespace Session_07
 
         //props
         public Guid RequestID { get; set; }
-        public String Input { get; set; }
+        public string Input { get; set; }
 
         public ActionEnum Action { get; set; }
 
@@ -32,12 +32,12 @@ namespace Session_07
         {
             RequestID = requestid;
         }
-        public ActionRequest(Guid requestid, String input)
+        public ActionRequest(Guid requestid, string input)
         {
             RequestID = requestid;
             Input = input;
         }
-        public ActionRequest(Guid requestid, String input, ActionEnum action)
+        public ActionRequest(Guid requestid, string input, ActionEnum action)
         {
             RequestID = requestid;
             Input = input;

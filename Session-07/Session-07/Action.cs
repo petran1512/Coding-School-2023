@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,27 +22,35 @@ namespace Session_07
         public string ActioN(ActionEnum actionenum, decimal convert, string upper, string reverse)
         {
 
-            string action= "";
-
-            switch (actionenum)
+            string action = "";
+            try
             {
-                case ActionEnum.Convert:
-                    action = ActionConvert(convert);
-                    break;
 
-                case ActionEnum.Uppercase:
-                    action = ActionUppercase(upper);
-                    break;
+                switch (actionenum)
+                {
+                    case ActionEnum.Convert:
+                        action = ActionConvert(convert);
+                        break;
 
-                case ActionEnum.Reverse:
-                    action = ActionReverse(reverse);
-                    break;
+                    case ActionEnum.Uppercase:
+                        action = ActionUppercase(upper);
+                        break;
 
-                default:
-                    Console.WriteLine("Error please select one of the above.");
-                    break;
+                    case ActionEnum.Reverse:
+                        action = ActionReverse(reverse);
+                        break;
+
+                    default:
+                        Console.WriteLine("Error please select one of the above.");
+                        break;
+                }
+                return action + " ";
             }
-            return action + " ";
+
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public string ActionConvert(decimal convert)

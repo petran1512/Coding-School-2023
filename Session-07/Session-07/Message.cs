@@ -30,7 +30,7 @@ namespace Session_07
             ID = id;
             TimeStamp = timestamp;
         }
-        public Message(Guid id, DateTime timestamp,String message)
+        public Message(Guid id, DateTime timestamp,string message)
         {
             ID = id;
             TimeStamp = timestamp;

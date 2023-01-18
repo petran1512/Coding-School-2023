@@ -11,7 +11,7 @@ namespace Session_07
         //props
         public Guid RequestID { get; set; }
         public Guid Response { get; set; }
-        public String Output { get; set; }
+        public string Output { get; set; }
 
         //consts
         public ActionResponse() { 
@@ -25,7 +25,7 @@ namespace Session_07
             RequestID = requestid;
             Response = response;
         }
-        public ActionResponse(Guid requestid, Guid response,String output)
+        public ActionResponse(Guid requestid, Guid response,string output)
         {
             RequestID = requestid;
             Response = response;
