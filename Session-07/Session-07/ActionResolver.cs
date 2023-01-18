@@ -49,7 +49,7 @@ namespace Session_07
                 {
                     case ActionEnum.Convert:
                         Log("CONVERT");
-                        response.Output = Convertion(request.Input);
+                        response.Output = Convert(request.Input);
                         break;
 
                     case ActionEnum.Uppercase:
@@ -92,14 +92,14 @@ namespace Session_07
             Logger.Write(message);
         }
 
-        //public string Convert(string input)
-        //{
+        public string Convert(string input)
+        {
 
-        //    StringConvert convert = new StringConvert();
-        //    convert.Text = input;
+            StringConvert convert = new StringConvert();
+            convert.Text = input;
 
-        //    return convert.Manipulate();
-        //}
+            return convert.Manipulate();
+        }
 
         public string Uppercase(string input)
         {

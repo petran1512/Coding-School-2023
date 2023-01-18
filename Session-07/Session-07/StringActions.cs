@@ -21,7 +21,7 @@ namespace Session_07
 
     }
 
-    public class StringConvertion : StringManipulator
+    public class StringConvert : StringManipulator
     {
 
 
