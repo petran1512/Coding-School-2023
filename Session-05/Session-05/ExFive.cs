@@ -10,7 +10,7 @@ namespace Session_05
      * • Array: [ 0, -2, 1, 20, -31, 50 , -4, 17, 89, 100 ]*/
     public class ExFive
     {
-        public int Lohi()
+        public string Lohi()
         {
             int[] ar = new int[] { 0, -2, 1, 20, -31, 50, -4, 17, 89, 100 };
             Array.Sort(ar);
@@ -19,7 +19,7 @@ namespace Session_05
             {
                 Console.Write(num + " ");
             }
-            return 0;
+            return string.Empty;
         }
     }
 }

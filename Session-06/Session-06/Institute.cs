@@ -19,12 +19,12 @@ namespace Session_06
             ID = id;
         }
 
-        public Institute(Guid id, string name) {
+        public Institute(Guid id, String name) {
             ID = id;
             Name = name;
         }
 
-        public Institute(Guid id, string name, int yearsinservice) {
+        public Institute(Guid id, String name, int yearsinservice) {
             ID = id;
             Name = name;
             YearsInService = yearsinservice;

@@ -12,7 +12,8 @@ namespace Session_07
         //props
         public Guid ID { get; set; }
         public DateTime TimeStamp { get; set; }
-        public string? MessagE { get; set; }
+        //change from class diagram: Message property can't be the same as class name.
+        public string MessagE { get; set; }
 
         //consts
         public Message()

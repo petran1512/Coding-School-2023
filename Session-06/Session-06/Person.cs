@@ -20,12 +20,12 @@ namespace Session_06
             ID = id;
         }
 
-        public Person(Guid id, string name) {
+        public Person(Guid id, String name) {
             ID = id;
             Name = name;
         }
 
-        public Person(Guid id, string name, int age) {
+        public Person(Guid id, String name, int age) {
             ID = id;
             Name = name;
             Age = age;
