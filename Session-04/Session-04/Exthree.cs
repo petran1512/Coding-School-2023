@@ -22,7 +22,7 @@ namespace Session_04
             double fro = 2 + ((13 / 6) * 6) + (Math.Sqrt(7));
             double ffo = ((Math.Pow(6 , 4) + (Math.Pow(5 , 7))) / (9 % 4));
             return "First operation:" + fo + "\nSecond operation:" + so + "\nThird operation:" + to +
-                "\nFourth operation:" + fro + "\nFifth operation:" + ffo ;
+                "\nFourth operation:" + fro + "\nFifth operation:" + ffo;
         }
     }
 }
