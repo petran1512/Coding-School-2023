@@ -13,7 +13,7 @@ namespace Session_07
         public Guid ID { get; set; }
         public DateTime TimeStamp { get; set; }
         //change from class diagram: Message property can't be the same as class name.
-        public string MessagE { get; set; }
+        public string MessageText { get; set; }
 
         //consts
         public Message(string v)
@@ -30,11 +30,11 @@ namespace Session_07
             ID = id;
             TimeStamp = timestamp;
         }
-        public Message(Guid id, DateTime timestamp,string message)
+        public Message(Guid id, DateTime timestamp,string messagetext)
         {
             ID = id;
             TimeStamp = timestamp;
-            MessagE = message;
+            MessageText = messagetext;
         }
 
 

@@ -22,15 +22,15 @@ namespace Session_07
         {
             RequestID = requestid;
         }
-        public ActionResponse(Guid requestid,Guid response)
+        public ActionResponse(Guid requestid,Guid responseid)
         {
             RequestID = requestid;
-            Response = response;
+            ResponseID = responseid;
         }
-        public ActionResponse(Guid requestid, Guid response,string output)
+        public ActionResponse(Guid requestid, Guid responseid,string output)
         {
             RequestID = requestid;
-            Response = response;
+            ResponseID = responseid;
             Output = output;
         }
 

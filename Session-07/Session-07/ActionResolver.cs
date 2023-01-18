@@ -24,6 +24,10 @@ namespace Session_07
         //consts
         public ActionResolver()
         {
+
+        }
+        public ActionResolver(MessageLogger logger)
+        {
             Logger = new MessageLogger();
         }
 
@@ -88,14 +92,14 @@ namespace Session_07
             Logger.Write(message);
         }
 
-        public string Convert(string input)
-        {
+        //public string Convert(string input)
+        //{
 
-            StringConvert convert = new StringConvert();
-            convert.Text = input;
+        //    StringConvert convert = new StringConvert();
+        //    convert.Text = input;
 
-            return convert.Manipulate();
-        }
+        //    return convert.Manipulate();
+        //}
 
         public string Uppercase(string input)
         {
