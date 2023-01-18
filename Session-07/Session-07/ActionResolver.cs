@@ -49,7 +49,7 @@ namespace Session_07
                 {
                     case ActionEnum.Convert:
                         Log("CONVERT");
-                        response.Output = Convert(request.Input);
+                        response.Output = Convertion(request.Input);
                         break;
 
                     case ActionEnum.Uppercase:

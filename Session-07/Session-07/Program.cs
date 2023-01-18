@@ -1,12 +1,13 @@
 ﻿using Session_07;
-
-
-   
-ActionRequest request = new ActionRequest()
 {
-    Input="Peter",
-    Action = Action.Enum.Reverse
-}
+
+
+    ActionRequest request = new ActionRequest()
+    {
+
+        Input = "Peter",
+        Action = ActionEnum.Reverse
+    };
 
     ActionResponse response = new ActionResponse();
 
@@ -18,3 +19,4 @@ ActionRequest request = new ActionRequest()
 
     Console.ReadLine();
 
+}
