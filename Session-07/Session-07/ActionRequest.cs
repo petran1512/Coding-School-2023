@@ -12,12 +12,7 @@ namespace Session_07
         {
             public Guid RequestID { get; set; }
         }
-        public enum ActionEnum
-        {
-            Convert,
-            Uppercase,
-            Reverse
-        }
+
     public class ActionRequest : ActionEntity
     {
 

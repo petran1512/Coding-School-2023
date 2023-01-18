@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Session_07
 {
-    public class ActionResponse : ActionResolver
+    public class ActionResponse : ActionEntity
     {
         //props
-        public Guid RequestID { get; set; }
         public Guid Response { get; set; }
         public string Output { get; set; }
+        public ActionResponse()
+        {
+            ResponseID = Guid.NewGuid();
+        }
 
         //consts
-        public ActionResponse() { 
-        }
+
         public ActionResponse(Guid requestid)
         {
             RequestID = requestid;
