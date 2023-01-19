@@ -2,11 +2,11 @@
 {
     public class Raise_to_Power
     {
-        public decimal Do(decimal? a, decimal? b)
+        public decimal Do(decimal? a)
         {
             decimal ret = 0;
 
-            if (a != null || b != null)
+            if (a != null)
             {
                 ret = (decimal)Math.Pow((double)a, 2);
             }

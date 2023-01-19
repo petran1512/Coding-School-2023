@@ -27,7 +27,23 @@ namespace Session_09
 
         private void btnclr_Click(object sender, EventArgs e)
         {
+            if (_result != null)
+            {
+                ctrlDisplay.Text = string.Empty;
+                _value1 = null;
+                _value2 = null;
+                _result = null;
+            }
+            ctrlDisplay.Text += "C";
 
+            if (_value1 == null)
+            {
+                _value1 = 0;
+            }
+            else
+            {
+                _value2 = 0;
+            }
         }
 
         private void btn0_Click(object sender, EventArgs e)
@@ -289,12 +305,12 @@ namespace Session_09
                 case Caloper.Square_Root:
 
                     Square_Root square_Root = new Square_Root();
-                    _result = square_Root.Do(_value1.Value, _value2.Value);
+                    _result = square_Root.Do(_value1.Value);
                     break;
                 case Caloper.Raise_To_power:
 
                     Raise_to_Power raise_to_power = new Raise_to_Power();
-                    _result = raise_to_power.Do(_value1.Value, _value2.Value);
+                    _result = raise_to_power.Do(_value1.Value);
                     break;
                 default:
                     break;

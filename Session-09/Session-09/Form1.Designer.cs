@@ -268,6 +268,7 @@
             this.button20.Size = new System.Drawing.Size(75, 60);
             this.button20.TabIndex = 16;
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Visible = false;
             this.button20.Click += new System.EventHandler(this.btnclr_Click);
             // 
             // ctrlDisplay
@@ -277,6 +278,7 @@
             this.ctrlDisplay.Location = new System.Drawing.Point(93, 92);
             this.ctrlDisplay.Multiline = true;
             this.ctrlDisplay.Name = "ctrlDisplay";
+            this.ctrlDisplay.ReadOnly = true;
             this.ctrlDisplay.Size = new System.Drawing.Size(237, 71);
             this.ctrlDisplay.TabIndex = 20;
             this.ctrlDisplay.ReadOnlyChanged += new System.EventHandler(this.True);
