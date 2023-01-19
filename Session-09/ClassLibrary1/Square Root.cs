@@ -6,9 +6,15 @@ namespace CalculatorLibrary
 {
     public class Square_Root
     {
-        public decimal Do(decimal a)
+        public decimal Do(decimal? a, decimal? b)
         {
-            return (decimal)Math.Sqrt((double)a);
+            decimal ret = 0;
+
+            if (a != null || b != null)
+            {
+                ret = (decimal)Math.Sqrt((double)a); ;
+            }
+            return ret;
         }
     }
 }

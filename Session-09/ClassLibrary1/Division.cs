@@ -2,9 +2,15 @@
 {
     public class Division
     {
-        public decimal Do(decimal a, decimal b)
+        public decimal Do(decimal? a, decimal? b)
         {
-            return a / b;
+            decimal ret = 0;
+
+            if (a != null || b != null)
+            {
+                ret = a.Value / b.Value;
+            }
+            return ret;
         }
     }
 }

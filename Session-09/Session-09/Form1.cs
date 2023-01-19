@@ -1,4 +1,4 @@
-using CalculatorLibrary;
+﻿using CalculatorLibrary;
 
 namespace Session_09
 {
@@ -16,8 +16,9 @@ namespace Session_09
             Subtraction,
             Multiplication,
             Division,
-            Raise_to_Power,
-            Square_Root
+            Raise_To_Power,
+            Square_Root,
+            Raise_To_power
         }
         public Form1()
         {
@@ -275,6 +276,26 @@ namespace Session_09
                     Subtraction subtraction = new Subtraction();
                     _result = subtraction.Do(_value1.Value, _value2.Value);
                     break;
+                case Caloper.Multiplication:
+
+                    Multiplication multiplication = new Multiplication();
+                    _result = multiplication.Do(_value1.Value, _value2.Value);
+                    break;
+                case Caloper.Division:
+
+                    Division division = new Division();
+                    _result = division.Do(_value1.Value, _value2.Value);
+                    break;
+                case Caloper.Square_Root:
+
+                    Square_Root square_Root = new Square_Root();
+                    _result = square_Root.Do(_value1.Value, _value2.Value);
+                    break;
+                case Caloper.Raise_To_power:
+
+                    Raise_to_Power raise_to_power = new Raise_to_Power();
+                    _result = raise_to_power.Do(_value1.Value, _value2.Value);
+                    break;
                 default:
                     break;
             }
@@ -295,21 +316,28 @@ namespace Session_09
         private void btnmul_Click(object sender, EventArgs e)
         {
             ctrlDisplay.Text += " x ";
+            _caloper = Caloper.Multiplication;
         }
 
 
         private void btndiv_Click(object sender, EventArgs e)
         {
             ctrlDisplay.Text += " / ";
+            _caloper = Caloper.Division;
+
         }
 
         private void btnsq_Click(object sender, EventArgs e)
         {
+            ctrlDisplay.Text += " √ ";
+            _caloper = Caloper.Square_Root;
 
         }
 
         private void btnpow_Click(object sender, EventArgs e)
         {
+            ctrlDisplay.Text += " ^ ";
+            _caloper = Caloper.Raise_To_Power;
 
         }
 
