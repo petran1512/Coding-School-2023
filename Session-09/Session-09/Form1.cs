@@ -34,6 +34,15 @@ namespace Session_09
 
         private void btn1_Click(object sender, EventArgs e)
         {
+
+            if (_result != null)
+            {
+                ctrlDisplay.Text= string.Empty;
+                _value1= null;
+                _value2= null;
+                _result= null;
+            }
+
             ctrlDisplay.Text += " 1 ";
 
             if (_value1 == null)
@@ -48,7 +57,24 @@ namespace Session_09
 
         private void btn2_Click(object sender, EventArgs e)
         {
+            if (_result != null)
+            {
+                ctrlDisplay.Text = string.Empty;
+                _value1 = null;
+                _value2 = null;
+                _result = null;
+            }
+
             ctrlDisplay.Text += " 2 ";
+
+            if (_value1 == null)
+            {
+                _value1 = 2;
+            }
+            else
+            {
+                _value2 = 2;
+            }
         }
 
         private void btn3_Click(object sender, EventArgs e)
