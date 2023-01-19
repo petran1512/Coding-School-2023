@@ -28,21 +28,21 @@ namespace Session_07
 
         //consts
 
-        public ActionRequest(Guid requestid)
-        {
-            RequestID = requestid;
-        }
-        public ActionRequest(Guid requestid, string input)
-        {
-            RequestID = requestid;
-            Input = input;
-        }
-        public ActionRequest(Guid requestid, string input, ActionEnum action)
-        {
-            RequestID = requestid;
-            Input = input;
-            Action = action;
-        }
+        //public ActionRequest(Guid requestid)
+        //{
+        //    RequestID = requestid;
+        //}
+        //public ActionRequest(Guid requestid, string input)
+        //{
+        //    RequestID = requestid;
+        //    Input = input;
+        //}
+        //public ActionRequest(Guid requestid, string input, ActionEnum action)
+        //{
+        //    RequestID = requestid;
+        //    Input = input;
+        //    Action = action;
+        //}
 
     }
 

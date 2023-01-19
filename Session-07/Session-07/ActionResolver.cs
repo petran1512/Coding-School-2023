@@ -63,7 +63,7 @@ namespace Session_07
                         break;
 
                     default:
-                        Console.WriteLine("Error please select one of the above.");
+                        //Console.WriteLine("Error please select one of the above.");
                         break;
                 }
             }
@@ -85,9 +85,11 @@ namespace Session_07
 
         private void Log(string text)
         {
-            //Logger.Write(new Message(" "));
-            //Message message = new Message(text);
-            //Logger.Write(message);
+            Logger.Write(new Message("----"));
+
+            Message message = new Message(text);
+            Logger.Write(message);
+ 
         }
 
         public string Convert(string input)

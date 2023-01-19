@@ -18,21 +18,21 @@ namespace Session_07
 
         //consts
 
-        public ActionResponse(Guid requestid)
-        {
-            RequestID = requestid;
-        }
-        public ActionResponse(Guid requestid,Guid responseid)
-        {
-            RequestID = requestid;
-            ResponseID = responseid;
-        }
-        public ActionResponse(Guid requestid, Guid responseid,string output)
-        {
-            RequestID = requestid;
-            ResponseID = responseid;
-            Output = output;
-        }
+        //public ActionResponse(Guid requestid)
+        //{
+        //    RequestID = requestid;
+        //}
+        //public ActionResponse(Guid requestid,Guid responseid)
+        //{
+        //    RequestID = requestid;
+        //    ResponseID = responseid;
+        //}
+        //public ActionResponse(Guid requestid, Guid responseid,string output)
+        //{
+        //    RequestID = requestid;
+        //    ResponseID = responseid;
+        //    Output = output;
+        //}
 
     }
 }

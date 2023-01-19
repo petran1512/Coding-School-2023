@@ -15,7 +15,7 @@
 
     response = resolver.Execute(request);
 
-    //resolver.Logger.ReadAll();
+    resolver.Logger.ReadAll();
 
     Console.ReadLine();
 
