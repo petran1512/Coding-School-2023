@@ -1,3 +1,5 @@
+using CalculatorLibrary;
+
 namespace Session_09
 {
     public partial class Form1 : Form
@@ -124,10 +126,14 @@ namespace Session_09
             switch (_caloper)
             {
                 case Caloper.Addition:
-                    _result = _value1 + _value2;
+
+                    Addition addition= new Addition();
+                    _result = addition.Do(_value1.Value, _value2.Value);
                     break;
                 case Caloper.Subtraction:
-                    _result = _value1 - _value2;
+
+                    Subtraction subtraction = new Subtraction();
+                    _result = subtraction.Do(_value1.Value, _value2.Value);
                     break;
                 default:
                     break;
