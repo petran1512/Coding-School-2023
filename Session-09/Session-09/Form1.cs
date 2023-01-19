@@ -289,6 +289,7 @@ namespace Session_09
         private void btnSub_Click(object sender, EventArgs e)
         {
             ctrlDisplay.Text += " - ";
+            _caloper = Caloper.Subtraction;
         }
 
         private void btnmul_Click(object sender, EventArgs e)
