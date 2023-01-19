@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Session-09", "Session-09\Session-09.csproj", "{4846BB95-A2F7-4722-B526-8EBD54B87644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{A5170C8A-411D-4CC3-B9FD-1F3C488A0061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLibrary", "ClassLibrary1\CalculatorLibrary.csproj", "{A5170C8A-411D-4CC3-B9FD-1F3C488A0061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
