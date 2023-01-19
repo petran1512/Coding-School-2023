@@ -85,7 +85,7 @@ namespace Session_07
 
         private void Log(string text)
         {
-            Logger.Write(new Message("----"));
+            Logger.Write(new Message("-----"));
 
             Message message = new Message(text);
             Logger.Write(message);
