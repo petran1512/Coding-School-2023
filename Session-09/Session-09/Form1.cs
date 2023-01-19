@@ -27,23 +27,8 @@ namespace Session_09
 
         private void btnclr_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            ctrlDisplay.Text += "C";
 
-            if (_value1 == null)
-            {
-                _value1 = 0;
-            }
-            else
-            {
-                _value2 = 0;
-            }
+            ctrlDisplay.Text = string.Empty;
         }
 
         private void btn0_Click(object sender, EventArgs e)
@@ -273,7 +258,24 @@ namespace Session_09
 
         private void btndec_Click(object sender, EventArgs e)
         {
+            if (_result != null)
+            {
+                ctrlDisplay.Text = string.Empty;
+                _value1 = null;
+                _value2 = null;
+                _result = null;
+            }
 
+            ctrlDisplay.Text += ".";
+
+            if (_value1 == null)
+            {
+                _value1 = 0;
+            }
+            else
+            {
+                _value2 = 0;
+            }
         }
 
         private void btneq_Click(object sender, EventArgs e)
