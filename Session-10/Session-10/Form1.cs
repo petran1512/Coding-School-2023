@@ -1,3 +1,4 @@
+using UniversityClasses;
 namespace Session_10
 {
     public partial class Form1 : Form
@@ -9,10 +10,11 @@ namespace Session_10
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<string> names = new List<string>();
-            names.Add("Peter");
-            names.Add("John");
-            names.Add("Jim");
+            List<Students> students = new List<Students>();
+            //List<string> names = new List<string>();
+            //names.Add("Peter");
+            //names.Add("John");
+            //names.Add("Jim");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
