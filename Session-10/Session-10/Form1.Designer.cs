@@ -28,36 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grvStudents = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUndergraduate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colGender = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grvStudents
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 330);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.grvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colSurname,
+            this.colAge,
+            this.colUndergraduate,
+            this.colGender});
+            this.grvStudents.Location = new System.Drawing.Point(12, 12);
+            this.grvStudents.Name = "grvStudents";
+            this.grvStudents.RowTemplate.Height = 25;
+            this.grvStudents.Size = new System.Drawing.Size(723, 124);
+            this.grvStudents.TabIndex = 0;
+            this.grvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.Width = 120;
+            // 
+            // colSurname
+            // 
+            this.colSurname.DataPropertyName = "Surname";
+            this.colSurname.HeaderText = "Surname";
+            this.colSurname.Name = "colSurname";
+            this.colSurname.Width = 200;
+            // 
+            // colAge
+            // 
+            this.colAge.DataPropertyName = "Age";
+            this.colAge.HeaderText = "Age";
+            this.colAge.Name = "colAge";
+            this.colAge.Width = 60;
+            // 
+            // colUndergraduate
+            // 
+            this.colUndergraduate.DataPropertyName = "Undergraduate";
+            this.colUndergraduate.HeaderText = "Undergraduate";
+            this.colUndergraduate.Name = "colUndergraduate";
+            // 
+            // colGender
+            // 
+            this.colGender.DataPropertyName = "Gender";
+            this.colGender.HeaderText = "Gender";
+            this.colGender.Name = "colGender";
+            this.colGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grvStudents);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView grvStudents;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colSurname;
+        private DataGridViewTextBoxColumn colAge;
+        private DataGridViewCheckBoxColumn colUndergraduate;
+        private DataGridViewComboBoxColumn colGender;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
