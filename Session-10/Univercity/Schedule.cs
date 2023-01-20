@@ -1,4 +1,4 @@
-﻿namespace Univercity
+﻿namespace UniversityClasses
 {
     public class Schedule
     {

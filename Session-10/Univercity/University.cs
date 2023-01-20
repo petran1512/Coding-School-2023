@@ -1,13 +1,14 @@
 ﻿using System.Diagnostics;
+using UniversityClasses;
 
-namespace Univercity
+namespace University
 {
-        public class University 
-        {
+        public class University
+    {
             public List<Student> Students { get; set; }
             public List<Course> Courses { get; set; }
             public List<Grade> Grades { get; set; }
-            public List<Schedule> ScheduledCourse { get; set; }
+            public List<Schedule> ScheduledCourses { get; set; }
 
             public University()
             {
@@ -32,12 +33,12 @@ namespace Univercity
                 Grades = grades;
             }
 
-            public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduledcourse)
+            public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduledcourses)
             {
                 Students = students;
                 Courses = courses;
                 Grades = grades;
-                ScheduledCourse = scheduledcourse;
+                ScheduledCourses = scheduledcourses;
 
             }
 
