@@ -18,49 +18,49 @@ namespace University
         public string Region { get; set; }
 
 
-            //public University(List<Students> students)
-            //{
-            //    Students = students;
-            //}
+        public University(List<Students> students)
+        {
+            Students = students;
+        }
 
-            //public University(List<Students> students, List<Courses> courses)
-            //{
-            //    Students = students;
-            //    Courses = courses;
-            //}
+        public University(List<Students> students, List<Courses> courses)
+        {
+            Students = students;
+            Courses = courses;
+        }
 
-            //public University(List<Students> students, List<Courses> courses, List<Grades> grades)
-            //{
-            //    Students = students;
-            //    Courses = courses;
-            //    Grades = grades;
-            //}
+        public University(List<Students> students, List<Courses> courses, List<Grades> grades)
+        {
+            Students = students;
+            Courses = courses;
+            Grades = grades;
+        }
 
-            //public University(List<Students> students, List<Courses> courses, List<Grades> grades, List<Schedules> scheduledcourses)
-            //{
-            //    Students = students;
-            //    Courses = courses;
-            //    Grades = grades;
-            //    ScheduledCourses = scheduledcourses;
+        public University(List<Students> students, List<Courses> courses, List<Grades> grades, List<Schedules> scheduledcourses)
+        {
+            Students = students;
+            Courses = courses;
+            Grades = grades;
+            ScheduledCourses = scheduledcourses;
 
-            //}
+        }
 
-            //public void GetStudents()
-            //{
+        //public void GetStudents()
+        //{
 
-            //}
-            //public void GetCourses()
-            //{
+        //}
+        //public void GetCourses()
+        //{
 
-            //}
-            //public void GetGrades()
-            //{
+        //}
+        //public void GetGrades()
+        //{
 
-            //}
-            //public void SetSchedules(int courseID, int ProfessorID, DateTime datetime)
-            //{
+        //}
+        //public void SetSchedules(int courseID, int ProfessorID, DateTime datetime)
+        //{
 
-            //}
+        //}
     }
 }
 

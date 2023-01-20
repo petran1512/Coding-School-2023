@@ -1,5 +1,6 @@
 //using Populate;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml;
 using UniversityClasses;
 namespace Session_10
 {
@@ -12,9 +13,6 @@ namespace Session_10
 
         public void Form1_Load(object sender, EventArgs e)
         {
-
-            grvStudents.AutoGenerateColumns = false;
-            grvGrades.AutoGenerateColumns = false;
 
             //{
             //    new Students()
@@ -38,6 +36,12 @@ namespace Session_10
             //}
             //};
 
+            grvStudents.AutoGenerateColumns = false;
+            grvGrades.AutoGenerateColumns = false;
+            grvCourses.AutoGenerateColumns = false;
+            grvSchedules.AutoGenerateColumns = false;
+
+            //STUDENTS
             List<Students> students = new List<Students>();
 
             Students student1 = new Students()
@@ -77,6 +81,8 @@ namespace Session_10
                 colGender.Items.Add(val);
             }
 
+
+            //GRADES
             List<Grades> grades = new List<Grades>();
 
             Grades grades1 = new Grades()
@@ -95,20 +101,84 @@ namespace Session_10
 
 
 
+            //COURSES
+            List<Courses> courses   = new List<Courses>();
+
+            Courses course1 = new Courses()
+            {
+                Code = "3240",
+                Subject = "Maths",
+
+            };
+            courses.Add(course1);
+
+            Courses course2 = new Courses()
+            {
+                Code = "3240",
+                Subject = "Science",
+
+            };
+            courses.Add(course2);
+
+            grvCourses.DataSource = courses;
+
+
+            //SCHEDULES
+            List<Schedules> schedules = new List<Schedules>();
+
+            Schedules schedule1 = new Schedules()
+            {
+                Callendar = "a",
+
+            };
+            schedules.Add(schedule1);
+
+            Schedules schedule2 = new Schedules()
+            {
+                Callendar = "a",
+
+            };
+            schedules.Add(schedule2);
+
+            grvSchedules.DataSource = schedules;
+
         }
 
 
 
 
-        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void grvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
      
 
         }
 
-        public void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        public void grvGrades_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void grvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grvSchedules_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Serializer serializer = new Serializer();
+            //serializer.SerializerToFile(students, ".json");
+
+            MessageBox.Show("Save Done!");
         }
     }
 }
