@@ -42,7 +42,7 @@ namespace Session_09
             }
 
             ctrlDisplay.Text += "0";
-            
+
 
             if (_value1 == null)
             {
@@ -59,10 +59,10 @@ namespace Session_09
 
             if (_result != null)
             {
-                ctrlDisplay.Text= string.Empty;
-                _value1= null;
-                _value2= null;
-                _result= null;
+                ctrlDisplay.Text = string.Empty;
+                _value1 = null;
+                _value2 = null;
+                _result = null;
             }
 
             ctrlDisplay.Text += "1";
