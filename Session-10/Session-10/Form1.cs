@@ -170,7 +170,7 @@ namespace Session_10
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
- 
+            MessageBox.Show("Load Done!");
         }
 
         private void btnSave_Click(object sender, EventArgs e)
