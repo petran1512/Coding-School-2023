@@ -1,6 +1,6 @@
 ﻿namespace UniversityClasses
 {
-    public class Student
+    public class Students
     {
         public enum GenderEnum { Male, Female, Other }
         public Guid Id { get; set; }

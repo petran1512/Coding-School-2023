@@ -1,6 +1,6 @@
 ﻿namespace UniversityClasses
 {
-    public class Schedule
+    public class Schedules
     {
     }
 }

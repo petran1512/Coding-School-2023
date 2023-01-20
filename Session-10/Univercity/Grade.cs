@@ -1,6 +1,6 @@
 ﻿namespace UniversityClasses
 {
-    public class Grade
+    public class Grades
     {
     }
 }

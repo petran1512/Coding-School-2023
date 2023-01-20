@@ -5,35 +5,35 @@ namespace University
 {
         public class University
     {
-            public List<Student> Students { get; set; }
-            public List<Course> Courses { get; set; }
-            public List<Grade> Grades { get; set; }
-            public List<Schedule> ScheduledCourses { get; set; }
+            public List<Students> Students { get; set; }
+            public List<Courses> Courses { get; set; }
+            public List<Grades> Grades { get; set; }
+            public List<Schedules> ScheduledCourses { get; set; }
 
             public University()
             {
 
             }
 
-            public University(List<Student> students)
+            public University(List<Students> students)
             {
                 Students = students;
             }
 
-            public University(List<Student> students, List<Course> courses)
+            public University(List<Students> students, List<Courses> courses)
             {
                 Students = students;
                 Courses = courses;
             }
 
-            public University(List<Student> students, List<Course> courses, List<Grade> grades)
+            public University(List<Students> students, List<Courses> courses, List<Grades> grades)
             {
                 Students = students;
                 Courses = courses;
                 Grades = grades;
             }
 
-            public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduledcourses)
+            public University(List<Students> students, List<Courses> courses, List<Grades> grades, List<Schedules> scheduledcourses)
             {
                 Students = students;
                 Courses = courses;
@@ -54,7 +54,7 @@ namespace University
             {
 
             }
-            public void SetSchedule(int courseID, int ProfessorID, DateTime datetime)
+            public void SetSchedules(int courseID, int ProfessorID, DateTime datetime)
             {
 
             }
