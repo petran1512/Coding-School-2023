@@ -4,6 +4,6 @@
     {
         public Guid CourseID { get; set; }
         public Guid ProfessorID { get; set; }
-        public DateTime Callendar { get; set; }
+        public string Callendar { get; set; }
     }
 }
