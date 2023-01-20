@@ -128,14 +128,14 @@ namespace Session_10
 
             Schedules schedule1 = new Schedules()
             {
-                Callendar = "a",
+                Callendar = "15/01/2023",
 
             };
             schedules.Add(schedule1);
 
             Schedules schedule2 = new Schedules()
             {
-                Callendar = "a",
+                Callendar = "20/01/2023"
 
             };
             schedules.Add(schedule2);
