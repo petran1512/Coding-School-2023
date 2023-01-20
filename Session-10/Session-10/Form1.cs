@@ -1,4 +1,5 @@
-using System.Diagnostics;
+//using Populate;
+using System.Security.Cryptography.X509Certificates;
 using UniversityClasses;
 namespace Session_10
 {
@@ -9,12 +10,12 @@ namespace Session_10
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
+
             grvStudents.AutoGenerateColumns = false;
             grvGrades.AutoGenerateColumns = false;
 
-            List<Students> students = new List<Students>(); 
             //{
             //    new Students()
             //{
@@ -36,6 +37,8 @@ namespace Session_10
             //    Gender = Students.GenderEnum.Male,
             //}
             //};
+
+            List<Students> students = new List<Students>();
 
             Students student1 = new Students()
             {
@@ -63,16 +66,16 @@ namespace Session_10
 
             grvStudents.DataSource= students;
 
-            DataGridViewComboBoxColumn colGender = grvStudents.Columns["colGender"] as DataGridViewComboBoxColumn;
-            colGender.Items.Add(Students.GenderEnum.Male);
-            colGender.Items.Add(Students.GenderEnum.Female);
-            colGender.Items.Add(Students.GenderEnum.Other);
+            //DataGridViewComboBoxColumn colGender = grvStudents.Columns["colGender"] as DataGridViewComboBoxColumn;
+            //colGender.Items.Add(Students.GenderEnum.Male);
+            //colGender.Items.Add(Students.GenderEnum.Female);
+            //colGender.Items.Add(Students.GenderEnum.Other);
 
-            //Array values = Enum.GetValues(typeof(Students.GenderEnum));
-            //foreach(var val in values)
-            //{
-            //    colGender.Items.Add(val);
-            //}
+            Array values = Enum.GetValues(typeof(Students.GenderEnum));
+            foreach (var val in values)
+            {
+                colGender.Items.Add(val);
+            }
 
             List<Grades> grades = new List<Grades>();
 
@@ -97,12 +100,13 @@ namespace Session_10
 
 
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+     
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        public void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
