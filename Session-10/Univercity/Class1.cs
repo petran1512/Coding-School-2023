@@ -2,37 +2,37 @@
 
 namespace Univercity
 {
-        public class University : Institute
+        public class University 
         {
-            public Student[] Students { get; set; }
-            public Course[] Courses { get; set; }
-            public Grade[] Grades { get; set; }
-            public Schedule[]? ScheduledCourse { get; set; }
+            public List<Student> Students { get; set; }
+            public List<Course> Courses { get; set; }
+            public List<Grade> Grades { get; set; }
+            public List<Schedule> ScheduledCourse { get; set; }
 
             public University()
             {
 
             }
 
-            public University(Student[] students)
+            public University(List<Student> students)
             {
                 Students = students;
             }
 
-            public University(Student[] students, Course[] courses)
+            public University(List<Student> students, List<Course> courses)
             {
                 Students = students;
                 Courses = courses;
             }
 
-            public University(Student[] students, Course[] courses, Grade[] grades)
+            public University(List<Student> students, List<Course> courses, List<Grade> grades)
             {
                 Students = students;
                 Courses = courses;
                 Grades = grades;
             }
 
-            public University(Student[] students, Course[] courses, Grade[] grades, Schedule[]? scheduledcourse)
+            public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduledcourse)
             {
                 Students = students;
                 Courses = courses;
