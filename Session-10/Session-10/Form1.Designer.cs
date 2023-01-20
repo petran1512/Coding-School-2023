@@ -35,7 +35,11 @@
             this.colUndergraduate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colGender = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.grvGrades = new System.Windows.Forms.DataGridView();
+            this.colGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvGrades)).BeginInit();
             this.SuspendLayout();
             // 
             // grvStudents
@@ -89,16 +93,36 @@
             this.colGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // grvGrades
+            // 
+            this.grvGrades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvGrades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colGrade});
+            this.grvGrades.Location = new System.Drawing.Point(12, 142);
+            this.grvGrades.Name = "grvGrades";
+            this.grvGrades.RowTemplate.Height = 25;
+            this.grvGrades.Size = new System.Drawing.Size(723, 93);
+            this.grvGrades.TabIndex = 1;
+            this.grvGrades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // colGrade
+            // 
+            this.colGrade.DataPropertyName = "Grade";
+            this.colGrade.HeaderText = "Grade";
+            this.colGrade.Name = "colGrade";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.grvGrades);
             this.Controls.Add(this.grvStudents);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvGrades)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +136,8 @@
         private DataGridViewCheckBoxColumn colUndergraduate;
         private DataGridViewComboBoxColumn colGender;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private DataGridView grvGrades;
+        private DataGridViewTextBoxColumn colGrade;
     }
 }

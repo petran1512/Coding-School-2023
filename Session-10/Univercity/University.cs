@@ -42,22 +42,22 @@ namespace University
 
             }
 
-            public void GetStudents()
-            {
+            //public void GetStudents()
+            //{
 
-            }
-            public void GetCourses()
-            {
+            //}
+            //public void GetCourses()
+            //{
 
-            }
-            public void GetGrades()
-            {
+            //}
+            //public void GetGrades()
+            //{
 
-            }
-            public void SetSchedules(int courseID, int ProfessorID, DateTime datetime)
-            {
+            //}
+            //public void SetSchedules(int courseID, int ProfessorID, DateTime datetime)
+            //{
 
-            }
+            //}
     }
 }
 

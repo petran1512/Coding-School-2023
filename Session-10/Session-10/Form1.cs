@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UniversityClasses;
 namespace Session_10
 {
@@ -11,6 +12,7 @@ namespace Session_10
         private void Form1_Load(object sender, EventArgs e)
         {
             grvStudents.AutoGenerateColumns = false;
+            grvGrades.AutoGenerateColumns = false;
 
             List<Students> students = new List<Students>(); 
             //{
@@ -72,13 +74,35 @@ namespace Session_10
             //    colGender.Items.Add(val);
             //}
 
+            List<Grades> grades = new List<Grades>();
+
+            Grades grades1 = new Grades()
+            {
+                Grade = 80,
+            };
+            grades.Add(grades1);
+
+            Grades grades2 = new Grades()
+            {
+                Grade = 90,
+            };
+            grades.Add(grades2);
+
+            grvGrades.DataSource = grades;
+
+
 
         }
-       
-        
-        
+
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
