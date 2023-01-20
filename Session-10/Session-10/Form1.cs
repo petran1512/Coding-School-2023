@@ -59,10 +59,10 @@ namespace Session_10
             Students student2 = new Students()
             {
                 Name = "John",
-                Surname = "Raisis",
+                Surname = "Kekis",
                 University = "Unifercity of Athens",
                 Undergraduate = false,
-                Age = 16,
+                Age = 30,
                 Gender = Students.GenderEnum.Male,
 
             };
