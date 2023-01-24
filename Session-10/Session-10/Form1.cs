@@ -1,4 +1,4 @@
-//using Populate;
+using Populate;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using UniversityClasses;
@@ -168,15 +168,17 @@ namespace Session_10
 
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        public void btnLoad_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Load Done!");
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        List<Students> students = new List<Students>();
+
+        public void btnSave_Click(object sender, EventArgs e)
         {
             Serializer serializer = new Serializer();
-            //serializer.SerializerToFile(students, ".json");
+            serializer.SerializeToFile(students, "students.json");
 
             MessageBox.Show("Save Done!");
         }
