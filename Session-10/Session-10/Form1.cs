@@ -168,12 +168,8 @@ namespace Session_10
 
         }
 
-        public void btnLoad_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Load Done!");
-        }
-
         List<Students> students = new List<Students>();
+
 
         public void btnSave_Click(object sender, EventArgs e)
         {
@@ -181,6 +177,14 @@ namespace Session_10
             serializer.SerializeToFile(students, "students.json");
 
             MessageBox.Show("Save Done!");
+        }
+
+        public void btnLoad_Click(object sender, EventArgs e)
+        {
+            Serializer serializer = new Serializer();
+            serializer.DeserializeFromFile<Students>("students.json");
+
+            MessageBox.Show("Load Done!");
         }
     }
 }
