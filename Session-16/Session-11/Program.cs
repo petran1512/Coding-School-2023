@@ -1,17 +1,21 @@
-namespace Session_16
+using ClassLibrary1;
+
+namespace Session_11
 {
-    internal static class Program
+  public  class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        Customer cust1 = new Customer();    
+        Pet pet1 = new Pet();
+        PetFood food1 = new PetFood();
+        Employee employee1 = new Employee();
+
         [STAThread]
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
 }
