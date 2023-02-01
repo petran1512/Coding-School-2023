@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EF.Course.Orm.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(AppContextModelSnapshot))]
     [Migration("20230201181423_Initial")]
     partial class Initial
     {

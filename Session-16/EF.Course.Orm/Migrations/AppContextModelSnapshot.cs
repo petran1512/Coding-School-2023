@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EF.Course.Orm.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(AppContextModelSnapshot))]
     partial class AppContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
