@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF.Course.Orm.Configurations
+namespace EF.Course.Orm.TodoConfigurations
 {
     public class TodoConfiguration : IEntityTypeConfiguration<Todo>
     {

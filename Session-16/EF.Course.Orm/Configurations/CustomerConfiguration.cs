@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary1;
 
-namespace EF.Course.Orm.Configurations
+namespace EF.Course.Orm.CustomerConfigurations
 {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {

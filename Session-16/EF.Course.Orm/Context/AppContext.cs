@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EF.Course.Model;
-using EF.Course.Orm.Configurations;
+using EF.Course.Orm.TodoConfigurations;
 
 namespace EF.Course.Orm.AppContext
 {
