@@ -15,7 +15,7 @@ namespace EF.Course.Orm.CustomerConfigurations
         {
             builder.ToTable("Customer");
 
-            builder.HasKey(todo => todo.Id);
+            builder.HasKey(customer => customer.Id);
 
             builder.Property(customer => customer.Phone).HasMaxLength(10).IsRequired(true);
 
