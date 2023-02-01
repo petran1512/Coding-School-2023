@@ -2,9 +2,9 @@
 using EF.Course.Model;
 using EF.Course.Orm.Configurations;
 
-namespace EF.Course.Orm.Context
+namespace EF.Course.Orm.AppContext
 {
-    public class TodoContext : DbContext
+    public class AppContext : DbContext
     {
         public DbSet<Todo> Todos { get; set; }
 
