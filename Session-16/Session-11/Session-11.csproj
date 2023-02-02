@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" />
+    <ProjectReference Include="..\EF.Petshop.Model\EF.Petshop.Model.csproj" />
+    <ProjectReference Include="..\EF.Petshop.Orm\EF.Petshop.Orm.csproj" />
   </ItemGroup>
 
   <ItemGroup>

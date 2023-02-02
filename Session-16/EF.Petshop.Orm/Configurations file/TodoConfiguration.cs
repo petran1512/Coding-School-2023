@@ -1,0 +1,18 @@
+﻿using EF.Course.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace EF.Course.Orm.TodoConfigurations
+{
+    public class TodoConfiguration : IEntityTypeConfiguration<Todo>
+    {
+        public void Configure(EntityTypeBuilder<Todo> builder)
+        {
+            builder.ToTable("Todo");
+
+            builder.HasKey(todo => todo.Id);
+
+            builder.Property(todo => todo.Title).HasMaxLength(50).IsRequired(true);
+        }
+    }
+}
