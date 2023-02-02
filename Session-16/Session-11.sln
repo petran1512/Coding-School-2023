@@ -13,10 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		User.cs = User.cs
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF.Course.Orm", "EF.Course.Orm\EF.Course.Orm.csproj", "{634616C1-2400-4A05-B7E6-98D6B27B5A52}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF.Course.Model", "EF.Course.Model\EF.Course.Model.csproj", "{87AF5A49-6EB4-4C31-AB95-209F71943E95}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +27,6 @@ Global
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{634616C1-2400-4A05-B7E6-98D6B27B5A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{634616C1-2400-4A05-B7E6-98D6B27B5A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{634616C1-2400-4A05-B7E6-98D6B27B5A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{634616C1-2400-4A05-B7E6-98D6B27B5A52}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87AF5A49-6EB4-4C31-AB95-209F71943E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87AF5A49-6EB4-4C31-AB95-209F71943E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87AF5A49-6EB4-4C31-AB95-209F71943E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87AF5A49-6EB4-4C31-AB95-209F71943E95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
