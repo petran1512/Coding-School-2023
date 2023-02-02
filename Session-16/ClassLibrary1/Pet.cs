@@ -51,6 +51,7 @@ namespace ClassLibrary1 {
             Breed = breed;
         }
 
+
         //in transaction
         public Pet(string breed, AnimalType animaltype, decimal price, decimal cost, DateTime bought, Guid transactionID, PetStatus petstatus) {
             ID = Guid.NewGuid();
