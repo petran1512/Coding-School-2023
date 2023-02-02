@@ -70,8 +70,13 @@
             this.colTransactionsPetFoodPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionsTotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabMonthlyLedger = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.grvMonthlyLedger = new DevExpress.XtraGrid.GridControl();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMonthlyLedgerYear = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonthlyLedgerMonth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonthlyLedgerIncome = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonthlyLedgerExpenses = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonthlyLedgerTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPetReport = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl4 = new DevExpress.XtraGrid.GridControl();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,7 +92,7 @@
             this.bsPetsDX = new System.Windows.Forms.BindingSource(this.components);
             this.bsPetFoodDX = new System.Windows.Forms.BindingSource(this.components);
             this.bsTransactionsDX = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.bsMonthlyLedgerDX = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource6 = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -111,7 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             this.xtraTabMonthlyLedger.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvMonthlyLedger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.xtraTabPetReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).BeginInit();
@@ -122,12 +127,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsPetsDX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPetFoodDX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactionsDX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMonthlyLedgerDX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource6)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Location = new System.Drawing.Point(59, 80);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabEmployees;
@@ -303,8 +311,10 @@
             // colPetSold
             // 
             this.colPetSold.Caption = "Available";
-            this.colPetSold.FieldName = "Sold";
+            this.colPetSold.CustomizationCaption = "Transaction ID";
+            this.colPetSold.FieldName = "TransactionID";
             this.colPetSold.Name = "colPetSold";
+            this.colPetSold.OptionsColumn.AllowEdit = false;
             this.colPetSold.Visible = true;
             this.colPetSold.VisibleIndex = 0;
             // 
@@ -534,26 +544,72 @@
             // 
             // xtraTabMonthlyLedger
             // 
-            this.xtraTabMonthlyLedger.Controls.Add(this.gridControl1);
+            this.xtraTabMonthlyLedger.Controls.Add(this.grvMonthlyLedger);
             this.xtraTabMonthlyLedger.Name = "xtraTabMonthlyLedger";
             this.xtraTabMonthlyLedger.Size = new System.Drawing.Size(859, 443);
             this.xtraTabMonthlyLedger.Text = "Monthly Ledger";
             // 
-            // gridControl1
+            // grvMonthlyLedger
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView6;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(859, 443);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grvMonthlyLedger.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grvMonthlyLedger.Location = new System.Drawing.Point(0, 0);
+            this.grvMonthlyLedger.MainView = this.gridView6;
+            this.grvMonthlyLedger.Name = "grvMonthlyLedger";
+            this.grvMonthlyLedger.Size = new System.Drawing.Size(859, 443);
+            this.grvMonthlyLedger.TabIndex = 0;
+            this.grvMonthlyLedger.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView6});
             // 
             // gridView6
             // 
-            this.gridView6.GridControl = this.gridControl1;
+            this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMonthlyLedgerYear,
+            this.colMonthlyLedgerMonth,
+            this.colMonthlyLedgerIncome,
+            this.colMonthlyLedgerExpenses,
+            this.colMonthlyLedgerTotal});
+            this.gridView6.GridControl = this.grvMonthlyLedger;
             this.gridView6.Name = "gridView6";
+            // 
+            // colMonthlyLedgerYear
+            // 
+            this.colMonthlyLedgerYear.Caption = "Year";
+            this.colMonthlyLedgerYear.FieldName = "Year";
+            this.colMonthlyLedgerYear.Name = "colMonthlyLedgerYear";
+            this.colMonthlyLedgerYear.Visible = true;
+            this.colMonthlyLedgerYear.VisibleIndex = 0;
+            // 
+            // colMonthlyLedgerMonth
+            // 
+            this.colMonthlyLedgerMonth.Caption = "Month";
+            this.colMonthlyLedgerMonth.FieldName = "Month";
+            this.colMonthlyLedgerMonth.Name = "colMonthlyLedgerMonth";
+            this.colMonthlyLedgerMonth.Visible = true;
+            this.colMonthlyLedgerMonth.VisibleIndex = 1;
+            // 
+            // colMonthlyLedgerIncome
+            // 
+            this.colMonthlyLedgerIncome.Caption = "Income";
+            this.colMonthlyLedgerIncome.FieldName = "Income";
+            this.colMonthlyLedgerIncome.Name = "colMonthlyLedgerIncome";
+            this.colMonthlyLedgerIncome.Visible = true;
+            this.colMonthlyLedgerIncome.VisibleIndex = 2;
+            // 
+            // colMonthlyLedgerExpenses
+            // 
+            this.colMonthlyLedgerExpenses.Caption = "Expenses";
+            this.colMonthlyLedgerExpenses.FieldName = "Expenses";
+            this.colMonthlyLedgerExpenses.Name = "colMonthlyLedgerExpenses";
+            this.colMonthlyLedgerExpenses.Visible = true;
+            this.colMonthlyLedgerExpenses.VisibleIndex = 3;
+            // 
+            // colMonthlyLedgerTotal
+            // 
+            this.colMonthlyLedgerTotal.Caption = "Profit";
+            this.colMonthlyLedgerTotal.FieldName = "Total";
+            this.colMonthlyLedgerTotal.Name = "colMonthlyLedgerTotal";
+            this.colMonthlyLedgerTotal.Visible = true;
+            this.colMonthlyLedgerTotal.VisibleIndex = 4;
             // 
             // xtraTabPetReport
             // 
@@ -629,6 +685,7 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Location = new System.Drawing.Point(59, 547);
@@ -640,6 +697,7 @@
             // 
             // simpleButton2
             // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.Location = new System.Drawing.Point(165, 547);
@@ -651,6 +709,7 @@
             // 
             // simpleButton3
             // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.Location = new System.Drawing.Point(713, 547);
@@ -662,6 +721,7 @@
             // 
             // simpleButton4
             // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.simpleButton4.Appearance.Options.UseFont = true;
             this.simpleButton4.Location = new System.Drawing.Point(819, 547);
@@ -702,7 +762,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             this.xtraTabMonthlyLedger.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvMonthlyLedger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.xtraTabPetReport.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).EndInit();
@@ -713,7 +773,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsPetsDX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPetFoodDX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactionsDX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMonthlyLedgerDX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource6)).EndInit();
             this.ResumeLayout(false);
 
@@ -729,7 +789,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabTransactions;
         private DevExpress.XtraTab.XtraTabPage xtraTabMonthlyLedger;
         private DevExpress.XtraTab.XtraTabPage xtraTabPetReport;
-        private DevExpress.Xpo.XPBindingSource bsEmployees;
         private DevExpress.XtraGrid.GridControl grvEmployees;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colEmployeeName;
@@ -770,7 +829,7 @@
         private BindingSource bsPetsDX;
         private BindingSource bsPetFoodDX;
         private BindingSource bsTransactionsDX;
-        private BindingSource bindingSource5;
+        private BindingSource bsMonthlyLedgerDX;
         private BindingSource bindingSource6;
         private DevExpress.XtraGrid.Columns.GridColumn colPetSold;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
@@ -789,7 +848,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionsPetFoodQty;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionsPetFoodPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionsTotalPrice;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl grvMonthlyLedger;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerYear;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerMonth;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerIncome;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerExpenses;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerTotal;
     }
 }

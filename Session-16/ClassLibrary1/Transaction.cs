@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1 {
     public class Transaction {
-        public Guid? ID { get; set; }
+        public Guid ID { get; set; }
         public DateTime Date { get; set; }
-        public Guid CustomerID { get; set; }
+        public Guid? CustomerID { get; set; }
         public Guid? EmployeeID { get; set; }
         public Guid? PetID { get; set; }
         public decimal? PetPrice { get; set; }
@@ -16,48 +16,85 @@ namespace ClassLibrary1 {
         public decimal PetFoodQty { get; set; }
         public decimal? PetFoodPrice { get; set; }
         public decimal? TotalPrice { get; set; }
-        private bool _loaded = false;
 
+
+        //CTOR
         public Transaction() {
             ID = Guid.NewGuid();
             Date = DateTime.Now;
             PetID = Guid.Empty;
-            _loaded = false;
         }
-        //public Transaction() { 
-        //    ID = Guid.NewGuid();
-        //    Date = DateTime.Now;
-        //}
 
 
+        //CTOR with pet
+
+        public Transaction(DateTime date, Guid customerID, Guid employeeID, Guid petID, decimal petFoodQty, List<Pet> pets, List<PetFood> foods) {
+            ID = Guid.NewGuid();
+            Date = date;
+            CustomerID = customerID;
+            EmployeeID = employeeID;
+            PetFoodID = AddPetAndFood(petID, petFoodQty, foods, pets);
+
+        }
+
+        //Without pet
+        public Transaction(DateTime date, Guid customerID, Guid employeeID, AnimalType animalType, decimal petFoodQty, List<PetFood> foods) {
+            ID = Guid.NewGuid();
+            PetID = Guid.Empty;
+            Date = date;
+            CustomerID = customerID;
+            EmployeeID = employeeID;
+            PetFoodID = AddPetFood(animalType, petFoodQty, foods);
+        }
 
 
-        public Transaction GetTransaction(List<Pet> pets, List<PetFood> foods) {
-            try {
-                if (_loaded == false) {
-                    LoadTransaction(pets, foods);
-                    _loaded = true;
+        //METHODS
+
+        //addPet
+        public Guid AddPetAndFood(Guid id, decimal petFoodQty, List<PetFood> foods, List<Pet> pets) {
+            AnimalType foodType;
+            foreach (Pet pet in pets) {
+                if (pet.ID == id) {
+                    PetID = pet.ID;
+                    PetPrice = pet.Price;
+                    foodType = pet.Animaltype;
+                    pet.SetTransactionID(ID);
+                    AddPetFood(foodType, petFoodQty, foods);
+
+                    PetFoodQty++;
+                    break;
                 }
             }
-            catch (Exception ex) {
-                throw ex;
-            }
-            return this;
 
+            return id;
         }
 
-        //load transaction
-        public void LoadTransaction(List<Pet> pets, List<PetFood> foods) {
 
-            PetFoodPrice = FindPetFoodPrice(foods);
+        //addFood 
+        public Guid AddPetFood(AnimalType foodType, decimal petFoodQty, List<PetFood> foods) {
+            Guid foodID = Guid.Empty;
+            foreach (var food in foods) {
+                if (foodType == food.Animaltype) {
+                    PetFoodPrice = food.Price;
+
+                    foodID = food.ID;
+                    PetFoodQty = petFoodQty;
+                    break;
+                }
+            }
+            SetTotalPrice();
+            return foodID;
+        }
+
+
+        //SetTotalPrice
+        public void SetTotalPrice() {
+
             if (this.PetID != Guid.Empty) {
-                PetPrice = FindPetPrice(pets);
                 this.TotalPrice = PetPrice + (PetFoodQty * PetFoodPrice);
-                this.PetFoodQty++;
             } else {
                 this.TotalPrice = (PetFoodQty * PetFoodPrice);
             }
-
         }
 
         public decimal FindPetPrice(List<Pet> pets) {
@@ -83,8 +120,8 @@ namespace ClassLibrary1 {
             return price;
         }
 
-        //public  GetTransaction(List<Pet> pets, List<PetFood> foods) {
-        //    SetTotalPrice(pets,foods);
+        //public void AddPet(Pet pet) {
+        //    SetTotalPrice(pets, foods);
         //    return this;
         //}
 

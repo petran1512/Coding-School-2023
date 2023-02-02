@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		User.cs = User.cs
 	EndProjectSection
 EndProject
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +28,10 @@ Global
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C18FE1-1183-4DF4-960D-F87EBC976B56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B53BD88-A044-4397-8C5C-408CC8944DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B53BD88-A044-4397-8C5C-408CC8944DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B53BD88-A044-4397-8C5C-408CC8944DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B53BD88-A044-4397-8C5C-408CC8944DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

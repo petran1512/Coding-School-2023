@@ -20,14 +20,65 @@ namespace ClassLibrary1 {
 
         public DateTime Bought { get; set; }
 
-        public bool Sold { get; set; }
+        public Guid? TransactionID { get; set; }
 
         public Pet() {
+            ID = Guid.NewGuid();
             DateTime dt = new DateTime(1990, 1, 1);
             Bought = dt;
-            Sold = false;
-
+            TransactionID = Guid.Empty;
         }
+
+        //not in transaction
+        public Pet(string breed, AnimalType animaltype, decimal price, decimal cost, DateTime bought, PetStatus petstatus) {
+            ID = Guid.NewGuid();
+            Bought = bought;
+            Animaltype = animaltype;
+            TransactionID = Guid.Empty;
+            Price = price;
+            Cost = cost;
+            Petstatus = petstatus;
+            Breed = breed;
+        }
+        //without datetime
+        public Pet(string breed, AnimalType animaltype, decimal price, decimal cost, PetStatus petstatus) {
+            ID = Guid.NewGuid();
+            Animaltype = animaltype;
+            TransactionID = Guid.Empty;
+            Price = price;
+            Cost = cost;
+            Petstatus = petstatus;
+            Breed = breed;
+        }
+
+        //in transaction
+        public Pet(string breed, AnimalType animaltype, decimal price, decimal cost, DateTime bought, Guid transactionID, PetStatus petstatus) {
+            ID = Guid.NewGuid();
+            Bought = bought;
+            Animaltype = animaltype;
+            TransactionID = transactionID;
+            Price = price;
+            Cost = cost;
+            Breed = breed;
+            Petstatus = petstatus;
+        }
+        //without datetime
+        public Pet(string breed, AnimalType animaltype, decimal price, decimal cost, Guid transactionID, PetStatus petstatus) {
+            ID = Guid.NewGuid();
+            Animaltype = animaltype;
+            TransactionID = transactionID;
+            Price = price;
+            Cost = cost;
+            Petstatus = petstatus;
+            Breed = breed;
+        }
+
+
+
+        public void SetTransactionID(Guid? transactionID) {
+            TransactionID = transactionID;
+        }
+
 
 
 

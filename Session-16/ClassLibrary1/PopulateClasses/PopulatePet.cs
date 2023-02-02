@@ -16,124 +16,37 @@ namespace PopulateClassLibrary {
 
             List<Pet> pets = new List<Pet>();
 
-            Pet pet = new Pet() {
-                Animaltype = AnimalType.Dog,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{BC9B4A5D-3663-46B4-8578-E94EE1E5D452}"),
-                Breed = "Labrador",
-                Price = 1500,
-                Cost = 1000,
-
-            };
+            Pet pet = new Pet("Labrador", AnimalType.Dog, 1500, 1000, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Cat,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{055A7F84-1EA5-430D-AC88-72EE519EB5DE}"),
-                Breed = "Siamese",
-                Price = 1300,
-                Cost = 900,
-            };
+            pet = new Pet("Siamese", AnimalType.Cat, 1300, 900, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Dog,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{A639ABBD-B2E0-45EA-967A-38681FDF22ED}"),
-                Breed = "West Highland",
-                Price = 1000,
-                Cost = 700,
-            };
+            pet = new Pet("West Highland", AnimalType.Dog, 1000, 700, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Parrot,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{57AF4991-7A8B-48CF-8BAF-3C9E7AA69855}"),
-                Breed = "Parakeet",
-                Price = 100,
-                Cost = 20,
-            };
+            pet = new Pet("Parakeet", AnimalType.Parrot, 100, 20, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Cat,
-                Petstatus = PetStatus.Recovering,
-                ID = Guid.Parse("{F44DA0A9-DE5D-4D49-AFFF-83E49B2B7CE0}"),
-                Breed = "Siamese",
-                Price = 1300,
-                Cost = 900,
-            };
-            pets.Add(pet);
-            pet = new Pet() {
-                Animaltype = AnimalType.Cat,
-                Petstatus = PetStatus.Unhealthy,
-                ID = Guid.Parse("{E563D602-2C83-4457-AD7E-9D7D90BCB974}"),
-                Breed = "Sphynx",
-                Price = 1300,
-                Cost = 900,
-            };
+            pet = new Pet("Siamese", AnimalType.Cat, 1300, 900, PetStatus.Recovering); 
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Cat,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{B5F45E06-3AE4-4E17-9DBF-9A9F46B0B8B1}"),
-                Breed = "Himalayan",
-                Price = 1400,
-                Cost = 1000,
-            };
+            pet = new Pet("Sphynx", AnimalType.Cat, 1300, 900, PetStatus.Unhealthy);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Dog,
-                Petstatus = PetStatus.Recovering,
-                ID = Guid.Parse("{D833D529-8C94-451E-B4B2-83E55A9FAA6D}"),
-                Breed = "Malinois",
-                Price = 1300,
-                Cost = 800,
-            };
+            pet = new Pet("Himalayan", AnimalType.Cat, 1400, 1000, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Parrot,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{3ED3C244-D9E2-4D10-A963-7098FCEDEA28}"),
-                Breed = "Macaw",
-                Price = 2000,
-                Cost = 1200,
-            };
+            pet = new Pet("Malinois", AnimalType.Dog, 1300, 800, PetStatus.Recovering);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Parrot,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{65689F6F-F4A9-4297-99A0-252702C6C7A2}"),
-                Breed = "Macaw",
-                Price = 2000,
-                Cost = 1200,
-            };
+            pet = new Pet("Macaw", AnimalType.Parrot, 2000, 1200, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Parrot,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{6A3C6516-3DFA-4341-A984-72B0C2EBE5FF}"),
-                Breed = "African Grey",
-                Price = 1400,
-                Cost = 900,
-            };
+            pet = new Pet("African Grey", AnimalType.Parrot, 1400, 900, PetStatus.OK);
             pets.Add(pet);
 
-            pet = new Pet() {
-                Animaltype = AnimalType.Parrot,
-                Petstatus = PetStatus.OK,
-                ID = Guid.Parse("{84AE443B-869C-41FB-B5D8-2E38E2A77AA2}"),
-                Breed = "Cockatiel",
-                Price = 200,
-                Cost = 80,
-            };
+            pet = new Pet("Cockatiel", AnimalType.Parrot, 200, 80, PetStatus.OK);
             pets.Add(pet);
 
             //bsPet.DataSource = pets

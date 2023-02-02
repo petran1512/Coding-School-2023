@@ -15,64 +15,43 @@ namespace PopulateClassLibrary {
         public List<PetFood> PopulatePetFoods() {
 
             List<PetFood> petFood = new List<PetFood>();
-            int eachTransaction = 30;
-            PetFood pf = new PetFood() {
-                ID = Guid.Parse("{9B32B5C2-12F5-467F-8D68-FAD67DD51127}"),
-                Animaltype = AnimalType.Cat,
-                Price = 10,
-                Cost = 5,
-            };
-            var date = RandomDate();
-            var qty = RandomQty();
+            int transactionNumber = 30;
+            DateTime date;
+            decimal qty;
+            PetFood pf;
 
-            for(int i = 0; i < eachTransaction; i++) {
-                pf.PetFoodTransactions.Add(new PetFoodTransaction(date, qty));
+            //populate
+            foreach (AnimalType type in Enum.GetValues(typeof(AnimalType))) {
+                pf = new PetFood(type, RandomPriceCost(2, 5), RandomPriceCost(7, 12));
+                date = RandomDate();
+                qty = RandomQty();
+
+                //PetShopTransactions - How many the PetShop bought (not customer)
+                for (int i = 0; i < transactionNumber; i++) {
+                    pf.PetFoodTransactions.Add(new PetFoodTransaction(date, qty));
+                }
+                pf.SetQty();
+                petFood.Add(pf);
             }
-            pf.SetQty();
-
-            petFood.Add(pf);
-
-
-            pf = new PetFood() {
-                ID = Guid.Parse("{077D965F-7ECA-44CD-8DB1-70BB6CCF74A4}"),
-                Animaltype = AnimalType.Dog,
-                Price = 11,
-                Cost = 6,
-            };
-
-            date = RandomDate();
-            qty = RandomQty();
-
-            for (int i = 0; i < eachTransaction; i++) {
-                pf.PetFoodTransactions.Add(new PetFoodTransaction(date, qty));
-            }
-            pf.SetQty();
-            petFood.Add(pf);
-
-
-            pf = new PetFood() {
-                ID = Guid.Parse("{6F7CF917-982E-47F4-98B0-C8445F094C8E}"),
-                Animaltype = AnimalType.Parrot,
-                Price = 4,
-                Cost = 2,
-            };
-            date = RandomDate();
-            qty = RandomQty();
-
-            for (int i = 0; i < eachTransaction; i++) {
-                pf.PetFoodTransactions.Add(new PetFoodTransaction(date, qty));
-            }
-            pf.SetQty();
-            petFood.Add(pf);  
             return petFood;
         }
 
+
+
+        public decimal RandomPriceCost(int lower, int upper) {
+            var random = new Random();
+            int number = random.Next(lower, upper);
+            return number;
+        }
+
+
+        //random quantity for PetFoodTransactions
         public decimal RandomQty() {
             var random = new Random();
             int employee = random.Next(20, 60);
             return employee;
         }
-
+        //random date for PetFoodTransactions
         public DateTime RandomDate() {
             Random gen = new Random();
             DateTime start = new DateTime(2022, 1, 1);

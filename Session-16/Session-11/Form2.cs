@@ -40,7 +40,7 @@ namespace Session_11 {
         public PetShop InitPetShop(EngagePopulate eps) { return petShop = ep.SetPopulation(); }
 
 
-        private void SetControlProperties() {   
+        private void SetControlProperties() {
 
             //Employees Binding Source
             bsEmployeesDX.DataSource = petShop.Employees;
@@ -51,7 +51,7 @@ namespace Session_11 {
             grvCustomers.DataSource = bsCustomersDX;
 
             //Pet binding Source
-            bsPetsDX.DataSource = petShop.GetPets();
+            bsPetsDX.DataSource = petShop.Pets;
             grvPets.DataSource = bsPetsDX;
 
             //Pet Food binding Source
@@ -61,16 +61,24 @@ namespace Session_11 {
             //Transactions Food binding Source
             bsTransactionsDX.DataSource = petShop.Transactions;
             grvTransactions.DataSource = bsTransactionsDX;
-            
-            
-            //Weird Idea might work, cause a list is easy to handle
-           // List<BindingSource> bsTransactList = new List<BindingSource>()
-           // {bsCustomersDX,bsEmployeesDX,bsPetFoodDX,bsPetsDX, bsTransactionsDX }; //bsTrabsactions takes the pre-set values from populateTransactions?
-           // grvTransactions.DataSource = bsTransactList;                                                                       //?!
-            
-            
-            // 
 
+            //Monthly Ledger
+            bsMonthlyLedgerDX.DataSource = petShop.MonthlyLedgers;
+            grvMonthlyLedger.DataSource = bsMonthlyLedgerDX;
+
+            /* List<BindingSource> bsTransactList = new List<BindingSource>()
+             {bsCustomersDX,bsEmployeesDX,bsPetFoodDX,bsPetsDX, bsTransactionsDX }; //bsTrabsactions takes the pre-set values from populateTransactions?
+
+             for( int i = 0; i < bsTransactList.Count-1; i++ ) { bsTransactList[i].DataMember = "ID"; }
+             *//*bsTransactList[0].DataMember= "ID";
+             bsTransactList[1].DataMember = "ID";
+             bsTransactList[2].DataMember = "ID";
+             bsTransactList[3].DataMember = "ID";*//*
+
+
+             grvTransactions.DataSource = bsTransactList;
+             */
+            //
 
             //    grvCustomer.AutoGenerateColumns = false;
             //    bsCustomer.DataSource = petShop.Customers;
@@ -155,20 +163,6 @@ namespace Session_11 {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void gridControl1_Click(object sender, EventArgs e) {
 
 
@@ -188,31 +182,50 @@ namespace Session_11 {
 
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            Serializer serializer = new Serializer();
-            petShop = serializer.DeserializeFromFile<PetShop>("petshop.json");
-
-            System.Windows.MessageBox.Show("Load Completed!");
-
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
+        private void simpleButton2_Click(object sender, EventArgs e) {
+            try {
+                Serialization();
+                SetControlProperties();
+            }
+            catch (Exception) {
+                System.Windows.MessageBox.Show("Error saving!");
+            }
 
         }
 
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
+        private void simpleButton3_Click(object sender, EventArgs e) {
 
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
+        private void simpleButton4_Click(object sender, EventArgs e) {
+
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
             serializer.SerializeToFile(petShop, "petshop.json");
 
             System.Windows.MessageBox.Show("Save Completed!");
         }
+
+        private void Form2_Load(object sender, EventArgs e) {
+
+        }
+
+        public void Serialization() {
+            Serializer serializer = new Serializer();
+            this.petShop = serializer.DeserializeFromFile<PetShop>("petshop.json");
+            System.Windows.MessageBox.Show("Load Completed!");
+
+        }
+
+
+
+
+
+
+
+
+
     }
 }
