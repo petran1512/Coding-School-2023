@@ -1,6 +1,6 @@
-﻿using EF.Course.Orm.CustomerConfigurations;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ClassLibrary1;
+using EF.PetShop.Orm.Configuration;
 
 namespace EF.Course.Orm.AppDBContext
 {
@@ -11,9 +11,9 @@ namespace EF.Course.Orm.AppDBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
-            base.OnModelCreating(modelBuilder);
+
+
 
 
         }
