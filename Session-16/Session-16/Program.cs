@@ -1,14 +1,11 @@
-using ClassLibrary1;
 
-namespace Session_11
+namespace Session_16
 {
-  public  class Program
+    internal static class Program
     {
-        Customer cust1 = new Customer();    
-        Pet pet1 = new Pet();
-        PetFood food1 = new PetFood();
-        Employee employee1 = new Employee();
-
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
         [STAThread]
         static void Main()
         {

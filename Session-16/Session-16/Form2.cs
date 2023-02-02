@@ -1,18 +1,8 @@
-﻿using ClassLibrary1.PopulateClasses;
-using ClassLibrary1;
-using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraGantt.Scheduling;
+﻿using ClassLibrary1;
+using ClassLibrary1.PopulateClasses;
 
-namespace Session_11 {
+namespace Session_16
+{
     public partial class Form2 : DevExpress.XtraEditors.XtraForm {
 
         public PetShop petShop = new PetShop();
