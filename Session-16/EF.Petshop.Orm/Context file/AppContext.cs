@@ -3,6 +3,8 @@ using EF.Course.Model;
 using EF.Course.Orm.TodoConfigurations;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using EF.Course.Orm.CustomerConfigurations;
+using ClassLibrary1;
 
 namespace EF.Course.Orm.AppContext
 {
@@ -10,10 +12,17 @@ namespace EF.Course.Orm.AppContext
     {
         public DbSet<Todo> Todos { get; set; }
 
+        public DbSet<Customer> Cutomers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new TodoConfiguration());
+            
+
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
             base.OnModelCreating(modelBuilder);
+
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
