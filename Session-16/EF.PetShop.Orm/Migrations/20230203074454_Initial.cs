@@ -25,6 +25,21 @@ namespace EF.Petshop.Orm.Migrations
                 {
                     table.PrimaryKey("PK_Customer", x => x.ID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Employee",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpType = table.Column<int>(type: "int", maxLength: 30, nullable: false),
+                    SalaryPerMonth = table.Column<decimal>(type: "decimal(18,2)", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employee", x => x.ID);
+                });
         }
 
         /// <inheritdoc />
@@ -32,6 +47,9 @@ namespace EF.Petshop.Orm.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "Employee");
         }
     }
 }

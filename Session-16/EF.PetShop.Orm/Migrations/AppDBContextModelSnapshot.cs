@@ -51,6 +51,35 @@ namespace EF.Petshop.Orm.Migrations
 
                     b.ToTable("Customer", (string)null);
                 });
+
+            modelBuilder.Entity("ClassLibrary1.Employee", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("EmpType")
+                        .HasMaxLength(30)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<decimal>("SalaryPerMonth")
+                        .HasMaxLength(10)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Employee", (string)null);
+                });
 #pragma warning restore 612, 618
         }
     }

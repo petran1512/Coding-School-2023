@@ -10,6 +10,8 @@ namespace EF.Course.Orm.AppDBContext
 
         public DbSet<Customer> Cutomers { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Transactions { get; set; }
+        public DbSet<Employee> Pets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,6 +19,9 @@ namespace EF.Course.Orm.AppDBContext
 
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
 
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            modelBuilder.ApplyConfiguration(new PetConfiguration());
 
 
 
