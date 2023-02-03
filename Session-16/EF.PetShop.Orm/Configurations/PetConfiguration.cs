@@ -9,7 +9,7 @@ using ClassLibrary1;
 
 namespace EF.PetShop.Orm.Configurations
 {
-    internal class PetConfiguration : IEntityTypeConfiguration<Pet>
+    public class PetConfiguration : IEntityTypeConfiguration<Pet>
     {
         public void Configure(EntityTypeBuilder<Pet> builder)
         {

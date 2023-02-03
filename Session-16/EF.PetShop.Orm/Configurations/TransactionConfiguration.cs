@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EF.PetShop.Orm.Configurations
 {
-    internal class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
+    public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
     {
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
