@@ -17,6 +17,8 @@ namespace EF.PetShop.Orm.Configurations
 
             builder.HasKey(employee => employee.ID);
 
+            builder.Property(employee => employee.ID).HasMaxLength(30).IsRequired(true);
+
             builder.Property(employee => employee.Name).HasMaxLength(15).IsRequired(true);
 
             builder.Property(employee => employee.Surname).HasMaxLength(15).IsRequired(true);

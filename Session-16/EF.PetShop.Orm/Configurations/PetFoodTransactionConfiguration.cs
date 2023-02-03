@@ -17,6 +17,8 @@ namespace EF.PetShop.Orm.Configurations
 
             builder.HasKey(petfoodtransaction => petfoodtransaction.ID);
 
+            builder.Property(petfoodtransaction => petfoodtransaction.ID).HasMaxLength(30).IsRequired(true);
+
             builder.Property(petfoodtransaction => petfoodtransaction.Qty).HasPrecision(5, 5);
 
             builder.Property(petfoodtransaction => petfoodtransaction.Date).HasMaxLength(10);

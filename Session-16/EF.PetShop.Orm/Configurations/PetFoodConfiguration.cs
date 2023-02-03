@@ -17,6 +17,8 @@ namespace EF.PetShop.Orm.Configurations
 
             builder.HasKey(petfood => petfood.ID);
 
+            builder.Property(petfood => petfood.ID).HasMaxLength(30).IsRequired(true);
+
             builder.Property(petfood => petfood.Animaltype).HasMaxLength(10);
 
             builder.Property(petfood => petfood.Price).HasPrecision(5, 5);
