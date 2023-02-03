@@ -21,15 +21,15 @@ namespace EF.PetShop.Orm.Configurations
 
             builder.Property(transaction => transaction.Breed).HasMaxLength(30);
             
-            builder.Property(transaction => transaction.Price).HasMaxLength(10);
+            builder.Property(transaction => transaction.Price).HasPrecision(5,5);
             
-            builder.Property(transaction => transaction.Cost).HasMaxLength(10);
+            builder.Property(transaction => transaction.Cost).HasPrecision(5,5);
             
-            builder.Property(transaction => transaction.Bought).HasMaxLength(10);
+            builder.Property(transaction => transaction.Bought).HasMaxLength(25);
 
-            builder.Property(transaction => transaction.Animaltype).HasMaxLength(30);
+            builder.Property(transaction => transaction.Animaltype).HasMaxLength(10); ;
 
-            builder.Property(transaction => transaction.Petstatus).HasMaxLength(30);
+            builder.Property(transaction => transaction.Petstatus).HasMaxLength(10);
 
         }
     }
