@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF.Petshop.Orm.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230203121742_Initial")]
+    [Migration("20230203135345_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
