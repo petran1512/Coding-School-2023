@@ -15,21 +15,21 @@ namespace EF.PetShop.Orm.Configurations
         {
             builder.ToTable("Pet");
             
-            builder.HasKey(transaction => transaction.ID);
+            builder.HasKey(pet => pet.ID);
 
-            builder.HasKey(transaction => transaction.TransactionID);
+            builder.HasKey(pet => pet.TransactionID);
 
-            builder.Property(transaction => transaction.Breed).HasMaxLength(30);
+            builder.Property(pet => pet.Breed).HasMaxLength(30);
             
-            builder.Property(transaction => transaction.Price).HasPrecision(5,5);
+            builder.Property(pet => pet.Price).HasPrecision(5,5);
             
-            builder.Property(transaction => transaction.Cost).HasPrecision(5,5);
+            builder.Property(pet => pet.Cost).HasPrecision(5,5);
             
-            builder.Property(transaction => transaction.Bought).HasMaxLength(25);
+            builder.Property(pet => pet.Bought).HasMaxLength(25);
 
-            builder.Property(transaction => transaction.Animaltype).HasMaxLength(10); ;
+            builder.Property(pet => pet.Animaltype).HasMaxLength(10); ;
 
-            builder.Property(transaction => transaction.Petstatus).HasMaxLength(10);
+            builder.Property(pet => pet.Petstatus).HasMaxLength(10);
 
         }
     }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1 {
     public class PetFoodTransaction {
+
+        public Guid ID { get; set; }
         public decimal Qty { get; set; }
         public DateTime Date { get; set; }
 
