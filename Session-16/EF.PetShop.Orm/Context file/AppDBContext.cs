@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ClassLibrary1;
 using EF.PetShop.Orm.Configuration;
+using EF.PetShop.Orm.Configurations;
 
 namespace EF.Course.Orm.AppDBContext
 {
@@ -8,10 +9,13 @@ namespace EF.Course.Orm.AppDBContext
     {
 
         public DbSet<Customer> Cutomers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+
+            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
 
 
 
