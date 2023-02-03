@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    internal interface IEntityBase
+    public interface IEntityBase
     {
+        int Id { get; set; }
     }
 }
