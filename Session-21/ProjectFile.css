@@ -1,13 +1,19 @@
-.content .article article.img src{
-        height: 200px;
-        width: 50%;
+.article-img{
+        transform: scale(0.6, 0.55);
+
+
 } 
 
-
+.main{
+    font-size: 16px;
+    color:rgb(143, 140, 140);
+ 
+}
 .nav a{
     color:mediumseagreen;
     text-decoration: none;
 }
+
 
 header{
     background-color:rgb(240, 240, 240);
@@ -16,12 +22,31 @@ header{
     justify-content: space-between;
 }
 
+h2{
+    color: gray;
+}
+
 .main form button{
-    color: aliceblue;
+    color:aliceblue;
     background-color: mediumseagreen;
 }
 
-.side-links li a{
+.side-links hr {
+    color:rgb(240, 234, 234);
+  }
+
+.side-links a {
     color:mediumseagreen;
     text-decoration: none;
   }
+
+
+  .article{
+    display: flex; 
+   /* justify-content: space-between; 
+   flex-wrap: wrap; */
+}
+
+h1{
+    text-align: center;
+}
