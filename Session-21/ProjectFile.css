@@ -1,5 +1,6 @@
-.article.img{
-    width: 200px;
+.content .article article.img src{
+        height: 200px;
+        width: 50%;
 } 
 
 
@@ -13,6 +14,11 @@ header{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.main form button{
+    color: aliceblue;
+    background-color: mediumseagreen;
 }
 
 .side-links li a{
