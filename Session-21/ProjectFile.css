@@ -1,15 +1,21 @@
-p1(side-links){
+.article.img{
+    width: 200px;
+} 
+
+
+.nav a{
     color:mediumseagreen;
+    text-decoration: none;
 }
 
 header{
     background-color:rgb(240, 240, 240);
-    color:blueviolet;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-<div class="main">{
-    width: 320px;
-    padding: 10px;
-    border: 5px solid gray;
-    margin: 0;
+
+.side-links li a{
+    color:mediumseagreen;
+    text-decoration: none;
   }
