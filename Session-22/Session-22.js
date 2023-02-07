@@ -45,8 +45,8 @@ function addCustomer(){
 
 // Fourth Exersice
 let multiplyBtn = document.querySelector("#multiplyBtn");
-let inputmultiplya = document.querySelector("#inputa");
-let inputmultiplyb = document.querySelector("#inputb");
+let a = document.querySelector("#inputa");
+let b = document.querySelector("#inputb");
 let resultmultiply = document.querySelector("#outputmultiply");
 
 
