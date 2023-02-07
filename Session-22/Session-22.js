@@ -1,12 +1,12 @@
 //First Exersice
 
 let reverseBtn = document.querySelector("#reverseBtn");
-let inputReverse = document.querySelector("#inputReverse");
-let resultReverse = document.querySelector("#outputReverse");
+let inputreverse = document.querySelector("#inputreverse");
+let resultreverse = document.querySelector("#outputreverse");
 
 reverseBtn.addEventListener("click", reverseStr);
 function reverseStr(){
-    resultReverse.textContent = reverseString(inputReverse.value);
+    resultreverse.textContent = reverseString(inputreverse.value);
 }
 
 function reverseString(str){
@@ -16,19 +16,19 @@ function reverseString(str){
 
 // Second Exersice
 let palindromeBtn = document.querySelector("#palindromeBtn");
-let inputPalindrome = document.querySelector("#inputpalindrome");
-let resultPalindrome = document.querySelector("#outputpalindrome");
+let inputpalindrome = document.querySelector("#inputpalindrome");
+let resultpalindrome = document.querySelector("#outputpalindrome");
 
 
 palindromeBtn.addEventListener("click", ispalindrome);
 
 function ispalindrome(){
-    let str = inputPalindrome.value;
+    let str = inputpalindrome.value;
     let reversedStr = reverseString(str);
     if (str === reversedStr)
-        resultPalindrome.textContent = "True";
+        resultpalindrome.textContent = "True";
     else
-        resultPalindrome.textContent = "False";
+        resultpalindrome.textContent = "False";
 }
 
 
