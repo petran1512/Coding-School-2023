@@ -13,7 +13,6 @@ function reverseString(str){
     return str.split("").reverse().join("");
 }
 
-
 // Second Exersice
 let palindromeBtn = document.querySelector("#palindromeBtn");
 let inputpalindrome = document.querySelector("#inputpalindrome");
@@ -31,10 +30,17 @@ function ispalindrome(){
         resultpalindrome.textContent = "False";
 }
 
-
 // Third Exersice
-
-
+function addCustomer(){
+    const table = document.getElementById("tvlPosts");
+    
+    const newCustomer = {
+        Name: document.querySelector("#customer-name").value,
+        Surname: document.querySelector("#customer-surname").value,
+        Age: document.querySelector("#customer-age").value,
+        Gender: document.querySelector("#customer-gender").value,
+    }
+}
 
 
 // Fourth Exersice
@@ -55,7 +61,6 @@ function multiply(a, b) {
         string("Please enter only numbers.");
     }
 }
-
 
 
 // Fifth Exersice
