@@ -54,8 +54,7 @@ multiplyBtn.addEventListener("click", multiply);
 
 function multiply(a, b) {
     if (a == Number & b == Number) {
-        result = a * b;
-        return resultmultiply.result;
+        document.getElementById("outputmultiply").value = a*b;
     }
     else {
         string("Please enter only numbers.");
