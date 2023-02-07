@@ -47,13 +47,12 @@ let resultmultiply = document.querySelector("#outputmultiply");
 multiplyBtn.addEventListener("click", multiply);
 
 function multiply(a, b) {
-    // return a * b;
     if (a == Number & b == Number) {
         result = a * b;
-        return result;
+        return resultmultiply.result;
     }
     else {
-        alert("Please enter only numbers.");
+        string("Please enter only numbers.");
     }
 }
 
@@ -61,3 +60,18 @@ function multiply(a, b) {
 
 // Fifth Exersice
 
+let incrementBtn = document.querySelector("#incrementBtn");
+let inputincrement = document.querySelector("#inputincrement");
+let resultincrement = document.querySelector("#outputincrement");
+
+incrementBtn.addEventListener("click", incrementString);
+
+function incrementString(str) {
+    const body = str.slice(0, -1);
+    const lastDigit = str.slice(-1).match(/[0-9]/);
+    return lastDigit === null
+      ? str + "1"
+      : lastDigit != 9
+      ? body + (+lastDigit + 1)
+      : incrementString(body) + "0";
+  }
