@@ -1,13 +1,10 @@
-const reverseBtn = document.querySelector("#reverseBtn");
-const inputString =document.quarySelector("#inputReverse");
-const result = document.querySelector("#outputReverse");
+let reverseBtn = document.querySelector("#reverseBtn");
+let inputReverse = document.querySelector("#inputReverse");
+let resultReverse = document.querySelector("#outputReverse");
 
-reverseBtn.addEventListener("click", function() {
-    result.textContent = reverseString(inputString.value);
-});
-
+reverseBtn.addEventListener("click", reverseString(inputReverse.Value));
 
 
 function reverseString(str){
-    return str.split("").reverse().join("");
+    resultReverse.textContent = str.split("").reverse().join("");
 }
