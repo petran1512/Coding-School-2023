@@ -41,7 +41,14 @@ namespace PetShop.EF.Repositories
 
         public void Update(int id, PetFood entity)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            var dbPetshop = context.PetFoods.Where(petfood => petfood.Id == id).SingleOrDefault();
+            if (dbPetshop is null)
+                return;
+            dbPetshop.Cost = entity.Cost;
+            dbPetshop.Price = entity.Price;
+            dbPetshop.AnimalType= entity.AnimalType;
+            context.SaveChanges();
         }
     }
 }

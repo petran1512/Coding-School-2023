@@ -1,7 +1,9 @@
 ﻿using PetShop.EF.Context;
 using PetShop.Model;
+using PetShop.Model.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +43,16 @@ namespace PetShop.EF.Repositories
 
         public void Update(int id, Pet entity)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            var dbPetshop = context.Pets.Where(pet => pet.Id == id).SingleOrDefault();
+            if (dbPetshop is null)
+                return;
+            dbPetshop.AnimalType = entity.AnimalType;
+            dbPetshop.Breed= entity.Breed;
+            dbPetshop.PetStatus= entity.PetStatus;
+            dbPetshop.Price= entity.Price;
+            dbPetshop.Cost= entity.Cost;
+            context.SaveChanges();
         }
     }
 }

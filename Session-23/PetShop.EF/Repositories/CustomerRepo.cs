@@ -42,7 +42,15 @@ namespace PetShop.EF.Repositories
 
         public void Update(int id, Customer entity)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            var dbPetshop = context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
+            if (dbPetshop is null)
+                return;
+            dbPetshop.Name = entity.Name;
+            dbPetshop.Surname = entity.Surname;
+            dbPetshop.Phone = entity.Phone;
+            dbPetshop.Tin = entity.Tin;
+            context.SaveChanges();
         }
     }
 }
