@@ -1,4 +1,5 @@
-﻿using PetShop.Model;
+﻿using PetShop.EF.Context;
+using PetShop.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,31 @@ namespace PetShop.EF.Repositories
     {
         public void Add(Employee entity)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            context.Add(entity);
+            context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            var dbPetShop = context.Employees.Where(employee => employee.Id == id).SingleOrDefault();
+            if (dbPetShop is null)
+                return;
+            context.Remove(dbPetShop);
+            context.SaveChanges();
         }
 
         public IList<Employee> GetAll()
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            return context.Employees.ToList();
         }
 
         public Employee GetById(int id)
         {
-            throw new NotImplementedException();
+            using var context = new PetShopDbContext();
+            return context.Employees.Where(employee => employee.Id == id).SingleOrDefault();
         }
 
         public void Update(int id, Employee entity)
