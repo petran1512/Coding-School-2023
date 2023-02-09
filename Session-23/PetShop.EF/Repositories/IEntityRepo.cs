@@ -10,7 +10,7 @@ namespace PetShop.EF.Repositories
     public interface IEntityRepo <TEntity>
     {
         IList<TEntity> GetAll();
-        TEntity GetById(int id);
+        TEntity? GetById(int id);
 
         void Add(TEntity entity);
 
