@@ -7,17 +7,17 @@ namespace PetShop.Web.MVC.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly IEntityRepo<Customer> _customerRepo;
-        public CustomerController(IEntityRepo<Customer> customerRepo)
+        private readonly IEntityRepo<MockCustomerRepo> _mockcustomerRepo;
+        public CustomerController(IEntityRepo<MockCustomerRepo> mockcustomerRepo)
         {
-            _customerRepo = customerRepo;
+            _mockcustomerRepo = mockcustomerRepo;
         }
 
         // GET: CustomerController
         public ActionResult Index()
         {
-            var customers = _customerRepo.GetAll();
-            return View(model: customers);
+            var mockcustomers = _mockcustomerRepo.GetAll();
+            return View(model: mockcustomers);
         }
 
         // GET: CustomerController/Details/5
