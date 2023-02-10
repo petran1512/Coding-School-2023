@@ -5,34 +5,34 @@ using PetShop.Model;
 
 namespace PetShop.Web.MVC.Controllers
 {
-    public class CustomerController : Controller
+    public class EmployeeController : Controller
     {
-        private readonly IEntityRepo<Customer> _customerRepo;
-        public CustomerController(IEntityRepo<Customer> customerRepo)
+        private readonly IEntityRepo<Employee> _employeeRepo;
+        public EmployeeController(IEntityRepo<Employee> employeeRepo)
         {
-            _customerRepo = customerRepo;
+            _employeeRepo = employeeRepo;
         }
 
-        // GET: CustomerController
+        // GET: EmployeeController
         public ActionResult Index()
         {
-            var customers = _customerRepo.GetAll();
-            return View(model: customers);
+            var employees = _employeeRepo.GetAll();
+            return View(model: employees);
         }
 
-        // GET: CustomerController/Details/5
+        // GET: EmployeeController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CustomerController/Create
+        // GET: EmployeeController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CustomerController/Create
+        // POST: EmployeeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -47,13 +47,13 @@ namespace PetShop.Web.MVC.Controllers
             }
         }
 
-        // GET: CustomerController/Edit/5
+        // GET: EmployeeController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: CustomerController/Edit/5
+        // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -68,13 +68,13 @@ namespace PetShop.Web.MVC.Controllers
             }
         }
 
-        // GET: CustomerController/Delete/5
+        // GET: EmployeeController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: CustomerController/Delete/5
+        // POST: EmployeeController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
