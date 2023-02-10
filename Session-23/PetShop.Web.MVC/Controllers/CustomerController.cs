@@ -59,22 +59,41 @@ namespace PetShop.Web.MVC.Controllers
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var dbCustomer = _customerRepo.GetById(id);
+            if (dbCustomer == null)
+            {
+                return NotFound();
+            }
+            var viewcustomer = new CustomerEditDto();
+            {
+                viewcustomer.Name = dbCustomer.Name;
+                viewcustomer.Surname = dbCustomer.Surname;
+                viewcustomer.Phone = dbCustomer.Phone;
+                viewcustomer.Tin = dbCustomer.Tin;
+            };
+            return View(model: viewcustomer);
         }
 
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, CustomerEditDto customer)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbCustomer = _customerRepo.GetById(id);
+            if (dbCustomer == null)
+            {
+                return NotFound();
+            }
+            dbCustomer.Name = customer.Name;
+            dbCustomer.Surname = customer.Surname;
+            dbCustomer.Phone = customer.Phone;
+            dbCustomer.Tin = customer.Tin;
+            _customerRepo.Update(id, dbCustomer);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: CustomerController/Delete/5
