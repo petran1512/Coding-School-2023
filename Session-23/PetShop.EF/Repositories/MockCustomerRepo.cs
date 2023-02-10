@@ -40,7 +40,7 @@ namespace PetShop.EF.Repositories
         public IList<Customer> GetAll()
         {
             using var context = new PetShopDbContext();
-            return context.Customers.ToList();
+            return _customers;
         }
 
         public Customer GetById(int id)
