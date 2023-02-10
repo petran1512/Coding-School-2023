@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PetShop.EF.Repositories
 {
-    internal class TransactionRepo : IEntityRepo<Transaction>
+    public class TransactionRepo : IEntityRepo<Transaction>
     {
         public void Add(Transaction entity)
         {
