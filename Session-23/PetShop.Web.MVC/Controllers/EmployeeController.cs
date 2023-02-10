@@ -62,13 +62,13 @@ namespace PetShop.Web.MVC.Controllers
                 viewemployee.EmployeeType = dbEmployee.EmployeeType;
                 viewemployee.SalaryPerMonth = dbEmployee.SalaryPerMonth;
             };
-            return View(model: employee);
+            return View(model: viewemployee);
         }
 
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection employee)
+        public ActionResult Edit(int id, EmployeeCreateDto employee)
         {
             if (!ModelState.IsValid)
             {
