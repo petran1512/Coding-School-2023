@@ -12,7 +12,7 @@ using PetShop.EF.Context;
 namespace PetShop.EF.Migrations
 {
     [DbContext(typeof(PetShopDbContext))]
-    [Migration("20230207164414_Initial")]
+    [Migration("20230210142723_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -38,8 +38,9 @@ namespace PetShop.EF.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
