@@ -18,5 +18,17 @@ namespace PetShop.Web.MVC.Models.Transaction
 
         [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]
         public decimal TotalPrice { get; set; }
+
+        [Display(Name = "Customer")]
+        public int CustomerId { get; set; }
+
+        [Display(Name = "Employee")]
+        public int EmployeeId { get; set; }
+
+        [Display(Name = "Pet")]
+        public int PetId { get; set; }
+
+        [Display(Name = "Pet Food")]
+        public int PetFoodId { get; set; }
     }
 }
