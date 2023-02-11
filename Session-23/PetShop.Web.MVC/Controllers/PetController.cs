@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Customer;
+using PetShop.Web.MVC.Models.Employee;
+using PetShop.Web.MVC.Models.Pet;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -21,8 +24,18 @@ namespace PetShop.Web.MVC.Controllers
         }
 
         // GET: PetController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pet = _petRepo.GetById(id.Value);
+            if (pet == null)
+            {
+                return NotFound();
+            }
             return View();
         }
 
@@ -35,16 +48,15 @@ namespace PetShop.Web.MVC.Controllers
         // POST: PetController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PetCreateDto pet)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbPet = new Pet(pet.Breed, pet.AnimalType, pet.PetStatus, pet.Price, pet.Cost);
+            _petRepo.Add(dbPet);
+            return RedirectToAction("Index");
         }
 
         // GET: PetController/Edit/5

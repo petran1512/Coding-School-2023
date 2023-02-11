@@ -20,9 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Transaction\" />
     <Folder Include="Models\PetFood\" />
-    <Folder Include="Models\Pet\" />
+    <Folder Include="Models\Transaction\" />
   </ItemGroup>
 
 </Project>
