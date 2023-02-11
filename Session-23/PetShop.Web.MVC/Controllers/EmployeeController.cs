@@ -22,8 +22,18 @@ namespace PetShop.Web.MVC.Controllers
         }
 
         // GET: EmployeeController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employee = _employeeRepo.GetById(id.Value);
+            if (employee == null)
+            {
+                return NotFound();
+            }
             return View();
         }
 

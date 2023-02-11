@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Customer;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -21,20 +22,20 @@ namespace PetShop.Web.MVC.Controllers
         }
 
         // GET: CustomerController/Details/5
-        //public ActionResult Details(int id)
-        //{
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            //var customers = _customerRepo.GetById(id.Value);
-            //if (customers == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View();
-        //}
+            var customer = _customerRepo.GetById(id.Value);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return View();
+        }
 
         // GET: CustomerController/Create
         public ActionResult Create()
