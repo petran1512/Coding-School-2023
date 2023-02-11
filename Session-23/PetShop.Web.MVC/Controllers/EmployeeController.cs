@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Employee;
 using static PetShop.Model.Employee;
 
 namespace PetShop.Web.MVC.Controllers

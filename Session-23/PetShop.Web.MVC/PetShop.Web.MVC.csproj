@@ -19,4 +19,10 @@
     <ProjectReference Include="..\PetShop.Model\PetShop.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Transaction\" />
+    <Folder Include="Models\PetFood\" />
+    <Folder Include="Models\Pet\" />
+  </ItemGroup>
+
 </Project>
