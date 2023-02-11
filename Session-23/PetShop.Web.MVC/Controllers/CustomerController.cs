@@ -34,15 +34,14 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            var viewcustomer = new CustomerDetailsDto
-            {
-                Id = customer.Id,
-                Name = customer.Name,
-                Surname = customer.Surname,
-                Phone = customer.Phone,
-                Tin = customer.Tin.ToList()
-            };
- 
+
+            var viewcustomer = new CustomerDetailsDto();
+            viewcustomer.Id = customer.Id;
+            viewcustomer.Name = customer.Name;
+            viewcustomer.Surname = customer.Surname;
+            viewcustomer.Phone = customer.Phone;
+            viewcustomer.Tin = customer.Tin;
+
             return View(model: viewcustomer);
         }
 
