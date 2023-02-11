@@ -14,8 +14,10 @@ namespace PetShop.Web.MVC.Models.Pet
         [Display(Name = "Animal Type")]
         public PetStatus PetStatus { get; set; }
 
+        [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]
         public decimal Price { get; set; }
 
+        [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]
         public decimal Cost { get; set; }
     }
 }
