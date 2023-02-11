@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.PetFood;
+using PetShop.Web.MVC.Models.Transaction;
+using System.Data.Common;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -35,37 +38,59 @@ namespace PetShop.Web.MVC.Controllers
         // POST: TransactionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TransactionCreateDto transaction)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbPetFood = new Transaction(transaction.PetPrice, transaction.PetFoodQty, transaction.PetFoodPrice, transaction.TotalPrice);
+            _transactionRepo.Add(dbPetFood);
+            return RedirectToAction("Index");
         }
 
         // GET: TransactionController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var dbTransaction = _transactionRepo.GetById(id);
+            if (dbTransaction == null)
+            {
+                return NotFound();
+            }
+
+            var viewtransaction = new TransactionEditDto();
+            {
+                viewtransaction.Date = dbTransaction.Date;
+                viewtransaction.PetPrice = dbTransaction.PetPrice;
+                viewtransaction.PetFoodQty = dbTransaction.PetFoodQty;
+                viewtransaction.PetFoodPrice = dbTransaction.PetFoodPrice;
+                viewtransaction.TotalPrice = dbTransaction.TotalPrice;
+            };
+            return View(model: viewtransaction);
         }
 
         // POST: TransactionController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, TransactionEditDto transaction)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbTransaction = _transactionRepo.GetById(id);
+            if (dbTransaction == null)
+            {
+                return NotFound();
+            }
+            dbTransaction.Date=dbTransaction.Date;
+            dbTransaction.PetPrice = dbTransaction.PetPrice;
+            dbTransaction.PetFoodQty = dbTransaction.PetFoodQty;
+            dbTransaction.PetFoodPrice = dbTransaction.PetFoodPrice;
+            dbTransaction.TotalPrice = dbTransaction.TotalPrice;
+            _transactionRepo.Update(id, dbTransaction);
+            return RedirectToAction(nameof(Index));
+
         }
 
         // GET: TransactionController/Delete/5

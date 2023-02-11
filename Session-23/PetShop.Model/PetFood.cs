@@ -13,6 +13,11 @@ namespace PetShop.Model
             Transactions = new List<Transaction>();
         }
 
+        public PetFood()
+        {
+
+        }
+
         public int Id { get; set; }
         public AnimalType AnimalType { get; set; }
         public decimal Price { get; set; }

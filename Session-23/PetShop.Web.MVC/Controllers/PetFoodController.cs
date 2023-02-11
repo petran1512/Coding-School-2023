@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Pet;
+using PetShop.Web.MVC.Models.PetFood;
+using System.Drawing;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -35,37 +38,54 @@ namespace PetShop.Web.MVC.Controllers
         // POST: PetFoodController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PetFoodCreateDto petfood)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbPetFood = new PetFood(petfood.AnimalType,petfood.Price,petfood.Cost);
+            _petfoodRepo.Add(dbPetFood);
+            return RedirectToAction("Index");
         }
 
         // GET: PetFoodController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var dbPetFood = _petfoodRepo.GetById(id);
+            if (dbPetFood == null)
+            {
+                return NotFound();
+            }
+
+            var viewpetfood = new PetFoodEditDto();
+            {
+                viewpetfood.AnimalType = dbPetFood.AnimalType;
+                viewpetfood.Price = dbPetFood.Price;
+                viewpetfood.Cost = dbPetFood.Cost;
+            };
+            return View(model: viewpetfood);
         }
 
         // POST: PetFoodController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, PetFoodEditDto petfood)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+            var dbPetFood = _petfoodRepo.GetById(id);
+            if (dbPetFood == null)
+            {
+                return NotFound();
+            }
+            dbPetFood.AnimalType = dbPetFood.AnimalType;
+            dbPetFood.Price = dbPetFood.Price;
+            dbPetFood.Cost = dbPetFood.Cost;
+            _petfoodRepo.Update(id, dbPetFood);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PetFoodController/Delete/5

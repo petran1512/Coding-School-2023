@@ -4,11 +4,16 @@
     {
         public Transaction(decimal petPrice, int petFoodQty, decimal petFoodPrice, decimal totalPrice)
         {
-            Date = DateTime.Now;
+            
             PetPrice = petPrice;
             PetFoodPrice = petFoodPrice;
             PetFoodQty = petFoodQty;
             TotalPrice = totalPrice;
+        }
+
+        public Transaction()
+        {
+
         }
 
         public int Id { get; set; }
