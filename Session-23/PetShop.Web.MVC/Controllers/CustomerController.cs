@@ -34,7 +34,16 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            return View();
+            var viewcustomer = new CustomerDetailsDto
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                Surname = customer.Surname,
+                Phone = customer.Phone,
+                Tin = customer.Tin.ToList()
+            };
+ 
+            return View(model: viewcustomer);
         }
 
         // GET: CustomerController/Create

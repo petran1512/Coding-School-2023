@@ -5,6 +5,7 @@ namespace PetShop.Web.MVC.Models.Pet
 {
     public class PetEditDto
     {
+        public int Id { get; set; }
         [MaxLength(50, ErrorMessage = "Type less than 50 characters")]
         public string Breed { get; set; } = null!;
 

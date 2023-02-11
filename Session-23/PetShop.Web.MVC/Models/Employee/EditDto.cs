@@ -5,6 +5,7 @@ namespace PetShop.Web.MVC.Models.Employee
 {
     public class EmployeeEditDto
     {
+        public int Id { get; set; }
         [MaxLength(50, ErrorMessage = "Type less than 50 characters")]
         public string Name { get; set; } = null!;
         [MaxLength(100, ErrorMessage = "Type less than 100 characters")]

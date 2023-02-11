@@ -5,6 +5,7 @@ namespace PetShop.Web.MVC.Models.PetFood
 {
     public class PetFoodEditDto
     {
+        public int Id { get; set; }
         [Display(Name = "Animal Type")]
         public AnimalType AnimalType { get; set; }
 

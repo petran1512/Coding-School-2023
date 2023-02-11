@@ -4,6 +4,7 @@ namespace PetShop.Web.MVC.Models.Transaction
 {
     public class TransactionEditDto
     {
+        public int Id { get; set; }
         [Display(Name = "DateTime")]
         public DateTime? Date { get; set; }
 
