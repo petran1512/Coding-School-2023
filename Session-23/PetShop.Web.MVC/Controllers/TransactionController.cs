@@ -82,9 +82,14 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return View();
             }
+            var customer = _customerRepo.GetById(transaction.CustomerId);
             var pet = _petRepo.GetById(transaction.PetId);
+            var employee = _employeeRepo.GetById(transaction.EmployeeId);
             var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
+            var date = transaction.Date;
+            var petfoodprice = transaction.PetFoodPrice;
             var petFoodQty = transaction.PetFoodQty;
+            var petprice = transaction.PetPrice;
             decimal totalPrice;
 
             if (pet.AnimalType != 0)

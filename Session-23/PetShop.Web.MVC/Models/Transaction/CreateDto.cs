@@ -33,7 +33,7 @@ namespace PetShop.Web.MVC.Models.Transaction
 
         [Display(Name = "Pet Food")]
         public int PetFoodId { get; set; }
-        public List<SelectListItem> Customers { get; } = new List<SelectListItem>();
+        public List<SelectListItem> Customers { get;} = new List<SelectListItem>();
         public List<SelectListItem> Employees { get; } = new List<SelectListItem>();
         public List<SelectListItem> Pets { get;} = new List<SelectListItem>();
         public List<SelectListItem> PetFoods { get; } = new List<SelectListItem>();
