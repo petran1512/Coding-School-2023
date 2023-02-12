@@ -47,8 +47,8 @@ namespace PetShop.EF.Repositories
             var dbPetshop = context.Pets.Where(pet => pet.Id == id).SingleOrDefault();
             if (dbPetshop is null)
                 return;
+            dbPetshop.Breed = entity.Breed;
             dbPetshop.AnimalType = entity.AnimalType;
-            dbPetshop.Breed= entity.Breed;
             dbPetshop.PetStatus= entity.PetStatus;
             dbPetshop.Price= entity.Price;
             dbPetshop.Cost= entity.Cost;
