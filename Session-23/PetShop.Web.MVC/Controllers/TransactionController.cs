@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
-using PetShop.Web.MVC.Models.PetFood;
 using PetShop.Web.MVC.Models.Transaction;
 using System.Data.Common;
 
@@ -10,8 +9,10 @@ namespace PetShop.Web.MVC.Controllers
     public class TransactionController : Controller
     {
         private readonly IEntityRepo<Transaction> _transactionRepo;
+
         public TransactionController(IEntityRepo<Transaction> transactionRepo)
         {
+
             _transactionRepo = transactionRepo;
         }
 
