@@ -12,7 +12,7 @@ using PetShop.EF.Context;
 namespace PetShop.EF.Migrations
 {
     [DbContext(typeof(PetShopDbContext))]
-    [Migration("20230210142723_Initial")]
+    [Migration("20230212135149_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -103,15 +103,15 @@ namespace PetShop.EF.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Cost")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("PetStatus")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("Id");
 
@@ -130,12 +130,12 @@ namespace PetShop.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Cost")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("Id");
 
@@ -163,8 +163,8 @@ namespace PetShop.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PetFoodPrice")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("PetFoodQty")
                         .HasColumnType("int");
@@ -173,12 +173,12 @@ namespace PetShop.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PetPrice")
-                        .HasPrecision(4, 2)
-                        .HasColumnType("decimal(4,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<decimal>("TotalPrice")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
+                        .HasPrecision(10, 4)
+                        .HasColumnType("decimal(10,4)");
 
                     b.HasKey("Id");
 
