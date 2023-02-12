@@ -35,7 +35,9 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
+
             var viewpet = new PetDetailsDto();
+            viewpet.Id = id.Value;
             viewpet.Breed = pet.Breed;
             viewpet.AnimalType = pet.AnimalType;
             viewpet.PetStatus = pet.PetStatus;

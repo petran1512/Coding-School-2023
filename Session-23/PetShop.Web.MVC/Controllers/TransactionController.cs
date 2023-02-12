@@ -39,6 +39,7 @@ namespace PetShop.Web.MVC.Controllers
             }
 
             var viewtransaction = new TransactionDetailsDto();
+            viewtransaction.Id = id.Value;
             viewtransaction.Date = transaction.Date;
             viewtransaction.PetPrice = transaction.PetPrice;
             viewtransaction.PetFoodQty = transaction.PetFoodQty;

@@ -12,7 +12,7 @@ namespace PetShop.Web.MVC.Models.Pet
         [Display(Name = "Animal Type")]
         public AnimalType AnimalType { get; set; }
 
-        [Display(Name = "Animal Type")]
+        [Display(Name = "Pet Status")]
         public PetStatus PetStatus { get; set; }
 
         [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]

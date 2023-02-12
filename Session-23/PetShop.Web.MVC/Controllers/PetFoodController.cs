@@ -37,6 +37,7 @@ namespace PetShop.Web.MVC.Controllers
             }
 
             var viewpetfood = new PetFoodDetailsDto();
+            viewpetfood.Id = id.Value;
             viewpetfood.AnimalType = petfood.AnimalType;
             viewpetfood.Price = petfood.Price;
             viewpetfood.Cost = petfood.Cost;

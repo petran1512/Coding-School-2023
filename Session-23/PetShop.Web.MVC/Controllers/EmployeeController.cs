@@ -36,6 +36,7 @@ namespace PetShop.Web.MVC.Controllers
             }
 
             var viewemployee = new EmployeeDetailsDto();
+            viewemployee.Id = employee.Id;
             viewemployee.Name = employee.Name;
             viewemployee.Surname = employee.Surname;
             viewemployee.EmployeeType = employee.EmployeeType;
