@@ -1,10 +1,10 @@
 ﻿@model PetShop.Web.MVC.Models.Transaction.TransactionDetailsDto
 
 @{
-    ViewData["Title"] = "Details Transaction";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Details Transaction</h1>
+<h1>Details</h1>
 
 <div>
     <h4>Transaction</h4>
@@ -40,30 +40,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TotalPrice)
         </dd>
-@*        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customers)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Name)
+            @Html.DisplayFor(model => model.CustomerId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee)
+            @Html.DisplayNameFor(model => model.Employees)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Name)
+            @Html.DisplayFor(model => model.EmployeeId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pet)
+            @Html.DisplayNameFor(model => model.Pets)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pet.Breed)
+            @Html.DisplayFor(model => model.PetId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PetFood)
+            @Html.DisplayNameFor(model => model.PetFoods)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PetFood.Id)
-        </dd>*@
+            @Html.DisplayFor(model => model.PetFoodId)
+        </dd>
     </dl>
 </div>
 <div>
