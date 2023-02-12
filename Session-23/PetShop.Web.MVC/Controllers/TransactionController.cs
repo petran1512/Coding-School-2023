@@ -1,20 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
-using PetShop.Web.MVC.Models.Pet;
 using PetShop.Web.MVC.Models.Transaction;
-using System.Data.Common;
+using Transaction = PetShop.Model.Transaction;
 
 namespace PetShop.Web.MVC.Controllers
 {
     public class TransactionController : Controller
     {
         private readonly IEntityRepo<Transaction> _transactionRepo;
+        private readonly IEntityRepo<Customer> _customerRepo;
+        private readonly IEntityRepo<Employee> _employeeRepo;
+        private readonly IEntityRepo<Pet> _petRepo;
+        private readonly IEntityRepo<PetFood> _petFoodRepo;
 
-        public TransactionController(IEntityRepo<Transaction> transactionRepo)
+        public TransactionController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Customer> customerRepo, 
+            IEntityRepo<Employee> employeeRepo, IEntityRepo<Pet> petRepo, IEntityRepo<PetFood> petFoodRepo)
         {
 
             _transactionRepo = transactionRepo;
+            _customerRepo = customerRepo;
+            _employeeRepo = employeeRepo;
+            _petRepo = petRepo;
+            _petFoodRepo = petFoodRepo;
         }
 
         // GET: TransactionController
@@ -45,7 +53,15 @@ namespace PetShop.Web.MVC.Controllers
                 PetPrice = transaction.PetPrice,
                 PetFoodQty = transaction.PetFoodQty,
                 PetFoodPrice = transaction.PetFoodPrice,
-                TotalPrice = transaction.TotalPrice
+                TotalPrice = transaction.TotalPrice,
+                CustomerId= transaction.CustomerId,
+                EmployeeId= transaction.EmployeeId,
+                PetId= transaction.PetId,
+                PetFoodId= transaction.PetFoodId,
+                //Customers = transaction.Customer,
+                //Employees =transaction.Employee,
+                //Pets = transaction.Pet,
+                //PetFoods = transaction.PetFood,
             };
 
             return View(model: viewtransaction);
@@ -66,8 +82,28 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return View();
             }
-            var dbPetFood = new Transaction(transaction.PetPrice, transaction.PetFoodQty, transaction.PetFoodPrice, transaction.TotalPrice);
-            _transactionRepo.Add(dbPetFood);
+            var pet = _petRepo.GetById(transaction.PetId);
+            var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
+            var petFoodQty = transaction.PetFoodQty;
+            decimal totalPrice;
+
+            if (pet.AnimalType != 0)
+            {
+                totalPrice = pet.Price + petFoodQty * petFood.Price;
+                petFoodQty++;
+            }
+            else
+            {
+                totalPrice = petFoodQty * petFood.Price;
+            }
+
+            var dbTransaction = new Transaction(transaction.Date,
+                pet.Price,petFoodQty,petFood.Price,
+                totalPrice,transaction.CustomerId,
+                transaction.EmployeeId,transaction.PetId,transaction.PetFoodId
+                );
+
+            _transactionRepo.Add(dbTransaction);
             return RedirectToAction("Index");
         }
 
@@ -87,6 +123,10 @@ namespace PetShop.Web.MVC.Controllers
                 viewtransaction.PetFoodQty = dbTransaction.PetFoodQty;
                 viewtransaction.PetFoodPrice = dbTransaction.PetFoodPrice;
                 viewtransaction.TotalPrice = dbTransaction.TotalPrice;
+                viewtransaction.CustomerId= dbTransaction.CustomerId;
+                viewtransaction.EmployeeId= dbTransaction.EmployeeId;
+                viewtransaction.PetId=dbTransaction.PetId;
+                viewtransaction.PetFoodId=dbTransaction.PetFoodId;
             };
             return View(model: viewtransaction);
         }
@@ -105,6 +145,23 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
+
+
+            var pet = _petRepo.GetById(transaction.PetId);
+            var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
+            var petFoodQty = transaction.PetFoodQty;
+            decimal totalPrice;
+
+            if ((pet.AnimalType != 0) && (transaction.PetFoodQty != transaction.PetFoodQty))
+            {
+                totalPrice = pet.Price + petFoodQty * petFood.Price;
+                petFoodQty++;
+            }
+            else
+            {
+                totalPrice = petFoodQty * petFood.Price;
+            }
+
 #pragma warning disable CS8629 // Nullable value type may be null.
             dbTransaction.Date = (DateTime)transaction.Date;
 #pragma warning restore CS8629 // Nullable value type may be null.
@@ -112,6 +169,10 @@ namespace PetShop.Web.MVC.Controllers
             dbTransaction.PetFoodQty = transaction.PetFoodQty;
             dbTransaction.PetFoodPrice = transaction.PetFoodPrice;
             dbTransaction.TotalPrice = transaction.TotalPrice;
+            dbTransaction.CustomerId = transaction.CustomerId;
+            dbTransaction.EmployeeId = transaction.EmployeeId;
+            dbTransaction.PetId = transaction.PetId;
+            dbTransaction.PetFoodId = transaction.PetFoodId;
             _transactionRepo.Update(id, dbTransaction);
             return RedirectToAction(nameof(Index));
 
@@ -133,7 +194,17 @@ namespace PetShop.Web.MVC.Controllers
                 PetFoodQty = dbTransaction.PetFoodQty,
                 PetFoodPrice = dbTransaction.PetFoodPrice,
                 TotalPrice = dbTransaction.TotalPrice,
+                CustomerId = dbTransaction.CustomerId,
+                EmployeeId = dbTransaction.EmployeeId,
+                PetId = dbTransaction.PetId,
+                PetFoodId= dbTransaction.PetFoodId,
             };
+
+            //viewtransaction.Customers = _customerRepo.GetById(viewtransaction.CustomerId);
+            //viewtransaction.Employees = _employeeRepo.GetById(viewtransaction.EmployeeId);
+            //viewtransaction.Pets = _petRepo.GetById(viewtransaction.PetId);
+            //viewtransaction.PetFoods = _petFoodRepo.GetById(viewtransaction.PetFoodId);
+
             return View(model: viewtransaction);
         }
 

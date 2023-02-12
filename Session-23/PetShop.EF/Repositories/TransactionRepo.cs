@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PetShop.EF.Context;
 using PetShop.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PetShop.EF.Repositories
 {
