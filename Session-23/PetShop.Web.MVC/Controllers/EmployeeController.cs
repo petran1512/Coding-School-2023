@@ -84,7 +84,7 @@ namespace PetShop.Web.MVC.Controllers
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, EmployeeCreateDto employee)
+        public ActionResult Edit(int id, EmployeeEditDto employee)
         {
             if (!ModelState.IsValid)
             {
