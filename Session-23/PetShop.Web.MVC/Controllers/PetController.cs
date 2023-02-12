@@ -84,8 +84,8 @@ namespace PetShop.Web.MVC.Controllers
             return View(model: viewpet);
         }
 
-    // POST: PetController/Edit/5
-    [HttpPost]
+        // POST: PetController/Edit/5
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PetEditDto pet)
         {
