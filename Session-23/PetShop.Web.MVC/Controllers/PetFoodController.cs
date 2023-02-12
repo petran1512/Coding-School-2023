@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Employee;
 using PetShop.Web.MVC.Models.Pet;
 using PetShop.Web.MVC.Models.PetFood;
 
@@ -104,7 +105,19 @@ namespace PetShop.Web.MVC.Controllers
         // GET: PetFoodController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var dbPetFood = _petfoodRepo.GetById(id);
+            if (dbPetFood == null)
+            {
+                return NotFound();
+            }
+
+            var viewpetfood = new PetFoodDeleteDto
+            {
+                AnimalType = dbPetFood.AnimalType,
+                Price = dbPetFood.Price,
+                Cost = dbPetFood.Cost,
+            };
+            return View(model: viewpetfood);
         }
 
         // POST: PetFoodController/Delete/5
@@ -112,14 +125,8 @@ namespace PetShop.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _petfoodRepo.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

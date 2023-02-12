@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.Pet;
 using PetShop.Web.MVC.Models.Transaction;
 using System.Data.Common;
 
@@ -114,7 +115,21 @@ namespace PetShop.Web.MVC.Controllers
         // GET: TransactionController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var dbTransaction = _transactionRepo.GetById(id);
+            if (dbTransaction == null)
+            {
+                return NotFound();
+            }
+
+            var viewtransaction = new TransactionDeleteDto
+            {
+                Date = dbTransaction.Date,
+                PetPrice = dbTransaction.PetPrice,
+                PetFoodQty = dbTransaction.PetFoodQty,
+                PetFoodPrice = dbTransaction.PetFoodPrice,
+                TotalPrice = dbTransaction.TotalPrice,
+            };
+            return View(model: viewtransaction);
         }
 
         // POST: TransactionController/Delete/5
@@ -122,14 +137,8 @@ namespace PetShop.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _transactionRepo.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
