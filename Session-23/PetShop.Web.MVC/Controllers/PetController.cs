@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PetShop.EF.Repositories;
 using PetShop.Model;
-using PetShop.Web.MVC.Models.Customer;
 using PetShop.Web.MVC.Models.Employee;
 using PetShop.Web.MVC.Models.Pet;
 
@@ -36,7 +35,13 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            return View();
+            var viewpet = new PetDetailsDto();
+            viewpet.Breed = pet.Breed;
+            viewpet.AnimalType = pet.AnimalType;
+            viewpet.PetStatus = pet.PetStatus;
+            viewpet.Price = pet.Price;
+            viewpet.Cost = pet.Cost;
+            return View(model: viewpet);
         }
 
         // GET: PetController/Create

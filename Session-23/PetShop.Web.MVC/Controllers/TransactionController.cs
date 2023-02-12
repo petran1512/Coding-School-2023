@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
 using PetShop.Web.MVC.Models.PetFood;
@@ -24,9 +23,27 @@ namespace PetShop.Web.MVC.Controllers
         }
 
         // GET: TransactionController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var transaction = _transactionRepo.GetById(id.Value);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            var viewtransaction = new TransactionDetailsDto();
+            viewtransaction.Date = transaction.Date;
+            viewtransaction.PetPrice = transaction.PetPrice;
+            viewtransaction.PetFoodQty = transaction.PetFoodQty;
+            viewtransaction.PetFoodPrice = transaction.PetFoodPrice;
+            viewtransaction.TotalPrice = transaction.TotalPrice;
+
+            return View(model: viewtransaction);
         }
 
         // GET: TransactionController/Create

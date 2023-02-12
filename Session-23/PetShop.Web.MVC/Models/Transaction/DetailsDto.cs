@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 
 namespace PetShop.Web.MVC.Models.Transaction
 {
-    public class TransactionCreateDto
+    public class TransactionDetailsDto
     {
+        public int Id { get; set; }
         [Display(Name = "DateTime")]
-        public DateTime? Date { get; set; }  
+        public DateTime? Date { get; set; }
 
         [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]
         public decimal PetPrice { get; set; }
@@ -37,6 +36,5 @@ namespace PetShop.Web.MVC.Models.Transaction
         public List<SelectListItem> Employees { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Pets { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> PetFoods { get; set; } = new List<SelectListItem>();
-
     }
 }

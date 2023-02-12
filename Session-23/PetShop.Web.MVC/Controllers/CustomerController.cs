@@ -41,7 +41,6 @@ namespace PetShop.Web.MVC.Controllers
             viewcustomer.Surname = customer.Surname;
             viewcustomer.Phone = customer.Phone;
             viewcustomer.Tin = customer.Tin;
-
             return View(model: viewcustomer);
         }
 

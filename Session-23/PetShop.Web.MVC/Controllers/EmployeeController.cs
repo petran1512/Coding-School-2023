@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
 using PetShop.Web.MVC.Models.Employee;
-using static PetShop.Model.Employee;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -35,7 +34,13 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            return View();
+
+            var viewemployee = new EmployeeDetailsDto();
+            viewemployee.Name = employee.Name;
+            viewemployee.Surname = employee.Surname;
+            viewemployee.EmployeeType = employee.EmployeeType;
+            viewemployee.SalaryPerMonth = employee.SalaryPerMonth;
+            return View(model: viewemployee);
         }
 
         // GET: EmployeeController/Create

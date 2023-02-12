@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
 using PetShop.Web.MVC.Models.Pet;
 using PetShop.Web.MVC.Models.PetFood;
-using System.Drawing;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -24,9 +22,24 @@ namespace PetShop.Web.MVC.Controllers
         }
 
         // GET: PetFoodController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var petfood = _petfoodRepo.GetById(id.Value);
+            if (petfood == null)
+            {
+                return NotFound();
+            }
+
+            var viewpetfood = new PetFoodDetailsDto();
+            viewpetfood.AnimalType = petfood.AnimalType;
+            viewpetfood.Price = petfood.Price;
+            viewpetfood.Cost = petfood.Cost;
+            return View(model: viewpetfood);
         }
 
         // GET: PetFoodController/Create
