@@ -98,11 +98,11 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            dbPet.Breed = dbPet.Breed;
-            dbPet.AnimalType = dbPet.AnimalType;
-            dbPet.PetStatus = dbPet.PetStatus;
-            dbPet.Price = dbPet.Price;
-            dbPet.Cost = dbPet.Cost;
+            dbPet.Breed = pet.Breed;
+            dbPet.AnimalType = pet.AnimalType;
+            dbPet.PetStatus = pet.PetStatus;
+            dbPet.Price = pet.Price;
+            dbPet.Cost = pet.Cost;
             _petRepo.Update(id, dbPet);
             return RedirectToAction(nameof(Index));
         }

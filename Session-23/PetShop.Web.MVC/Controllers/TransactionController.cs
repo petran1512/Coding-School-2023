@@ -102,11 +102,11 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            dbTransaction.Date=dbTransaction.Date;
-            dbTransaction.PetPrice = dbTransaction.PetPrice;
-            dbTransaction.PetFoodQty = dbTransaction.PetFoodQty;
-            dbTransaction.PetFoodPrice = dbTransaction.PetFoodPrice;
-            dbTransaction.TotalPrice = dbTransaction.TotalPrice;
+            dbTransaction.Date = (DateTime)transaction.Date;
+            dbTransaction.PetPrice = transaction.PetPrice;
+            dbTransaction.PetFoodQty = transaction.PetFoodQty;
+            dbTransaction.PetFoodPrice = transaction.PetFoodPrice;
+            dbTransaction.TotalPrice = transaction.TotalPrice;
             _transactionRepo.Update(id, dbTransaction);
             return RedirectToAction(nameof(Index));
 

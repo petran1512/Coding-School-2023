@@ -95,9 +95,9 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
-            dbPetFood.AnimalType = dbPetFood.AnimalType;
-            dbPetFood.Price = dbPetFood.Price;
-            dbPetFood.Cost = dbPetFood.Cost;
+            dbPetFood.AnimalType = petfood.AnimalType;
+            dbPetFood.Price = petfood.Price;
+            dbPetFood.Cost = petfood.Cost;
             _petfoodRepo.Update(id, dbPetFood);
             return RedirectToAction(nameof(Index));
         }
