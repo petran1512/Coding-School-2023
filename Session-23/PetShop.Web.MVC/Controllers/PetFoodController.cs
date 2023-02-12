@@ -36,11 +36,13 @@ namespace PetShop.Web.MVC.Controllers
                 return NotFound();
             }
 
-            var viewpetfood = new PetFoodDetailsDto();
-            viewpetfood.Id = id.Value;
-            viewpetfood.AnimalType = petfood.AnimalType;
-            viewpetfood.Price = petfood.Price;
-            viewpetfood.Cost = petfood.Cost;
+            var viewpetfood = new PetFoodDetailsDto
+            {
+                Id = id.Value,
+                AnimalType = petfood.AnimalType,
+                Price = petfood.Price,
+                Cost = petfood.Cost
+            };
             return View(model: viewpetfood);
         }
 

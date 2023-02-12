@@ -35,12 +35,14 @@ namespace PetShop.Web.MVC.Controllers
                 return NotFound();
             }
 
-            var viewemployee = new EmployeeDetailsDto();
-            viewemployee.Id = employee.Id;
-            viewemployee.Name = employee.Name;
-            viewemployee.Surname = employee.Surname;
-            viewemployee.EmployeeType = employee.EmployeeType;
-            viewemployee.SalaryPerMonth = employee.SalaryPerMonth;
+            var viewemployee = new EmployeeDetailsDto
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Surname = employee.Surname,
+                EmployeeType = employee.EmployeeType,
+                SalaryPerMonth = employee.SalaryPerMonth
+            };
             return View(model: viewemployee);
         }
 

@@ -38,13 +38,15 @@ namespace PetShop.Web.MVC.Controllers
                 return NotFound();
             }
 
-            var viewtransaction = new TransactionDetailsDto();
-            viewtransaction.Id = id.Value;
-            viewtransaction.Date = transaction.Date;
-            viewtransaction.PetPrice = transaction.PetPrice;
-            viewtransaction.PetFoodQty = transaction.PetFoodQty;
-            viewtransaction.PetFoodPrice = transaction.PetFoodPrice;
-            viewtransaction.TotalPrice = transaction.TotalPrice;
+            var viewtransaction = new TransactionDetailsDto
+            {
+                Id = id.Value,
+                Date = transaction.Date,
+                PetPrice = transaction.PetPrice,
+                PetFoodQty = transaction.PetFoodQty,
+                PetFoodPrice = transaction.PetFoodPrice,
+                TotalPrice = transaction.TotalPrice
+            };
 
             return View(model: viewtransaction);
         }
@@ -103,7 +105,9 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return NotFound();
             }
+#pragma warning disable CS8629 // Nullable value type may be null.
             dbTransaction.Date = (DateTime)transaction.Date;
+#pragma warning restore CS8629 // Nullable value type may be null.
             dbTransaction.PetPrice = transaction.PetPrice;
             dbTransaction.PetFoodQty = transaction.PetFoodQty;
             dbTransaction.PetFoodPrice = transaction.PetFoodPrice;
