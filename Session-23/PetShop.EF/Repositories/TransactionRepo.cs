@@ -27,16 +27,14 @@ namespace PetShop.EF.Repositories
         {
             using var context = new PetShopDbContext();
 
-            return context.Transactions.Include(transaction => transaction.Customer).Include(transaction => transaction.Employee).
-                Include(transaction => transaction.Pet).Include(transaction => transaction.PetFood).ToList();
+            return context.Transactions.Include(customer => customer.Customer).Include(employee => employee.Employee).
+                Include(pet => pet.Pet).Include(petFood => petFood.PetFood).ToList();
         }
 
         public Transaction? GetById(int id)
         {
             using var context = new PetShopDbContext();
-            return context.Transactions.Include(transaction => transaction.Customer).Include(transaction => transaction.Employee).
-                Include(transaction => transaction.Pet).Include(transaction => transaction.PetFood).
-                Where(transaction => transaction.Id == id).SingleOrDefault();
+            return context.Transactions.Where(transaction => transaction.Id == id).SingleOrDefault();
         }
 
         public void Update(int id, Transaction entity)
