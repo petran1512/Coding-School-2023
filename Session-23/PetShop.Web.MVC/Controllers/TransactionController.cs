@@ -7,6 +7,7 @@ using PetShop.Web.MVC.Models.PetFood;
 using PetShop.Web.MVC.Models.Transaction;
 using Transaction = PetShop.Model.Transaction;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data.Common;
 
 namespace PetShop.Web.MVC.Controllers
 {
@@ -63,9 +64,6 @@ namespace PetShop.Web.MVC.Controllers
                 PetId = transaction.PetId,
                 PetFoodId = transaction.PetFoodId,
                 Customer = transaction.Customer,
-                Employee = transaction.Employee,
-                Pet = transaction.Pet,
-                PetFood = transaction.PetFood,
             };
 
             return View(model: viewtransaction);
@@ -87,19 +85,11 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return View();
             }
-            Pet pet = _petRepo.GetById(transaction.PetId);
-            PetFood petfood = _petFoodRepo.GetById(transaction.PetFoodId);
+            Pet? pet = _petRepo.GetById(transaction.PetId);
+            PetFood? petfood = _petFoodRepo.GetById(transaction.PetFoodId);
 
-            //var customer = _customerRepo.GetById(transaction.CustomerId);
-            //var pet = _petRepo.GetById(transaction.PetId);
-            //var employee = _employeeRepo.GetById(transaction.EmployeeId);
-            //var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
-            //var date = transaction.Date;
-
-            //var petfoodprice = transaction.PetFoodPrice;
             var petFoodQty = transaction.PetFoodQty;
-            //var petprice = transaction.PetPrice;
-            decimal totalPrice =0;
+            decimal totalPrice = 0;
             if (pet.AnimalType != 0)
             {
                 totalPrice = pet.Price + petFoodQty * petfood.Price;
@@ -111,8 +101,8 @@ namespace PetShop.Web.MVC.Controllers
             }
 
 
-            var dbTransaction = new Transaction((DateTime)transaction.Date
-                /*pet.Price*/, petFoodQty, /*petFood.Price*/
+            var dbTransaction = new Transaction(transaction.Date,
+                pet.Price, petFoodQty, petfood.Price,
                 totalPrice, transaction.CustomerId,
                 transaction.EmployeeId, transaction.PetId, transaction.PetFoodId
                 );
@@ -130,7 +120,7 @@ namespace PetShop.Web.MVC.Controllers
                 return NotFound();
             }
 
-            var viewtransaction = new TransactionEditDto();
+            var viewtransaction = GetDataForEditCombo();
             {
                 viewtransaction.Date = dbTransaction.Date;
                 viewtransaction.PetPrice = dbTransaction.PetPrice;
@@ -166,10 +156,9 @@ namespace PetShop.Web.MVC.Controllers
             var petFoodQty = transaction.PetFoodQty;
             decimal totalPrice;
 
-            if ((pet.AnimalType != 0) && (transaction.PetFoodQty != transaction.PetFoodQty))
+            if (pet.AnimalType != 0)
             {
-                totalPrice = pet.Price + petFoodQty * petFood.Price;
-                petFoodQty++;
+                totalPrice = pet.Price + (petFoodQty - 1) * petFood.Price;
             }
             else
             {
@@ -228,7 +217,7 @@ namespace PetShop.Web.MVC.Controllers
         public ActionResult Delete(int id, IFormCollection collection)
         {
             _transactionRepo.Delete(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
 
@@ -258,6 +247,42 @@ namespace PetShop.Web.MVC.Controllers
             }
 
             return transaction;
+        }
+        public TransactionCreateDto GetDataForEditCombo()
+        {
+            var transaction = new TransactionCreateDto();
+            var customers = _customerRepo.GetAll();
+            var employees = _employeeRepo.GetAll();
+            var pets = _petRepo.GetAll().Where(pet => pet.PetStatus != PetStatus.Unhealthy);
+            var petFoods = _petFoodRepo.GetAll();
+
+            foreach (var customer in customers)
+            {
+                transaction.Customer.Add(new SelectListItem(customer.Surname + " " + customer.Name, customer.Id.ToString()));
+            }
+            foreach (var employee in employees)
+            {
+                transaction.Employee.Add(new SelectListItem(employee.Surname + " " + employee.Name, employee.Id.ToString()));
+            }
+            foreach (var pet in pets)
+            {
+                transaction.Pet.Add(new SelectListItem(pet.Breed + ", " + pet.AnimalType + " - " + pet.Price + "€", pet.Id.ToString()));
+            }
+            foreach (var petFood in petFoods)
+            {
+                transaction.PetFood.Add(new SelectListItem(petFood.AnimalType.ToString() + " - " + petFood.Price + "€", petFood.Id.ToString()));
+            }
+
+            return transaction;
+        }
+
+        public void GetDataForTransaction(Transaction transaction)
+        {
+
+            transaction.Customer = _customerRepo.GetById(transaction.CustomerId);
+            transaction.Employee = _employeeRepo.GetById(transaction.EmployeeId);
+            transaction.Pet = _petRepo.GetById(transaction.PetId);
+            transaction.PetFood = _petFoodRepo.GetById(transaction.PetFoodId);
         }
     }
 }

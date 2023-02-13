@@ -13,13 +13,13 @@
 
 
 
-        public Transaction(DateTime date/*, decimal petPrice*/, int petFoodQty,/* decimal petFoodPrice,*/ 
+        public Transaction(DateTime date, decimal petPrice, int petFoodQty, decimal petFoodPrice,
             decimal totalPrice, int customerId,  int employeeId,  int petId,int petFoodId)
         {
             Date = date;
-            //PetPrice = petPrice;
+            PetPrice = petPrice;
             PetFoodQty = petFoodQty;
-            //PetFoodPrice = petFoodPrice;
+            PetFoodPrice = petFoodPrice;
             TotalPrice = totalPrice;
             CustomerId = customerId;
             EmployeeId = employeeId;
