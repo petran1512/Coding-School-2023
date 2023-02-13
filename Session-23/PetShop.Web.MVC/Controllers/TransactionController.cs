@@ -62,10 +62,10 @@ namespace PetShop.Web.MVC.Controllers
                 EmployeeId = transaction.EmployeeId,
                 PetId = transaction.PetId,
                 PetFoodId = transaction.PetFoodId,
-                //Customers = transaction.Customer,
-                //Employees = transaction.Employee,
-                //Pets = transaction.Pet,
-                //PetFoods = transaction.PetFood,
+                Customers = transaction.Customer,
+                Employees = transaction.Employee,
+                Pets = transaction.Pet,
+                PetFoods = transaction.PetFood,
             };
 
             return View(model: viewtransaction);
@@ -92,9 +92,9 @@ namespace PetShop.Web.MVC.Controllers
             var employee = _employeeRepo.GetById(transaction.EmployeeId);
             var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
             var date = transaction.Date;
-            var petfoodprice = transaction.PetFoodPrice;
+            //var petfoodprice = transaction.PetFoodPrice;
             var petFoodQty = transaction.PetFoodQty;
-            var petprice = transaction.PetPrice;
+            //var petprice = transaction.PetPrice;
             decimal totalPrice;
 
             if (pet.AnimalType != 0)
@@ -107,8 +107,8 @@ namespace PetShop.Web.MVC.Controllers
                 totalPrice = petFoodQty * petFood.Price;
             }
 
-            var dbTransaction = new Transaction((DateTime)transaction.Date,
-                pet.Price, petFoodQty, petFood.Price,
+            var dbTransaction = new Transaction((DateTime)transaction.Date
+                /*pet.Price*/, petFoodQty, /*petFood.Price*/
                 totalPrice, transaction.CustomerId,
                 transaction.EmployeeId, transaction.PetId, transaction.PetFoodId
                 );
