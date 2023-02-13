@@ -1,4 +1,6 @@
-﻿@model PetShop.Web.MVC.Models.Transaction.TransactionDetailsDto
+﻿
+
+@model PetShop.Web.MVC.Models.Transaction.TransactionDetailsDto
 
 @{
     ViewData["Title"] = "Details Transaction";
@@ -23,13 +25,13 @@
             @Html.DisplayFor(model => model.Customer.Surname) @Html.DisplayFor(model => model.Customer.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pet)
+            @Html.DisplayNameFor(model => model.Pet.Breed)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Pet.Breed)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pet)
+            @Html.DisplayNameFor(model => model.Pet.AnimalType)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Pet.AnimalType)

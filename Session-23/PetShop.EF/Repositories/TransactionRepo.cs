@@ -16,10 +16,10 @@ namespace PetShop.EF.Repositories
         public void Delete(int id)
         {
             using var context = new PetShopDbContext();
-            var dbPetShop = context.Pets.Where(transaction => transaction.Id == id).SingleOrDefault();
-            if (dbPetShop is null)
+            var dbTransactions = context.Transactions.Where(transaction => transaction.Id == id).SingleOrDefault();
+            if (dbTransactions is null)
                 return;
-            context.Remove(dbPetShop);
+            context.Remove(dbTransactions);
             context.SaveChanges();
         }
 
@@ -43,7 +43,7 @@ namespace PetShop.EF.Repositories
             var dbPetshop = context.Transactions.Where(transaction => transaction.Id == id).SingleOrDefault();
             if (dbPetshop is null)
                 return;
-            dbPetshop.Date= DateTime.Now;
+            dbPetshop.Date= entity.Date;
             dbPetshop.PetPrice = entity.PetPrice;
             dbPetshop.PetFoodPrice= entity.PetFoodPrice;
             dbPetshop.PetFoodQty= entity.PetFoodQty;
@@ -52,6 +52,7 @@ namespace PetShop.EF.Repositories
             dbPetshop.EmployeeId = entity.EmployeeId;
             dbPetshop.PetId = entity.PetId;
             dbPetshop.PetFoodId = entity.PetFoodId;
+            context.SaveChanges();
 
         }
     }

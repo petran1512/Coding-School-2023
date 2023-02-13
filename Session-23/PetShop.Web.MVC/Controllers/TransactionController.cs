@@ -64,6 +64,9 @@ namespace PetShop.Web.MVC.Controllers
                 PetId = transaction.PetId,
                 PetFoodId = transaction.PetFoodId,
                 Customer = transaction.Customer,
+                Employee = transaction.Employee,
+                Pet = transaction.Pet,
+                PetFood = transaction.PetFood,
             };
 
             return View(model: viewtransaction);
@@ -165,9 +168,9 @@ namespace PetShop.Web.MVC.Controllers
                 totalPrice = petFoodQty * petFood.Price;
             }
 
-#pragma warning disable CS8629 // Nullable value type may be null.
+
             dbTransaction.Date = (DateTime)transaction.Date;
-#pragma warning restore CS8629 // Nullable value type may be null.
+
             dbTransaction.PetPrice = transaction.PetPrice;
             dbTransaction.PetFoodQty = transaction.PetFoodQty;
             dbTransaction.PetFoodPrice = transaction.PetFoodPrice;
