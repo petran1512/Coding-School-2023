@@ -107,7 +107,7 @@ namespace PetShop.Web.MVC.Controllers
                 totalPrice = petFoodQty * petFood.Price;
             }
 
-            var dbTransaction = new Transaction(transaction.Date,
+            var dbTransaction = new Transaction((DateTime)transaction.Date,
                 pet.Price, petFoodQty, petFood.Price,
                 totalPrice, transaction.CustomerId,
                 transaction.EmployeeId, transaction.PetId, transaction.PetFoodId

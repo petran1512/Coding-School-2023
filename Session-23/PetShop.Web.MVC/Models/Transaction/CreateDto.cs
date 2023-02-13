@@ -8,7 +8,7 @@ namespace PetShop.Web.MVC.Models.Transaction
     public class TransactionCreateDto
     {
         [Display(Name = "DateTime")]
-        public DateTime? Date { get; set; }  
+        public DateTime Date { get; set; }  
 
         [Range(0, 100000.99, ErrorMessage = "Range 0 to 100000.99 characters")]
         public decimal PetPrice { get; set; }

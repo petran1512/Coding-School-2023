@@ -4,22 +4,19 @@
     {
         public Transaction(decimal petPrice, int petFoodQty, decimal petFoodPrice, decimal totalPrice)
         {
-            
+
             PetPrice = petPrice;
             PetFoodPrice = petFoodPrice;
             PetFoodQty = petFoodQty;
             TotalPrice = totalPrice;
         }
 
-        public Transaction()
-        {
+ 
 
-        }
-
-        public Transaction(DateTime? date, decimal petPrice, int petFoodQty, decimal petFoodPrice, 
+        public Transaction(DateTime date, decimal petPrice, int petFoodQty, decimal petFoodPrice, 
             decimal totalPrice, int customerId,  int employeeId,  int petId,int petFoodId)
         {
-            Date = (DateTime)date;
+            Date = date;
             PetPrice = petPrice;
             PetFoodQty = petFoodQty;
             PetFoodPrice = petFoodPrice;
@@ -31,7 +28,7 @@
         }
 
         public int Id { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         public decimal PetPrice { get; set; }
         public int PetFoodQty { get; set; }
         public decimal PetFoodPrice { get; set; }
