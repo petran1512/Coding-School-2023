@@ -32,9 +32,9 @@ namespace PetShop.Web.MVC.Models.Transaction
 
         [Display(Name = "Pet Food")]
         public int PetFoodId { get; set; }
-        public List<SelectListItem> Customers { get; set; } = new List<SelectListItem>();
-        public List<SelectListItem> Employees { get; set; } = new List<SelectListItem>();
-        public List<SelectListItem> Pets { get; set; } = new List<SelectListItem>();
-        public List<SelectListItem> PetFoods { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Customer { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Employee { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Pet { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> PetFood { get; set; } = new List<SelectListItem>();
     }
 }

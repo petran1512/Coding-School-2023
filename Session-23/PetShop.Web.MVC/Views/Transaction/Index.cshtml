@@ -13,31 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-@*            <th>
-                @Html.DisplayNameFor(model => model.PetPrice)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.PetFoodQty)
-            </th>
-@*            <th>
-                @Html.DisplayNameFor(model => model.PetFoodPrice)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
+                @Html.DisplayNameFor(model => model.Employee)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Customer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee)
+                @Html.DisplayNameFor(model => model.PetPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pet)
+                @Html.DisplayNameFor(model => model.PetFoodPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PetFood)
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th></th>
         </tr>
@@ -46,31 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.DisplayFor(modelItem => item.Employee.Surname) @Html.DisplayFor(modelItem => item.Employee.Name)
             </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.PetPrice)
-            </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.PetFoodQty)
+                @Html.DisplayFor(modelItem => item.Customer.Surname) @Html.DisplayFor(modelItem => item.Customer.Name)
             </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.PetFoodPrice)
-            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Pet.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetFood.Price)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pet.Breed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PetFood.Id)
+            <td>                
+                @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -32,9 +32,9 @@ namespace PetShop.Web.MVC.Models.Transaction
 
         [Display(Name = "Pet Food")]
         public int PetFoodId { get; set; }
-        public Model.Customer Customers { get; set; } = null!;
-        public Model.Employee Employees { get; set; } = null!;
-        public Model.Pet Pets { get; set; } = null!;
-        public Model.PetFood PetFoods { get; set; } = null!;
+        public Model.Customer Customer { get; set; } = null!;
+        public Model.Employee Employee { get; set; } = null!;
+        public Model.Pet Pet { get; set; } = null!;
+        public Model.PetFood PetFood { get; set; } = null!;
     }
 }
