@@ -87,25 +87,30 @@ namespace PetShop.Web.MVC.Controllers
             {
                 return View();
             }
-            var customer = _customerRepo.GetById(transaction.CustomerId);
-            var pet = _petRepo.GetById(transaction.PetId);
-            var employee = _employeeRepo.GetById(transaction.EmployeeId);
+            Pet pet = _petRepo.GetById(transaction.PetId);
+            PetFood petfood = _petFoodRepo.GetById(transaction.PetFoodId);
+
+            //var customer = _customerRepo.GetById(transaction.CustomerId);
+            //var pet = _petRepo.GetById(transaction.PetId);
+            //var employee = _employeeRepo.GetById(transaction.EmployeeId);
             var petFood = _petFoodRepo.GetById(transaction.PetFoodId);
-            var date = transaction.Date;
+            //var date = transaction.Date;
+
             //var petfoodprice = transaction.PetFoodPrice;
             var petFoodQty = transaction.PetFoodQty;
             //var petprice = transaction.PetPrice;
-            decimal totalPrice;
+            decimal totalPrice =0;
 
             if (pet.AnimalType != 0)
             {
                 totalPrice = pet.Price + petFoodQty * petFood.Price;
-                petFoodQty++;
+                //petFoodQty++;
             }
             else
             {
                 totalPrice = petFoodQty * petFood.Price;
             }
+
 
             var dbTransaction = new Transaction((DateTime)transaction.Date
                 /*pet.Price*/, petFoodQty, /*petFood.Price*/
@@ -210,10 +215,10 @@ namespace PetShop.Web.MVC.Controllers
                 PetFoodId = dbTransaction.PetFoodId,
             };
 
-            //viewtransaction.Customers = _customerRepo.GetById(viewtransaction.CustomerId);
-            //viewtransaction.Employees = _employeeRepo.GetById(viewtransaction.EmployeeId);
-            //viewtransaction.Pets = _petRepo.GetById(viewtransaction.PetId);
-            //viewtransaction.PetFoods = _petFoodRepo.GetById(viewtransaction.PetFoodId);
+            viewtransaction.Customers = _customerRepo.GetById(viewtransaction.CustomerId);
+            viewtransaction.Employees = _employeeRepo.GetById(viewtransaction.EmployeeId);
+            viewtransaction.Pets = _petRepo.GetById(viewtransaction.PetId);
+            viewtransaction.PetFoods = _petFoodRepo.GetById(viewtransaction.PetFoodId);
 
             return View(model: viewtransaction);
         }
