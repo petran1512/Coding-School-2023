@@ -179,6 +179,10 @@ namespace PetShop.Web.MVC.Controllers
             dbTransaction.EmployeeId = transaction.EmployeeId;
             dbTransaction.PetId = transaction.PetId;
             dbTransaction.PetFoodId = transaction.PetFoodId;
+            dbTransaction.Customer = _customerRepo.GetById(transaction.CustomerId);
+            dbTransaction.Employee = _employeeRepo.GetById(transaction.EmployeeId);
+            dbTransaction.Pet = _petRepo.GetById(transaction.PetId);
+            dbTransaction.PetFood = _petFoodRepo.GetById(transaction.PetFoodId);
             _transactionRepo.Update(id, dbTransaction);
             return RedirectToAction(nameof(Index));
 
