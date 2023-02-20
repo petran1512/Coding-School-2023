@@ -9,10 +9,22 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Fuel.Solution.EF\Fuel.Solution.EF.csproj" />
     <ProjectReference Include="..\Shared\Fuel.Station.Blazor.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Items\" />
+    <Folder Include="Pages\Employees\" />
   </ItemGroup>
 
 </Project>

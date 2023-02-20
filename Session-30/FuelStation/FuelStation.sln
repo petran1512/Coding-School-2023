@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Model", "Fuel.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Windows.Client", "Fuel.Station.Windows.Client\Fuel.Station.Windows.Client.csproj", "{20838175-5AAF-43DB-BA7F-C58A85EFD80F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuel.Station.Blazor.Server", "Fuel.Station.Blazor\Server\Fuel.Station.Blazor.Server.csproj", "{5A5325D8-01AE-4F31-8D6F-C6912B2C6E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Blazor.Server", "Fuel.Station.Blazor\Server\Fuel.Station.Blazor.Server.csproj", "{5A5325D8-01AE-4F31-8D6F-C6912B2C6E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuel.Station.Blazor.Client", "Fuel.Station.Blazor\Client\Fuel.Station.Blazor.Client.csproj", "{3B3B6788-9BDC-40E8-9DFE-E02C2BA38A62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Blazor.Client", "Fuel.Station.Blazor\Client\Fuel.Station.Blazor.Client.csproj", "{3B3B6788-9BDC-40E8-9DFE-E02C2BA38A62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuel.Station.Blazor.Shared", "Fuel.Station.Blazor\Shared\Fuel.Station.Blazor.Shared.csproj", "{1C7C00AD-6687-4E85-B61A-F9782428EFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Blazor.Shared", "Fuel.Station.Blazor\Shared\Fuel.Station.Blazor.Shared.csproj", "{1C7C00AD-6687-4E85-B61A-F9782428EFDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
