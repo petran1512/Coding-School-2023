@@ -17,7 +17,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 if (value != null)
                 {
                     string? stringValue = value.ToString();
-                    if(!Regex.IsMatch(stringValue, @"^[a-zA-Z]+$"))
+                    if(!Regex.IsMatch(stringValue, @"^[a-zA-Z\s]*$"))
                     {
                         return new ValidationResult(ErrorMessage ?? "The field must contain only Letters.");
                     }

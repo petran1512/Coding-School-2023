@@ -22,7 +22,7 @@ namespace Fuel.Solution.EF.Configurations
 
             //Properties
             builder.Property(t => t.Code).IsRequired();
-            builder.Property(t => t.Description).HasMaxLength(50).IsRequired();
+            builder.Property(t => t.Description).HasMaxLength(150).IsRequired();
             builder.Property(t => t.itemType).IsRequired();
             builder.Property(t => t.Price).HasPrecision(10, 3).IsRequired();
             builder.Property(t => t.Cost).HasPrecision(10, 3).IsRequired();

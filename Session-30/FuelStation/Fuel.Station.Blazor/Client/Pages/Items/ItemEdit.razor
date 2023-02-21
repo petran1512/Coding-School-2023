@@ -1,4 +1,4 @@
-﻿@page "/employeelist/edit/{Id:int?}"
+﻿@page "/itemlist/edit/{Id:int?}"
 @using Fuel.Station.Blazor.Shared;
 @using Fuel.Station.Model;
 @using FuelStation.Model.Enums;
@@ -7,7 +7,7 @@
 @inject NavigationManager navigationManager
 <PageTitle>Fuel Station</PageTitle>
 
-@if (Employee == null)
+@if (Item == null)
 {
     <div class="spinner-border text-secondary" role="status"></div>
 }
@@ -15,45 +15,42 @@ else
 {
     @if (Id is null)
     {
-        <h3>Create Employee</h3>
+        <h3>Create Item</h3>
     }
     else
     {
-        <h3>Edit Employee</h3>
+        <h3>Edit Item</h3>
     }
 
-    <EditForm Model="Employee" OnValidSubmit="OnSave">
+    <EditForm Model="Item" OnValidSubmit="OnSave">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <div class="col-md-6">
-            <label class="form-label">Name</label>
-            <InputText class="form-control" @bind-Value="@Employee.Name" />
+            <label class="form-label">Code</label>
+            <InputText class="form-control" @bind-Value="@Item.Code" />
         </div>
         <div class="col-md-6">
-            <label class="form-label">Surname</label>
-            <InputText class="form-control" @bind-Value="@Employee.Surname" />
+            <label class="form-label">Description</label>
+            <InputText class="form-control" @bind-Value="@Item.Description" />
         </div>
         <div class="col-md-6">
-            <label class="form-label">Employee Type</label>
-            <InputSelect class="form-control" @bind-Value="Employee.employeeType">
-                @foreach (var employeetype in Enum.GetValues<EmployeeType>())
+            <label class="form-label">Item Type</label>
+            <InputSelect class="form-control" @bind-Value="Item.itemType">
+                @foreach (var itemtype in Enum.GetValues<ItemType>())
                 {
-                    <option value="@employeetype">@employeetype</option>
+                    <option value="@itemtype">@itemtype</option>
                 }
             </InputSelect>
         </div>
         <div class="col-md-6">
-            <label class="form-label">Sallary Per Month</label>
-            <input class="form-control" @bind="@Employee.SallaryPerMonth" />
+            <label class="form-label">Price</label>
+            <input class="form-control" @bind="@Item.Price" />
         </div>
         <div class="col-md-6">
-            <label class="form-label">Hire Date Start</label>
-            <input class="form-control" @bind="@Employee.HireDateStart" />
+            <label class="form-label">Cost</label>
+            <input class="form-control" @bind="@Item.Cost" />
         </div>
-        <div class="col-md-6">
-            <label class="form-label">Hire Date End</label>
-            <input class="form-control" @bind="@Employee.HireDateEnd" />
-        </div>
+
         <div class="row mt-2">
             <div class="col">
                 <BootstrapButton ButtonType="BootstrapButtonType.Success" IsSubmit="true">Save</BootstrapButton>
@@ -66,27 +63,27 @@ else
 
 @code {
     [Parameter] public int? Id { get; set; }
-    EmployeeEditDto? Employee { get; set; }
+    ItemEditDto? Item { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         if (Id == null)
         {
-            Employee = new();
+            Item = new();
         }
         else
         {
-            Employee = await httpClient.GetFromJsonAsync<EmployeeEditDto>($"employee/{Id}");
-            if (Employee is null)
+            Item = await httpClient.GetFromJsonAsync<ItemEditDto>($"item/{Id}");
+            if (Item is null)
             {
-                //TODO: Handle if employee is null
+                //TODO: Handle if item is null
             }
         }
     }
 
     private void OnCancel()
     {
-        navigationManager.NavigateTo("employeeList");
+        navigationManager.NavigateTo("itemlist");
     }
 
     private async Task OnSave()
@@ -94,15 +91,15 @@ else
         HttpResponseMessage? response = null;
         if (Id == null)
         {
-            response = await httpClient.PostAsJsonAsync("employee", Employee);
+            response = await httpClient.PostAsJsonAsync("item", Item);
         }
         else
         {
-            response = await httpClient.PutAsJsonAsync("employee", Employee);
+            response = await httpClient.PutAsJsonAsync("item", Item);
         }
         if (response.IsSuccessStatusCode)
         {
-            navigationManager.NavigateTo("/employeelist");
+            navigationManager.NavigateTo("/itemlist");
         }
         else
         {

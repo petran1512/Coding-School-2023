@@ -23,7 +23,7 @@ namespace Fuel.Station.Blazor.Shared
         public string Surname { get; set; } = null!;
 
         [Required]
-        [MaxLength(100, ErrorMessage = "Type less than 100 characters")]
+        [MaxLength(10, ErrorMessage = "Max Limit 10 characters")]
         [AValidator(ErrorMessage = "The card number must start with the letter A.")]
         public string CardNumber { get; set; } = null!;
     }
