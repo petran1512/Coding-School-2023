@@ -8,7 +8,7 @@ using Fuel.Station.Blazor;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace FuelStation.Web.Server.Controllers
+namespace Fuel.Station.Blazor.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]

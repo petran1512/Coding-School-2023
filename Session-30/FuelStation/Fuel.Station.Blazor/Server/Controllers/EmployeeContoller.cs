@@ -2,25 +2,31 @@
 using Fuel.Station.Blazor.Shared;
 using Fuel.Solution.EF.Repositories;
 using Fuel.Station.Model;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace Fuel.Station.Blazor.Server.Controllers
 {
-    public class EmployeeController : Controller
-    {
+    [Route("[controller]")]
+    [ApiController]
+    public class EmployeeController : ControllerBase
+        {
         // Properties
         private readonly IEntityRepo<Employee> _employeeRepo;
-        //private readonly IValidator _validator;
+        private readonly IValidator _validator;
         private String _errorMessage;
 
         // Constructors
-        public EmployeeController(IEntityRepo<Employee> employeeRepo)
+        public EmployeeController(IEntityRepo<Employee> employeeRepo, IValidator validator)
         {
             _employeeRepo = employeeRepo;
-            //_validator = validator;
             _errorMessage = String.Empty;
+            _validator = validator;
         }
 
-        // GET: /<CustomersController>
+        // GET: /<EmployeesController>
         [HttpGet]
         public async Task<IEnumerable<EmployeeListDto>> Get()
         {
@@ -38,7 +44,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
             return selectEmployeeList;
         }
 
-        // GET: /<CustomersController>/5
+        // GET: /<EmployeesController>/5
         [HttpGet("{id}")]
         public async Task<EmployeeEditDto?> GetById(int id)
         {
@@ -60,7 +66,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
             return employee;
         }
 
-        // POST /<CustomersController>
+        // POST /<EmployeesController>
         [HttpPost]
         public async Task<ActionResult> Post(EmployeeEditDto employee)
         {
@@ -72,28 +78,32 @@ namespace Fuel.Station.Blazor.Server.Controllers
             };
             await Task.Run(() => { _employeeRepo.Add(newEmployee); });
             return Ok();
-            //if (_validator.ValidateAddCustomer(_customerRepo.GetAll().ToList(), out _errorMessage)) {
-            //    try {
-            //        await Task.Run(() => { _customerRepo.Add(newCustomer); });
+            //if (_validator.ValidateAddEmployee(_employeeRepo.GetAll().ToList(), out _errorMessage))
+            //{
+            //    try
+            //    {
+            //        await Task.Run(() => { _employeeRepo.Add(newEmployee); });
             //        return Ok();
             //    }
-            //    catch (DbException ex) {
+            //    catch (DbException ex)
+            //    {
             //        return BadRequest(ex.Message);
             //    }
             //}
-            //else {
+            //else
+            //{
             //    return BadRequest(_errorMessage);
             //}
         }
 
-        // PUT /<CustomersController>/5
+        // PUT /<EmployeesController>/5
         [HttpPut]
         public async Task Put(EmployeeEditDto employee)
         {
             var dbEmployee = await Task.Run(() => { return _employeeRepo.GetById(employee.Id); });
             if (dbEmployee == null)
             {
-                // TODO if customer is null
+                // TODO if employee is null
                 return;
             }
             dbEmployee.Name = employee.Name;
@@ -105,7 +115,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
             _employeeRepo.Update(employee.Id, dbEmployee);
         }
 
-        // DELETE /<CustomersController>/5
+        // DELETE /<EmployeesController>/5
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {

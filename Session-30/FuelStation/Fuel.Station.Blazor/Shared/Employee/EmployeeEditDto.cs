@@ -27,8 +27,12 @@ namespace Fuel.Station.Blazor.Shared
 
         public DateTime HireDateEnd { get; set; }
 
+        //[Required]
+        //[MinLength(0, ErrorMessage = "Value must be greater than 0.")]
         public decimal SallaryPerMonth { get; set; }
 
+        //[Required]
+        //[Range(1, 4, ErrorMessage = "You must choose a type!")]
         public EmployeeType employeeType { get; set; }
     }
 }

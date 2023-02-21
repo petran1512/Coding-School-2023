@@ -23,7 +23,8 @@ namespace Fuel.Station.Model
 
         }
 
-        public Item(int id, string? code, string? description, ItemType itemtype)
+
+        public Item(string? code, string? description, ItemType itemtype)
         {
             Code = code;
             Description = description;

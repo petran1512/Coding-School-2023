@@ -1,6 +1,9 @@
 using Fuel.Solution.EF.Repositories;
+using Fuel.Station.Blazor.Shared;
+using Fuel.Station.Blazor.Shared.Validator;
 using Fuel.Station.Model;
 using Microsoft.AspNetCore.ResponseCompression;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IEntityRepo<Customer>, CustomerRepo>();
 builder.Services.AddScoped<IEntityRepo<Employee>, EmployeeRepo>();
 builder.Services.AddScoped<IEntityRepo<Item>, ItemRepo>();
+builder.Services.AddScoped<IValidator, Validator>();
 
 var app = builder.Build();
 
