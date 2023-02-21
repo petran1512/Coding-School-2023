@@ -26,6 +26,13 @@ public class Employee
 
     }
 
+    public Employee(string? name, string? surname,EmployeeType employeetype)
+    {
+        Name = name;
+        Surname = surname;
+        employeeType = employeetype;
+    }
+
     public Employee(int id, string? name, string? surname,EmployeeType employeetype)
     {
         Id = id;

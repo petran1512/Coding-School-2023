@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Fuel.Station.Blazor.Shared.Validator 
+namespace Fuel.Station.Blazor.Shared.Validator
 {
-    public class AValidator : ValidationAttribute
+    public class LettersValidator : ValidationAttribute
     {
         protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
@@ -16,9 +17,9 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 if (value != null)
                 {
                     string? stringValue = value.ToString();
-                    if (!stringValue.StartsWith("A"))
+                    if(!Regex.IsMatch(stringValue, @"^[a-zA-Z]+$"))
                     {
-                        return new ValidationResult(ErrorMessage ?? "The field must start with the letter A.");
+                        return new ValidationResult(ErrorMessage ?? "The field must contain only Letters.");
                     }
                     return ValidationResult.Success;
                 }
@@ -27,7 +28,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
             {
 
             }
-            return new ValidationResult(ErrorMessage ?? "Please type again your card number.");
+            return new ValidationResult(ErrorMessage ?? "Please try again.");
         }
     }
 }

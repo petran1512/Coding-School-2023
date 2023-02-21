@@ -1,11 +1,17 @@
+using Fuel.Solution.EF.Repositories;
+using Fuel.Station.Model;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IEntityRepo<Customer>, CustomerRepo>();
+builder.Services.AddScoped<IEntityRepo<Employee>, EmployeeRepo>();
+builder.Services.AddScoped<IEntityRepo<Item>, ItemRepo>();
 
 var app = builder.Build();
 

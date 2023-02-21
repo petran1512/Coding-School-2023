@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fuel.Station.Blazor.Shared.Customer
+namespace Fuel.Station.Blazor.Shared
 {
     public class CustomerListDto
     {

@@ -136,7 +136,16 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 throw new NotImplementedException();
             }
 
+        public bool ValidateAddCustomer(List<Customer> customers, out string errorMessage)
+        {
+            throw new NotImplementedException();
         }
+
+        public bool ValidateDeleteCustomer(List<Customer> customers, out string errorMessage)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
         public struct MinMax
         {

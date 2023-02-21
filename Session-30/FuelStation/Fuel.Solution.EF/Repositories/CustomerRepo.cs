@@ -3,7 +3,7 @@ using FuelStation.EF.Context;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace FuelStation.EF.Repositories {
+namespace Fuel.Solution.EF.Repositories {
     public class CustomerRepo : IEntityRepo<Customer> {
         public void Add(Customer entity) {
             using var context = new FuelStationDbContext();

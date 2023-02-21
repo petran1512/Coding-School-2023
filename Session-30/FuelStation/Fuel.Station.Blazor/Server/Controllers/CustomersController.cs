@@ -1,10 +1,10 @@
-﻿using Fuel.Station.Blazor.Shared.Customer;
+﻿using Fuel.Station.Blazor.Shared;
 using Fuel.Station.Model;
 using Fuel.Solution.EF.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
-using FuelStation.EF.Repositories;
+using Fuel.Station.Blazor;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -90,6 +90,7 @@ namespace FuelStation.Web.Server.Controllers
             dbCustomer.Name = customer.Name;
             dbCustomer.Surname = customer.Surname;
             dbCustomer.CardNumber = customer.CardNumber;
+            _customerRepo.Update(customer.Id, dbCustomer);
 
             try
             {

@@ -1,5 +1,79 @@
-﻿<h3>CustomerDetails</h3>
+﻿@page "/customerlist/details/{Id:int?}"
+@using Fuel.Station.Blazor.Shared;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Fuel Station</PageTitle>
+
+@if (Customer == null)
+{
+    <div class="spinner-border text-secondary" role="status"></div>
+}
+else
+{
+        <h3>Customer Details</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                <input class="form-control" @bind="@Customer.Name" disabled />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Surname</label>
+                    <input class="form-control" @bind="@Customer.Surname" disabled/>
+                </div>
+                    <div class="col-md-6">
+                    <label class="form-label">Card Number</label>
+                    <input class="form-control" @bind="@Customer.CardNumber" disabled/>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                <div class="col">
+                        <BootstrapButton ButtonType = "BootstrapButtonType.Secondary" OnClick="OnCancel">Back</BootstrapButton>
+                </div>
+                </div>
+
+            </div>
+}
+
 
 @code {
+    [Parameter] public int? Id { get; set; }
+    CustomerEditDto? Customer { get; set; }
 
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id == null)
+        {
+            Customer = new();
+        }
+        else
+        {
+            Customer = await httpClient.GetFromJsonAsync<CustomerEditDto>($"customer/{Id}");
+            if (Customer is null)
+            {
+                //TODO: Handle if customer is null
+            }
+        }
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("customerList");
+    }
+
+    private async Task OnSave()
+    {
+        HttpResponseMessage? response = null;
+        if (Id == null)
+        {
+            response = await httpClient.PostAsJsonAsync("customer", Customer);
+        }
+        else
+        {
+            response = await httpClient.PutAsJsonAsync("customer", Customer);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/customerlist");
+    }
 }

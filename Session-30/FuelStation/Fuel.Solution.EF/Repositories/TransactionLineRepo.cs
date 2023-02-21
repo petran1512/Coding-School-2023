@@ -1,6 +1,5 @@
 ﻿using Fuel.Station.Model;
 using FuelStation.EF.Context;
-using FuelStation.EF.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
