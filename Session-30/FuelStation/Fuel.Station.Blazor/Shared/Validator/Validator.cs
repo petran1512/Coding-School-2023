@@ -45,6 +45,8 @@ namespace Fuel.Station.Blazor.Shared.Validator
                     ret = false;
                     errorMessage = $"You already have {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
                 }
+                if (ret)
+                {
                 if (employee.HireDateStart > employee.HireDateEnd)
                 {
                     ret = false;
@@ -55,7 +57,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
                     ret = true;
                     errorMessage = "Succeed ";
                 }
-
+                }
                 return ret;
             }
 
@@ -88,18 +90,19 @@ namespace Fuel.Station.Blazor.Shared.Validator
                         errorMessage = $"You already have {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
                         ret = false;
                     }
-                    if (dbEmployee.HireDateStart > dbEmployee.HireDateEnd)
+                    if (ret)
                     {
-                        ret = false;
-                        errorMessage = $"Hire end date must be greater than start.";
+                        if (dbEmployee.HireDateStart > dbEmployee.HireDateEnd)
+                        {
+                            ret = false;
+                            errorMessage = $"Hire end date must be greater than start.";
+                        }
+                        else if (dbEmployee.HireDateStart < dbEmployee.HireDateEnd)
+                        {
+                            ret = true;
+                            errorMessage = "Succeed ";
+                        }
                     }
-                    else if (dbEmployee.HireDateStart < dbEmployee.HireDateEnd)
-                    {
-                        ret = true;
-                        errorMessage = "Succeed ";
-                    }
-
-
                 }
                 return ret;
             }

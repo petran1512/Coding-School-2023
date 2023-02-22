@@ -76,24 +76,22 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 HireDateEnd = employee.HireDateEnd,
                 SallaryPerMonth = employee.SallaryPerMonth,
             };
-            await Task.Run(() => { _employeeRepo.Add(newEmployee); });
-            return Ok();
-            //if (_validator.ValidateAddEmployee(_employeeRepo.GetAll().ToList(), out _errorMessage))
-            //{
-            //    try
-            //    {
-            //        await Task.Run(() => { _employeeRepo.Add(newEmployee); });
-            //        return Ok();
-            //    }
-            //    catch (DbException ex)
-            //    {
-            //        return BadRequest(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    return BadRequest(_errorMessage);
-            //}
+            if (_validator.ValidateAddEmployee(employee.employeeType, _employeeRepo.GetAll().ToList(), out _errorMessage, newEmployee))
+            {
+                try
+                {
+                    await Task.Run(() => { _employeeRepo.Add(newEmployee); });
+                    return Ok();
+                }
+                catch (DbException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            else
+            {
+                return BadRequest(_errorMessage);
+            }
         }
 
         // PUT /<EmployeesController>/5
