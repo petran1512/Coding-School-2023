@@ -29,7 +29,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
         // GET: /<EmployeesController>
         [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IEnumerable<EmployeeListDto>> Get()
         {
             var result = await Task.Run(() => { return _employeeRepo.GetAll(); });
@@ -48,7 +48,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
         // GET: /<EmployeesController>/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<EmployeeEditDto?> GetById(int id)
         {
             var result = await Task.Run(() => { return _employeeRepo.GetById(id); });

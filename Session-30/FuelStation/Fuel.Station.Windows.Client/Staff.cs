@@ -1,8 +1,8 @@
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Form1 : Form
+    public partial class Staff : Form
     {
-        public Form1()
+        public Staff()
         {
             InitializeComponent();
         }

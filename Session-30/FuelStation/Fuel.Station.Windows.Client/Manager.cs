@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
+    public partial class Manager : Form
     {
-        public XtraForm1()
+        public Manager()
         {
             InitializeComponent();
         }

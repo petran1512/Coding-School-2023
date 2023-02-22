@@ -1,6 +1,6 @@
 ﻿namespace Fuel.Station.Windows.Client
 {
-    partial class XtraForm1
+    partial class Manager
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // XtraForm1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 403);
-            this.Name = "XtraForm1";
-            this.Text = "XtraForm1";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Customer";
         }
 
         #endregion

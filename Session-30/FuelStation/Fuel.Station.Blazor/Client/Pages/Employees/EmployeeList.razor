@@ -5,6 +5,8 @@
 @using System.Net.Http.Json
 @using System.Net.Http
 @page "/employeelist"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Administrator")]
 <PageTitle>Fuel Station</PageTitle>
 
 

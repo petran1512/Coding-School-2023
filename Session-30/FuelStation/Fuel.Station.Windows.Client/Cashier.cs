@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Item : Form
+    public partial class Cashier : Form
     {
-        public Item()
+        public Cashier()
         {
             InitializeComponent();
         }
