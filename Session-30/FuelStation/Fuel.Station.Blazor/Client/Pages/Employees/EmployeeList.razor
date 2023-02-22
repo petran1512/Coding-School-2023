@@ -1,13 +1,12 @@
-﻿@page "/employeelist"
-@attribute [Authorize(Roles = "Administrator")]
-@inject HttpClient httpClient
+﻿@inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
-@inject AuthenticationStateProvider authenticationStateProvider
+@page "/employeelist"
 @using Fuel.Station.Blazor.Shared;
-@using Microsoft.AspNetCore.Authorization;
-
 <PageTitle>Fuel Station</PageTitle>
+
+
+
 
 @if (isLoading)
 {
@@ -22,7 +21,7 @@ else
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Employee Type</th>
+                <th>Employee Ty</th>
                 <th>Sallary Per Month</th>
                 <th>Hire Start Date</th>
                 <th>Hire End Date</th>

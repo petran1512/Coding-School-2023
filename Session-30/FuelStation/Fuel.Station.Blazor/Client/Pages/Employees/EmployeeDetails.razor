@@ -1,9 +1,6 @@
 ﻿@page "/employeelist/details/{Id:int?}"
-@attribute [Authorize(Roles = "Administrator")]
-@inject AuthenticationStateProvider authenticationStateProvider
 @using Fuel.Station.Blazor.Shared;
 @using Fuel.Station.Model;
-@using Microsoft.AspNetCore.Authorization;
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 <PageTitle>Fuel Station</PageTitle>
