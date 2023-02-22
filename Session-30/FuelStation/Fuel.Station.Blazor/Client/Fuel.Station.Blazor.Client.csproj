@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Shared\Fuel.Station.Blazor.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Employees\" />
+  </ItemGroup>
+
 </Project>
