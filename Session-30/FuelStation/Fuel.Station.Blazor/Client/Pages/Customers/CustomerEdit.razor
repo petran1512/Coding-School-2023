@@ -1,4 +1,6 @@
 ﻿@page "/customerlist/edit/{Id:int?}"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Administrator,User")]
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime

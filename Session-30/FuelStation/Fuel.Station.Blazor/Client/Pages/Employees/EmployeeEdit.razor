@@ -1,5 +1,8 @@
 ﻿@page "/employeelist/edit/{Id:int?}"
+@attribute [Authorize(Roles = "Administrator")]
+@inject AuthenticationStateProvider authenticationStateProvider
 @using Fuel.Station.Blazor.Shared;
+@using Microsoft.AspNetCore.Authorization;
 @using Fuel.Station.Model;
 @using FuelStation.Model.Enums;
 @inject IJSRuntime jsRuntime

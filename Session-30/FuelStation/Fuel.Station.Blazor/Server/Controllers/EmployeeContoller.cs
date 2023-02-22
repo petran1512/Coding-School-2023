@@ -4,6 +4,7 @@ using Fuel.Solution.EF.Repositories;
 using Fuel.Station.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using Microsoft.AspNetCore.Authorization;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,6 +29,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
         // GET: /<EmployeesController>
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IEnumerable<EmployeeListDto>> Get()
         {
             var result = await Task.Run(() => { return _employeeRepo.GetAll(); });
@@ -46,6 +48,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
         // GET: /<EmployeesController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<EmployeeEditDto?> GetById(int id)
         {
             var result = await Task.Run(() => { return _employeeRepo.GetById(id); });

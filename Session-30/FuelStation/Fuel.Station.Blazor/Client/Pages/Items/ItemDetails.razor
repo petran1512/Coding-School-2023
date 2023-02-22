@@ -1,4 +1,7 @@
 ﻿@page "/itemlist/details/{Id:int?}"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Administrator")]
+@inject AuthenticationStateProvider authenticationStateProvider
 @using Fuel.Station.Blazor.Shared;
 @using Fuel.Station.Model;
 @inject HttpClient httpClient
