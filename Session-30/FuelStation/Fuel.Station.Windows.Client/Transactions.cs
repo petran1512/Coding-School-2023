@@ -1,10 +1,12 @@
 ﻿using Fuel.Station.Blazor.Shared;
+using Fuel.Station.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using FuelStation.Model.Enums;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
@@ -16,10 +18,14 @@ namespace Fuel.Station.Windows.Client
     public partial class Transactions : Form
     {
         private readonly HttpClient client;
+        private CustomerListDto _customer;
+        private List<ItemListDto?>? _items;
 
         public Transactions()
         {
             InitializeComponent();
+            _customer = customer;
+            labelCustomer.Text = $"{_customer.Name} {_customer.Surname}'s Transactions (Card Number: {_customer.CardNumber})";
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
         }
