@@ -16,5 +16,34 @@ namespace Fuel.Station.Windows.Client
         {
             InitializeComponent();
         }
+
+        private void btnCustomers_Click(object sender, EventArgs e)
+        {
+            new Customer().Show();
+            this.Hide();
+        }
+
+        private void btnItems_Click(object sender, EventArgs e)
+        {
+            new Items().Show();
+            this.Hide();
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            new AutoCustomerFinder().Show();
+            this.Hide();
+        }
+
+        private void Manager_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBackLogin_Click(object sender, EventArgs e)
+        {
+            new Login().Show();
+            this.Hide();
+        }
     }
 }

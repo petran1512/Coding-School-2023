@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Home : Form
+    public partial class Customer : Form
     {
-        public Home()
+        public Customer()
         {
             InitializeComponent();
+        }
+
+        private void Customer_Load(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new Login().Show();
+            this.Hide();
         }
     }
 }

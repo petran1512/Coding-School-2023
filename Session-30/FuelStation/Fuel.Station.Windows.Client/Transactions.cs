@@ -10,21 +10,17 @@ using System.Windows.Forms;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class AutoCustomerFinder : Form
+    public partial class Transactions : Form
     {
-        public AutoCustomerFinder()
+        public Transactions()
         {
             InitializeComponent();
         }
 
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            new Login().Show();
+            this.Hide();
         }
     }
 }
