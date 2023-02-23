@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fuel.Solution.EF\Fuel.Solution.EF.csproj" />
+    <ProjectReference Include="..\Fuel.Station.Blazor\Client\Fuel.Station.Blazor.Client.csproj" />
+    <ProjectReference Include="..\Fuel.Station.Blazor\Server\Fuel.Station.Blazor.Server.csproj" />
+    <ProjectReference Include="..\Fuel.Station.Blazor\Shared\Fuel.Station.Blazor.Shared.csproj" />
     <ProjectReference Include="..\Fuel.Station.Model\Fuel.Station.Model.csproj" />
   </ItemGroup>
 

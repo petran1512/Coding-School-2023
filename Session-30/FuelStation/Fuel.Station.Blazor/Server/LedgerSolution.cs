@@ -9,8 +9,8 @@ namespace Fuel.Station.Blazor.Server
         {
             List<Transaction> transactions = dbTransactions as List<Transaction>;
             //TODO: settings
-            int businessStartYear = 2016;
-            int businessStartMonth = 1;
+            int businessStartYear = 2022;
+            int businessStartMonth = 9;
 
             int monthNow = DateTime.Now.Month;
             int yearNow = DateTime.Now.Year;
@@ -118,8 +118,7 @@ namespace Fuel.Station.Blazor.Server
         {
             decimal total = 0;
 
-            //TODO: settings
-            total += 5000; //Rental
+            total += 5000;//Rent
 
             return total;
         }
