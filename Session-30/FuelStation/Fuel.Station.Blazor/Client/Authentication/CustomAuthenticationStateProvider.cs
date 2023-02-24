@@ -1,6 +1,10 @@
 ﻿
 
+using Blazored.SessionStorage;
+using Fuel.Station.Blazor.Client.Extensions;
+using Fuel.Station.Blazor.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Security.Claims;
 
 namespace BlazorWasmAuthenticationAndAuthorization.Client.Authentication
 {
