@@ -36,15 +36,15 @@ namespace Fuel.Station.Windows.Client
             var customer = await CustomerDetails(input);
             if (customer != null)
             {
-                OpenTransactionsForm(customer);
+                OpenTransactions(customer);
             }
             else
             {
-                OpenCustomersForm();
+                OpenCustomers();
             }
         }
 
-        private void OpenTransactionsForm(CustomerListDto item)
+        private void OpenTransactions(CustomerListDto item)
         {
             this.Hide();
 
@@ -54,7 +54,7 @@ namespace Fuel.Station.Windows.Client
             formMenu.ShowDialog();
         }
 
-        private void OpenCustomersForm()
+        private void OpenCustomers()
         {
             MessageBox.Show("Customer not found! Please insert new customer.", "Message");
             this.Hide();

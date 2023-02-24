@@ -58,6 +58,7 @@ namespace Fuel.Station.Windows.Client
 
         private async Task SetControlProperties()
         {
+
             transactionBindingSource.DataSource = await GetTransactions();
             grvTransactions.DataSource = transactionBindingSource;
 
