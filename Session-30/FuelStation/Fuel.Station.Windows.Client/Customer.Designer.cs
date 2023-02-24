@@ -89,6 +89,8 @@
             this.colCustomerCardNumber});
             this.gridView1.GridControl = this.grvCustomers;
             this.gridView1.Name = "gridView1";
+            this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView1_DeleteRow);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
             // colCustomerName
             // 

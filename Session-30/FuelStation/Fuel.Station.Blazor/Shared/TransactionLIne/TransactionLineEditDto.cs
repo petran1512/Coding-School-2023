@@ -18,5 +18,7 @@ namespace Fuel.Station.Blazor.Shared
 
         public int TransactionId { get; set; }
         public int ItemId { get; set; }
+        public ItemListDto Item { get; set; } = null!;
+
     }
 }

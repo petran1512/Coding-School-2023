@@ -3,14 +3,16 @@ using Fuel.Station.Model;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
+using GridView = DevExpress.XtraGrid.Views.Grid.GridView;
 
 namespace Fuel.Station.Windows.Client
 {
     public partial class Customer : Form
     {
         private readonly HttpClient client;
-
-
 
         public Customer()
         {
@@ -45,6 +47,88 @@ namespace Fuel.Station.Windows.Client
         {
             var response = await client.GetFromJsonAsync<List<CustomerListDto?>>("customer");
             return response.ToList();   
+        }
+
+        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            //int focusedRowHandle = gridView1.FocusedRowHandle;
+            //object focusedRowData = gridView1.GetFocusedRow();
+            //DataGridViewRow selectedRow = gridView1.CurrentRow;
+            //MyDataObject dataObject = (MyDataObject)selectedRow.DataBoundItem;
+
+
+
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
+                if (customer.Id == 0)
+                {
+                    _ = NewCustomer(customer);
+                }
+                else
+                {
+                    _ = EditCustomer(customer);
+                }
+
+            }
+        }
+
+        private void gridView1_DeleteRow(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
+                _ = DeleteCustomer(customer.Id);
+            }
+        }
+
+        //POST REQUEST
+        private async Task NewCustomer(CustomerListDto? customer)
+        {
+            var response = await client.PostAsJsonAsync("customer", customer);
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Success!", "Success Message");
+            }
+            else
+            {
+                MessageBox.Show("Error! Try again.", "Alert Message");
+                _ = SetControlProperties();
+            }
+        }
+
+        //PUT REQUEST
+        private async Task EditCustomer(CustomerListDto? customer)
+        {
+
+            var response = await client.PutAsJsonAsync("customer", customer);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Success!", "Success Message");
+            }
+            else
+            {
+                MessageBox.Show("Error! Try again.", "Alert Message");
+                _ = SetControlProperties();
+            }
+        }
+
+        //DELETE REQUEST
+        private async Task DeleteCustomer(int id)
+        {
+            var response = await client.DeleteAsync($"customer/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Success!", "Success Message");
+            }
+            else
+            {
+                MessageBox.Show("Error! Try again.", "Alert Message");
+                _ = SetControlProperties();
+            }
         }
     }
 }

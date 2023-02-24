@@ -107,6 +107,8 @@
             this.colItemCost});
             this.gridView1.GridControl = this.grvItems;
             this.gridView1.Name = "gridView1";
+            this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView1_RowDeleting);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidatingRow);
             // 
             // colItemCode
             // 

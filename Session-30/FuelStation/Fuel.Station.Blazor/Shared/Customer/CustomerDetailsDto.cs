@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fuel.Station.Blazor.Shared
 {
-    public class CustomerListDto
+    public class CustomerDetailsDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
