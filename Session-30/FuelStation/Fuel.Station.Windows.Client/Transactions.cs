@@ -48,7 +48,8 @@ namespace Fuel.Station.Windows.Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            new Manager().Show();
+            this.Hide();
         }
 
         private void xtraTabControl1_Click(object sender, EventArgs e)
@@ -114,21 +115,6 @@ namespace Fuel.Station.Windows.Client
                 bsItemTypes.DataSource = itemTypeList;
                 comboItems.DataSource = bsItemTypes;
                 comboItems.DropDownStyle = ComboBoxStyle.DropDownList;
-            }
-        }
-
-        // SET LISTBOX WHEN CHANGE COMBO VALUE
-        private void comboItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboItems.SelectedItem != null)
-            {
-                listItems.DataSource = null;
-                var selectedItemType = (ItemType)comboItems.SelectedItem;
-
-                var itemList = _items.Where(item => item != null && item.itemType == selectedItemType).ToList();
-                listItems.DataSource = itemList;
-                listItems.DisplayMember = "Description";
-                listItems.ValueMember = "Id";
             }
         }
 
@@ -332,7 +318,7 @@ namespace Fuel.Station.Windows.Client
         }
 
         // CELL VALUE CHANGE IF TOTAL VALUE IS 50 OR MORE 
-        private void gridView5_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             if (e.Column.FieldName == "PaymentMethod")
             {
@@ -371,8 +357,8 @@ namespace Fuel.Station.Windows.Client
 
         }
 
-        /************REQUESTS*************/
-        // GET REQUEST TRANSACTIONS
+        //REQUESTS
+        //TRANSACTIONS
         private async Task<List<TransactionListDto>> GetTransactions(int id)
         {
             var response = await client.GetAsync($"transaction/customer/{id}");
@@ -384,7 +370,6 @@ namespace Fuel.Station.Windows.Client
             return null;
         }
 
-        // POST REQUEST ADD TRANSACTION
         private async Task NewTransaction(TransactionListDto? transaction)
         {
             var response = await client.PostAsJsonAsync("transaction", transaction);
@@ -397,8 +382,6 @@ namespace Fuel.Station.Windows.Client
                 MessageBox.Show("Error! Try again.", "Alert Message");
             }
         }
-
-        // PUT REQUEST EDIT TRANSACTION
         private async Task EditTransaction(TransactionListDto? transaction)
         {
 
@@ -413,8 +396,6 @@ namespace Fuel.Station.Windows.Client
                 MessageBox.Show("Error! Try again.", "Alert Message");
             }
         }
-
-        // DELETE REQUEST DELETE TRANSACTION
         private async Task DeleteTransaction(int id)
         {
             var response = await client.DeleteAsync($"transaction/{id}");
@@ -466,6 +447,8 @@ namespace Fuel.Station.Windows.Client
             return null;
         }
 
+        // SET LISTBOX WHEN CHANGE COMBO VALUE
+
         private void comboItems_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (comboItems.SelectedItem != null)
@@ -488,6 +471,47 @@ namespace Fuel.Station.Windows.Client
             if (!Int32.TryParse(userInput, out qty)) MessageBox.Show("Error, try again with number.", "Error");
             else if (qty <= 0) MessageBox.Show("Error, try again with number above 0.", "Error");
             else AddNewTransactionLine(qty);
+
+        }
+
+        private void gridView5_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view != null && view.GetFocusedRow != null)
+            {//nullable warning
+                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    _ = DeleteTransaction(transaction.Id);
+                }
+            }
+
+        }
+
+        private void gridView5_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    transaction.CustomerId = _customer.Id;
+                    if (transaction.Id == 0)
+                    {
+                        _ = NewTransaction(transaction);
+                    }
+                    else
+                    {
+                        _ = EditTransaction(transaction);
+                    }
+                }
+            }
+
+        }
+
+        private void listItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

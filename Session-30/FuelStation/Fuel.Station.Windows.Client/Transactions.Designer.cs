@@ -92,7 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(1004, 519);
+            this.btnBack.Location = new System.Drawing.Point(925, 528);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(167, 30);
             this.btnBack.TabIndex = 11;
@@ -105,7 +105,7 @@
             this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlMain.Location = new System.Drawing.Point(7, 3);
+            this.tabControlMain.Location = new System.Drawing.Point(8, 3);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabTransactions;
             this.tabControlMain.Size = new System.Drawing.Size(1159, 280);
@@ -149,6 +149,8 @@
             this.colTransactionID});
             this.gridView1.GridControl = this.grvTransactions;
             this.gridView1.Name = "gridView1";
+            this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView5_RowDeleting);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView5_ValidateRow);
             // 
             // colTransactionEmployee
             // 
@@ -368,7 +370,7 @@
             // 
             this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboItems.FormattingEnabled = true;
-            this.comboItems.Location = new System.Drawing.Point(917, 300);
+            this.comboItems.Location = new System.Drawing.Point(925, 309);
             this.comboItems.Name = "comboItems";
             this.comboItems.Size = new System.Drawing.Size(175, 23);
             this.comboItems.TabIndex = 35;
@@ -379,7 +381,7 @@
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(851, 298);
+            this.labelControl2.Location = new System.Drawing.Point(859, 309);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 25);
             this.labelControl2.TabIndex = 38;
@@ -390,15 +392,16 @@
             this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 15;
-            this.listItems.Location = new System.Drawing.Point(917, 328);
+            this.listItems.Location = new System.Drawing.Point(925, 338);
             this.listItems.Name = "listItems";
             this.listItems.Size = new System.Drawing.Size(175, 184);
             this.listItems.TabIndex = 39;
+            this.listItems.SelectedIndexChanged += new System.EventHandler(this.listItems_SelectedIndexChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1098, 299);
+            this.btnAdd.Location = new System.Drawing.Point(1106, 309);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 40;

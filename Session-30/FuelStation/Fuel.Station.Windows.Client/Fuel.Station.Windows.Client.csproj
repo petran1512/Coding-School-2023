@@ -36,10 +36,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Cashier\" />
-    <Folder Include="Manager\" />
-    <Folder Include="Staff\" />
-  </ItemGroup>
-
 </Project>

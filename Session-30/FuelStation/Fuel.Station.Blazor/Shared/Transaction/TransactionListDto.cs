@@ -21,5 +21,6 @@ namespace Fuel.Station.Blazor.Shared
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; } = null!;
 
+
     }
 }

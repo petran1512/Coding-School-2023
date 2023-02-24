@@ -33,7 +33,7 @@ namespace Fuel.Station.Windows.Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Cashier().Show();
+            new Staff().Show();
             this.Close();
         }
 

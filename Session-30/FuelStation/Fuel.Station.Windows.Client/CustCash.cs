@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using GridView = DevExpress.XtraGrid.Views.Grid.GridView;
 
+
 namespace Fuel.Station.Windows.Client
 {
     public partial class CustCash : Form
@@ -51,7 +52,7 @@ namespace Fuel.Station.Windows.Client
         private void button1_Click(object sender, EventArgs e)
         {
             new Cashier().Show();
-            this.Close();
+            this.Hide();
         }
 
         //REQUEST METHODS

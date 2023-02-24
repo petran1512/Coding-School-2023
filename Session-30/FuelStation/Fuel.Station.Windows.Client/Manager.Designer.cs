@@ -93,7 +93,7 @@
             this.btnBackLogin.Name = "btnBackLogin";
             this.btnBackLogin.Size = new System.Drawing.Size(267, 42);
             this.btnBackLogin.TabIndex = 5;
-            this.btnBackLogin.Text = "Back to Login Page";
+            this.btnBackLogin.Text = "Login Page";
             this.btnBackLogin.UseVisualStyleBackColor = true;
             this.btnBackLogin.Click += new System.EventHandler(this.btnBackLogin_Click);
             // 

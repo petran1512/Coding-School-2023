@@ -31,12 +31,12 @@ namespace Fuel.Station.Windows.Client
             }
             else if (txtUserName.Text == "staff" && txtPassword.Text == "staff")
             {
-                new Items().Show();
+                new Staff().Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("The dara are false");
+                MessageBox.Show("Wrong Username or Password please try again.");
                 txtUserName.Clear();
                 txtPassword.Clear();
                 txtUserName.Focus();
