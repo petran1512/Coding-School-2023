@@ -26,7 +26,7 @@ namespace Fuel.Station.Windows.Client
             }
             else if (txtUserName.Text == "cashier" && txtPassword.Text == "cashier")
             {
-                new Customer().Show();
+                new Cashier().Show();
                 this.Hide();
             }
             else if (txtUserName.Text == "staff" && txtPassword.Text == "staff")

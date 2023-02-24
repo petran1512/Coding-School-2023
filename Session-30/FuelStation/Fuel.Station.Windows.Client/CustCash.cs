@@ -10,20 +10,15 @@ using GridView = DevExpress.XtraGrid.Views.Grid.GridView;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Customer : Form
+    public partial class CustCash : Form
     {
         private readonly HttpClient client;
 
-        public Customer()
+        public CustCash()
         {
             InitializeComponent();
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
-        }
-
-        private void Customer_Load(object sender, EventArgs e)
-        {
-            _ = SetControlProperties();
         }
 
         private async Task SetControlProperties()
@@ -35,43 +30,28 @@ namespace Fuel.Station.Windows.Client
         private async Task<List<CustomerListDto?>> GetCustomers()
         {
             var response = await client.GetFromJsonAsync<List<CustomerListDto?>>("customer");
-            return response.ToList();   
+            return response.ToList();
         }
 
-        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void grvCustomers_Click(object sender, EventArgs e)
         {
-            //gridView testers
-            //int focusedRowHandle = gridView1.FocusedRowHandle;
-            //object focusedRowData = gridView1.GetFocusedRow();
-            //DataGridViewRow selectedRow = gridView1.CurrentRow;
-            //MyDataObject dataObject = (MyDataObject)selectedRow.DataBoundItem;
 
-
-
-            GridView? view = sender as GridView;
-            if (view.GetFocusedRow != null)
-            {
-                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
-                if (customer.Id == 0)
-                {
-                    _ = NewCustomer(customer);
-                }
-                else
-                {
-                    _ = EditCustomer(customer);
-                }
-
-            }
         }
 
-        private void gridView1_DeleteRow(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        private void tabControlMain_Click(object sender, EventArgs e)
         {
-            GridView? view = sender as GridView;
-            if (view.GetFocusedRow != null)
-            {
-                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
-                _ = DeleteCustomer(customer.Id);
-            }
+
+        }
+
+        private void CustCash_Load(object sender, EventArgs e)
+        {
+            _ = SetControlProperties();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Cashier().Show();
+            this.Close();
         }
 
         //REQUEST METHODS
@@ -119,10 +99,45 @@ namespace Fuel.Station.Windows.Client
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void gridView1_DeleteRow(object sender, DevExpress.Data.RowDeletingEventArgs e)
         {
-            new Manager().Show();
-            this.Close();
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
+                _ = DeleteCustomer(customer.Id);
+            }
+        }
+
+        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            //gridView testers
+            //int focusedRowHandle = gridView1.FocusedRowHandle;
+            //object focusedRowData = gridView1.GetFocusedRow();
+            //DataGridViewRow selectedRow = gridView1.CurrentRow;
+            //MyDataObject dataObject = (MyDataObject)selectedRow.DataBoundItem;
+
+
+
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                CustomerListDto? customer = view.GetFocusedRow() as CustomerListDto;
+                if (customer.Id == 0)
+                {
+                    _ = NewCustomer(customer);
+                }
+                else
+                {
+                    _ = EditCustomer(customer);
+                }
+
+            }
+        }
+
+        private void customerBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

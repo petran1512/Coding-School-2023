@@ -36,7 +36,6 @@ namespace Fuel.Station.Windows.Client
         {
             InitializeComponent();
             _customer = customer;
-            //labelCustomer.Text = $"{_customer.Name} {_customer.Surname}'s Transactions (Card Number: {_customer.CardNumber})";
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
         }

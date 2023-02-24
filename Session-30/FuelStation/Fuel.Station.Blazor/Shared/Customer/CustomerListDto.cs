@@ -12,5 +12,8 @@ namespace Fuel.Station.Blazor.Shared
             public string Name { get; set; } = null!;
             public string Surname { get; set; } = null!;
             public string CardNumber { get; set; } = null!;
+
+        public List<TransactionListDto> Transactions { get; set; } = new();
+
     }
 }
