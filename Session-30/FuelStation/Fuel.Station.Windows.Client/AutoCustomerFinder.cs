@@ -56,7 +56,7 @@ namespace Fuel.Station.Windows.Client
 
         private void OpenCustomers()
         {
-            MessageBox.Show("Customer not found! Please insert new customer.", "Message");
+            MessageBox.Show("There is no Customer with this Card Number,try to insert a new one or try again.", "Message");
             this.Hide();
             Customer formMenu = new Customer();
             formMenu.FormClosed += (s, args) => this.Close();
