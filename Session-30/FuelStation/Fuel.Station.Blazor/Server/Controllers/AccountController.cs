@@ -1,10 +1,10 @@
-﻿using BlazorWasmAuthenticationAndAuthorization.Server.Authentication;
-using BlazorWasmAuthenticationAndAuthorization.Shared;
+﻿using Fuel.Station.Blazor.Server.Security;
+using Fuel.Station.Blazor.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlazorWasmAuthenticationAndAuthorization.Server.Controllers
+namespace Fuel.Station.Blazor.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

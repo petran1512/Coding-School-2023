@@ -5,6 +5,8 @@
 @using Fuel.Station.Blazor.Shared;
 @inject IJSRuntime jsRuntime
 @page "/customerlist"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Manager,Cashier")]
 <PageTitle>Fuel Station</PageTitle>
 
 @if (isLoading)

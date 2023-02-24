@@ -5,6 +5,8 @@
 @inject IJSRuntime jsRuntime
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Manager")]
 <PageTitle>Fuel Station</PageTitle>
 
 @if (Employee == null)
@@ -111,3 +113,4 @@ else
         }
     }
 }
+

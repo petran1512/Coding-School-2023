@@ -1,4 +1,6 @@
 ﻿@page "/customerlist/details/{Id:int?}"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Manager,Cashier")]
 @using Fuel.Station.Blazor.Shared;
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager

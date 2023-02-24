@@ -28,7 +28,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 errorMessage = "Succeed ";
                 bool ret = true;
                 var cashiers = employees.Where(e => e.employeeType == EmployeeType.Cashier && e.HireDateEnd == null);
-                var managers = employees.Where(e => e.employeeType == EmployeeType.Manager && e.HireDateEnd == null);
+                var managers = employees.Where(e => e.employeeType == EmployeeType.Manager) ;
                 var staff = employees.Where(e => e.employeeType == EmployeeType.Staff && e.HireDateEnd == null);
                 if (type == EmployeeType.Manager && managers.Count() == ManagersLimits.Max)
                 {

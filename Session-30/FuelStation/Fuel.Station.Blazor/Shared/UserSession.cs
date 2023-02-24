@@ -1,4 +1,4 @@
-﻿namespace BlazorWasmAuthenticationAndAuthorization.Shared
+﻿namespace Fuel.Station.Blazor.Shared
 {
     public class UserSession
     {
