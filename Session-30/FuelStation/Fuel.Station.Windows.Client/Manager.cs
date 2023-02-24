@@ -31,8 +31,14 @@ namespace Fuel.Station.Windows.Client
 
         private void btnTransactions_Click(object sender, EventArgs e)
         {
-            new Transactions().Show();
             this.Hide();
+            AutoCustomerFinder trForm = new AutoCustomerFinder();
+
+            trForm.FormClosed += (s, args) => this.Show();
+            trForm.ShowDialog();
+
+            //new Transactions().Show();
+            //this.Hide();
         }
 
         private void Manager_Load(object sender, EventArgs e)

@@ -117,6 +117,7 @@
             this.grvTransactions.UseEmbeddedNavigator = true;
             this.grvTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grvTransactions.Click += new System.EventHandler(this.grvTransactions_Click);
             // 
             // gridView1
             // 

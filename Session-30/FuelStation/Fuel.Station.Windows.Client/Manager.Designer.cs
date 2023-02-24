@@ -108,6 +108,7 @@
             this.Controls.Add(this.btnCustomers);
             this.Name = "Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Manager";
             this.Load += new System.EventHandler(this.Manager_Load);
             this.ResumeLayout(false);
 

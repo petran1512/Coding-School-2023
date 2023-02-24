@@ -51,6 +51,7 @@
             this.boxCustomFinder.Name = "boxCustomFinder";
             this.boxCustomFinder.Size = new System.Drawing.Size(265, 35);
             this.boxCustomFinder.TabIndex = 37;
+            this.boxCustomFinder.TextChanged += new System.EventHandler(this.boxCustomFinder_TextChanged);
             // 
             // btnFind
             // 
@@ -88,6 +89,7 @@
             this.Controls.Add(this.boxCustomFinder);
             this.Controls.Add(this.label1);
             this.Name = "AutoCustomerFinder";
+            this.Load += new System.EventHandler(this.AutoCustomerFinder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

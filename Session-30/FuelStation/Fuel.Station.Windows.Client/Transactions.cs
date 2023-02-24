@@ -21,11 +21,11 @@ namespace Fuel.Station.Windows.Client
         private CustomerListDto _customer;
         private List<ItemListDto?>? _items;
 
-        public Transactions()
+        public Transactions(CustomerListDto customer)
         {
             InitializeComponent();
             _customer = customer;
-            labelCustomer.Text = $"{_customer.Name} {_customer.Surname}'s Transactions (Card Number: {_customer.CardNumber})";
+            //labelCustomer.Text = $"{_customer.Name} {_customer.Surname}'s Transactions (Card Number: {_customer.CardNumber})";
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
         }
@@ -75,6 +75,11 @@ namespace Fuel.Station.Windows.Client
         {
             var response = await client.GetFromJsonAsync<List<TransactionLineListDto?>>("transactionline");
             return response.ToList();
+        }
+
+        private void grvTransactions_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
