@@ -35,7 +35,7 @@ namespace Fuel.Solution.EF.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     HireDateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SallaryPerMonth = table.Column<decimal>(type: "decimal(10,3)", precision: 10, scale: 3, nullable: false),
                     employeeType = table.Column<int>(type: "int", nullable: false)
                 },

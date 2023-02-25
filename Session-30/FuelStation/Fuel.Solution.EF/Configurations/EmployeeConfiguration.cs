@@ -20,7 +20,7 @@ namespace CoffeeShop.EF.Configurations
             builder.Property(t => t.Surname).HasMaxLength(100).IsRequired();
             builder.Property(t => t.SallaryPerMonth).HasPrecision(10, 3).IsRequired();
             builder.Property(t => t.HireDateStart).IsRequired();
-            builder.Property(t => t.HireDateEnd).IsRequired();
+            builder.Property(t => t.HireDateEnd);
             builder.Property(t => t.employeeType).IsRequired();
         }
     }

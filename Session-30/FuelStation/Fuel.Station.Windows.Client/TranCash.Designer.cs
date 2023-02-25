@@ -94,7 +94,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabTransactions;
-            this.tabControlMain.Size = new System.Drawing.Size(1159, 280);
+            this.tabControlMain.Size = new System.Drawing.Size(878, 280);
             this.tabControlMain.TabIndex = 15;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabTransactions});
@@ -103,7 +103,7 @@
             // 
             this.xtraTabTransactions.Controls.Add(this.grvTransactions);
             this.xtraTabTransactions.Name = "xtraTabTransactions";
-            this.xtraTabTransactions.Size = new System.Drawing.Size(1157, 255);
+            this.xtraTabTransactions.Size = new System.Drawing.Size(876, 255);
             this.xtraTabTransactions.Text = "Transactions";
             // 
             // grvTransactions
@@ -116,7 +116,7 @@
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repEmployees});
-            this.grvTransactions.Size = new System.Drawing.Size(1157, 255);
+            this.grvTransactions.Size = new System.Drawing.Size(876, 255);
             this.grvTransactions.TabIndex = 1;
             this.grvTransactions.UseEmbeddedNavigator = true;
             this.grvTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -200,7 +200,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(13, 300);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(815, 224);
+            this.xtraTabControl1.Size = new System.Drawing.Size(876, 224);
             this.xtraTabControl1.TabIndex = 17;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -209,7 +209,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.grvTransactionLines);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(813, 199);
+            this.xtraTabPage1.Size = new System.Drawing.Size(874, 199);
             this.xtraTabPage1.Text = "TransactionLines";
             // 
             // grvTransactionLines
@@ -222,7 +222,7 @@
             this.grvTransactionLines.Name = "grvTransactionLines";
             this.grvTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repItemTree});
-            this.grvTransactionLines.Size = new System.Drawing.Size(813, 199);
+            this.grvTransactionLines.Size = new System.Drawing.Size(874, 199);
             this.grvTransactionLines.TabIndex = 1;
             this.grvTransactionLines.UseEmbeddedNavigator = true;
             this.grvTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -348,9 +348,9 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1095, 312);
+            this.btnAdd.Location = new System.Drawing.Point(1100, 134);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(37, 23);
             this.btnAdd.TabIndex = 45;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -361,19 +361,19 @@
             this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 15;
-            this.listItems.Location = new System.Drawing.Point(914, 339);
+            this.listItems.Location = new System.Drawing.Point(896, 63);
             this.listItems.Name = "listItems";
-            this.listItems.Size = new System.Drawing.Size(175, 184);
+            this.listItems.Size = new System.Drawing.Size(198, 94);
             this.listItems.TabIndex = 44;
             // 
             // labelControl2
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(848, 311);
+            this.labelControl2.Location = new System.Drawing.Point(914, 36);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(60, 25);
+            this.labelControl2.Size = new System.Drawing.Size(49, 21);
             this.labelControl2.TabIndex = 43;
             this.labelControl2.Text = "Items:";
             // 
@@ -381,9 +381,9 @@
             // 
             this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboItems.FormattingEnabled = true;
-            this.comboItems.Location = new System.Drawing.Point(914, 313);
+            this.comboItems.Location = new System.Drawing.Point(995, 36);
             this.comboItems.Name = "comboItems";
-            this.comboItems.Size = new System.Drawing.Size(175, 23);
+            this.comboItems.Size = new System.Drawing.Size(99, 23);
             this.comboItems.TabIndex = 42;
             this.comboItems.SelectedIndexChanged += new System.EventHandler(this.comboItems_SelectedIndexChanged);
             // 
@@ -393,11 +393,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(1003, 529);
+            this.btnBack.Location = new System.Drawing.Point(965, 300);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(167, 30);
+            this.btnBack.Size = new System.Drawing.Size(108, 30);
             this.btnBack.TabIndex = 41;
-            this.btnBack.Text = "Back to Login Page";
+            this.btnBack.Text = "Login Page";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -415,7 +415,7 @@
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.tabControlMain);
             this.Name = "TranCash";
-            this.Text = "TranCash";
+            this.Text = "Transactions";
             this.Load += new System.EventHandler(this.TranCash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);

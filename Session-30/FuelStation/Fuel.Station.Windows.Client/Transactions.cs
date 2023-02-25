@@ -22,7 +22,7 @@ namespace Fuel.Station.Windows.Client
     public partial class Transactions : Form
     {
         private readonly HttpClient client;
-        private CustomerListDto _customer;
+        //private CustomerListDto _customer;
         private List<ItemListDto?>? _items;
 
         //public Transactions()
@@ -32,10 +32,10 @@ namespace Fuel.Station.Windows.Client
         //    client.BaseAddress = new Uri("https://localhost:7095/");
         //}
 
-        public Transactions(CustomerListDto customer)
+        public Transactions(/*CustomerListDto customer*/)
         {
             InitializeComponent();
-            _customer = customer;
+            //_customer = customer;
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
         }
@@ -69,7 +69,7 @@ namespace Fuel.Station.Windows.Client
 
         private async Task SetControlProperties()
         {
-            var transactions = await GetTransactions(_customer.Id);
+            var transactions = await GetTransactions(/*_customer.Id*/);
             if (transactions != null)
             {
                 transactionBindingSource.DataSource = transactions;
@@ -169,7 +169,7 @@ namespace Fuel.Station.Windows.Client
         private void AddNewTransaction()
         {
             TransactionListDto newTempTransaction = new();
-            newTempTransaction.CustomerId = _customer.Id;
+            //newTempTransaction.CustomerId = _customer.Id;
             newTempTransaction.TotalValue = 0;
             transactionBindingSource.Add(newTempTransaction);
             CalculateTotalValue();
@@ -496,7 +496,7 @@ namespace Fuel.Station.Windows.Client
                 TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
                 if (transaction != null)
                 {
-                    transaction.CustomerId = _customer.Id;
+                    //transaction.CustomerId = _customer.Id;
                     if (transaction.Id == 0)
                     {
                         _ = NewTransaction(transaction);
@@ -511,6 +511,11 @@ namespace Fuel.Station.Windows.Client
         }
 
         private void listItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl2_Click(object sender, EventArgs e)
         {
 
         }

@@ -92,11 +92,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(925, 528);
+            this.btnBack.Location = new System.Drawing.Point(963, 289);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(167, 30);
+            this.btnBack.Size = new System.Drawing.Size(108, 29);
             this.btnBack.TabIndex = 11;
-            this.btnBack.Text = "Back to Login Page";
+            this.btnBack.Text = "Login Page";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -108,7 +108,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(8, 3);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabTransactions;
-            this.tabControlMain.Size = new System.Drawing.Size(1159, 280);
+            this.tabControlMain.Size = new System.Drawing.Size(869, 280);
             this.tabControlMain.TabIndex = 14;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabTransactions});
@@ -118,7 +118,7 @@
             // 
             this.xtraTabTransactions.Controls.Add(this.grvTransactions);
             this.xtraTabTransactions.Name = "xtraTabTransactions";
-            this.xtraTabTransactions.Size = new System.Drawing.Size(1157, 255);
+            this.xtraTabTransactions.Size = new System.Drawing.Size(867, 255);
             this.xtraTabTransactions.Text = "Transactions";
             // 
             // grvTransactions
@@ -131,7 +131,7 @@
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repEmployees});
-            this.grvTransactions.Size = new System.Drawing.Size(1157, 255);
+            this.grvTransactions.Size = new System.Drawing.Size(867, 255);
             this.grvTransactions.TabIndex = 1;
             this.grvTransactions.UseEmbeddedNavigator = true;
             this.grvTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -230,7 +230,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(8, 289);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(815, 224);
+            this.xtraTabControl1.Size = new System.Drawing.Size(869, 224);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -240,7 +240,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.grvTransactionLines);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(813, 199);
+            this.xtraTabPage1.Size = new System.Drawing.Size(867, 199);
             this.xtraTabPage1.Text = "TransactionLines";
             // 
             // grvTransactionLines
@@ -253,7 +253,7 @@
             this.grvTransactionLines.Name = "grvTransactionLines";
             this.grvTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repItemTree});
-            this.grvTransactionLines.Size = new System.Drawing.Size(813, 199);
+            this.grvTransactionLines.Size = new System.Drawing.Size(867, 199);
             this.grvTransactionLines.TabIndex = 1;
             this.grvTransactionLines.UseEmbeddedNavigator = true;
             this.grvTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -370,40 +370,42 @@
             // 
             this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboItems.FormattingEnabled = true;
-            this.comboItems.Location = new System.Drawing.Point(925, 309);
+            this.comboItems.Location = new System.Drawing.Point(982, 31);
             this.comboItems.Name = "comboItems";
-            this.comboItems.Size = new System.Drawing.Size(175, 23);
+            this.comboItems.Size = new System.Drawing.Size(99, 23);
             this.comboItems.TabIndex = 35;
             this.comboItems.SelectedIndexChanged += new System.EventHandler(this.comboItems_SelectedIndexChanged_1);
             // 
             // labelControl2
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(859, 309);
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.Location = new System.Drawing.Point(909, 27);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(60, 25);
+            this.labelControl2.Size = new System.Drawing.Size(67, 25);
             this.labelControl2.TabIndex = 38;
             this.labelControl2.Text = "Items:";
+            this.labelControl2.Click += new System.EventHandler(this.labelControl2_Click);
             // 
             // listItems
             // 
             this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 15;
-            this.listItems.Location = new System.Drawing.Point(925, 338);
+            this.listItems.Location = new System.Drawing.Point(883, 60);
             this.listItems.Name = "listItems";
-            this.listItems.Size = new System.Drawing.Size(175, 184);
+            this.listItems.Size = new System.Drawing.Size(198, 94);
             this.listItems.TabIndex = 39;
             this.listItems.SelectedIndexChanged += new System.EventHandler(this.listItems_SelectedIndexChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1106, 309);
+            this.btnAdd.Location = new System.Drawing.Point(1087, 131);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(37, 23);
             this.btnAdd.TabIndex = 40;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -423,6 +425,7 @@
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.btnBack);
             this.Name = "Transactions";
+            this.Text = "Transactions";
             this.Load += new System.EventHandler(this.Transactions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
@@ -443,7 +446,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

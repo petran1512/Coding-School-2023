@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.Solution.EF.Migrations
 {
     [DbContext(typeof(FuelStationDbContext))]
-    [Migration("20230225091501_Initial")]
+    [Migration("20230225101657_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -62,7 +62,6 @@ namespace Fuel.Solution.EF.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("HireDateEnd")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDateStart")
