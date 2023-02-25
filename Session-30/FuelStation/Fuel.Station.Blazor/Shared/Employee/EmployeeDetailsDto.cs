@@ -17,7 +17,7 @@ namespace Fuel.Station.Blazor.Shared
 
         public DateTime HireDateStart { get; set; }
 
-        public DateTime HireDateEnd { get; set; }
+        public DateTime? HireDateEnd { get; set; }
 
         public decimal SallaryPerMonth { get; set; }
 

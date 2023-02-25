@@ -58,7 +58,8 @@ namespace Fuel.Solution.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("HireDateEnd")
+                    b.Property<DateTime?>("HireDateEnd")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDateStart")
