@@ -45,7 +45,7 @@
             this.btnCustomers.Location = new System.Drawing.Point(345, 66);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(214, 58);
-            this.btnCustomers.TabIndex = 1;
+            this.btnCustomers.TabIndex = 4;
             this.btnCustomers.Text = "Customers";
             this.btnCustomers.UseVisualStyleBackColor = true;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);

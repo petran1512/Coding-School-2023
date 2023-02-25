@@ -59,5 +59,11 @@ namespace Fuel.Station.Windows.Client
         {
 
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+                txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }
