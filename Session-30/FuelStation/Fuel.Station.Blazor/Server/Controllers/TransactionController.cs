@@ -4,6 +4,7 @@ using Fuel.Station.Model;
 using FuelStation.Model.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,19 +12,21 @@ namespace Fuel.Station.Blazor.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TransactionController : Controller
+    public class TransactionController : ControllerBase
     {
         // Properties
         private readonly IEntityRepo<Transaction> _transactionRepo;
+        private readonly IEntityRepo<Item> _itemRepo;
         private readonly IValidator _validator;
         private string _errorMessage;
 
         // Constructors
-        public TransactionController(IEntityRepo<Transaction> transactionRepo, IValidator validator)
+        public TransactionController(IEntityRepo<Transaction> transactionRepo, IValidator validator, IEntityRepo<Item> itemRepo)
         {
             _transactionRepo = transactionRepo;
             _validator = validator;
             _errorMessage = string.Empty;
+            _itemRepo = itemRepo;
         }
 
         // GET: /<CustomersController>
@@ -43,84 +46,144 @@ namespace Fuel.Station.Blazor.Server.Controllers
             return selectTransactionList;
         }
 
-        // GET: /<CustomersController>/5
+        // GET: api/<TransactionController>
         [HttpGet("{id}")]
         public async Task<TransactionEditDto?> GetById(int id)
         {
-            var dbTransaction = await Task.Run(() => { return _transactionRepo.GetById(id); });
-            if (dbTransaction == null)
+            var tran = await Task.Run(() => { return _transactionRepo.GetById(id); });
+            if (tran == null)
             {
                 return null;
             }
-            TransactionEditDto item = new TransactionEditDto
+
+            var transaction = new TransactionEditDto
             {
                 Id = id,
-                Date = dbTransaction.Date,
-                PaymentMethod = dbTransaction.PaymentMethod,
-                TotalValue = dbTransaction.TotalValue,
-                EmployeeId = dbTransaction.EmployeeId,
-                CustomerId = dbTransaction.CustomerId,
-                TransactionLines = dbTransaction.TransactionLines.Select(transactionLine => new TransactionLineEditDto
+                Date = tran.Date,
+                TotalValue = tran.TotalValue,
+                PaymentMethod = tran.PaymentMethod,
+                CustomerId = tran.CustomerId,
+                EmployeeId = tran.EmployeeId,
+                TransactionLines = tran.TransactionLines.Select(transactionLine => new TransactionLineEditDto
                 {
                     Id = transactionLine.Id,
-                    Quantity = transactionLine.Quantity,
-                    ItemPrice = transactionLine.ItemPrice,
-                    NetValue = transactionLine.NetValue,
-                    DiscountPercent = transactionLine.DiscountPercent,
-                    DiscountValue = transactionLine.DiscountValue,
-                    TotalValue = transactionLine.TotalValue,
                     TransactionId = transactionLine.TransactionId,
                     ItemId = transactionLine.ItemId,
-                }).ToList()
-            };
-            return item;
-        }
-
-        // POST /<CustomersController>
-        [HttpPost]
-        public async Task<ActionResult> Post(TransactionEditDto transaction)
-        {
-            var newTransaction = new Transaction(transaction.Date, transaction.PaymentMethod, transaction.TotalValue, transaction.CustomerId, transaction.EmployeeId)
-            {
-                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.TransactionId, transactionLine.ItemId)
-                {
-                    Id = transactionLine.Id,
                     Quantity = transactionLine.Quantity,
                     ItemPrice = transactionLine.ItemPrice,
                     NetValue = transactionLine.NetValue,
                     DiscountPercent = transactionLine.DiscountPercent,
                     DiscountValue = transactionLine.DiscountValue,
                     TotalValue = transactionLine.TotalValue,
+                }).ToList()
+            };
+
+            return transaction;
+        }
+
+        // GET: api/<TransactionController>
+        [Route("/transactionlist/details/{id}")]
+        [HttpGet]
+            public async Task<TransactionDetailsDto?> GetDetailsById(int id)
+            {
+            var tran = await Task.Run(() => { return _transactionRepo.GetById(id); });
+            if (tran is null)
+            {
+                return null;
+            }
+            else
+            {
+                TransactionDetailsDto transaction = new TransactionDetailsDto
+                {
+                    Id = id,
+                    Date = tran.Date,
+                    EmployeeId = tran.EmployeeId,
+                    CustomerId = tran.CustomerId,
+                    PaymentMethod = tran.PaymentMethod,
+                    TotalValue = tran.TotalValue,
+                    Customer = new CustomerListDto
+                    {
+                        Id = tran.CustomerId,
+                        Name = tran.Customer.Name,
+                        Surname = tran.Customer.Surname,
+                        CardNumber = tran.Customer.CardNumber,
+                    },
+                    Employee = new EmployeeListDto
+                    {
+                        Id = tran.EmployeeId,
+                        Name = tran.Employee.Name,
+                        Surname = tran.Employee.Surname,
+                        HireDateStart = tran.Employee.HireDateStart,
+                        HireDateEnd = tran.Employee.HireDateEnd,
+                        SallaryPerMonth = tran.Employee.SallaryPerMonth,
+                        employeeType = tran.Employee.employeeType
+                    },
+                    TransactionLines = tran.TransactionLines.Select(transactionLine => new TransactionLineDetailsDto
+                    {
+                        Id = transactionLine.Id,
+                        TransactionId = transactionLine.TransactionId,
+                        ItemId = transactionLine.ItemId,
+                        Quantity = transactionLine.Quantity,
+                        ItemPrice = transactionLine.ItemPrice,
+                        NetValue = transactionLine.NetValue,
+                        DiscountPercent = transactionLine.DiscountPercent,
+                        DiscountValue = transactionLine.DiscountValue,
+                        TotalValue = transactionLine.TotalValue,
+                    }).ToList()
+                };
+                foreach (var transactionLine in transaction.TransactionLines)
+                {
+                    var item = _itemRepo.GetById(transactionLine.ItemId);
+                    transactionLine.Item = new ItemListDto
+                    {
+                        Id = item.Id,
+                        Code = item.Code,
+                        Description = item.Description,
+                        itemType = item.itemType,
+                        Price = item.Price,
+                        Cost = item.Cost,
+                    };
+                }
+                return transaction;
+            }
+        }
+        // POST api/<TransactionController>
+        [HttpPost]
+        public async Task Post(TransactionEditDto transaction)
+        {
+            var newTransaction = new Transaction(transaction.Date, transaction.PaymentMethod,
+                transaction.TotalValue, transaction.EmployeeId, transaction.CustomerId)
+            {
+                Date = transaction.Date,
+                EmployeeId = transaction.EmployeeId,
+                CustomerId = transaction.CustomerId,
+                PaymentMethod= transaction.PaymentMethod,
+                TotalValue= transaction.TotalValue,
+                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, 
+                transactionLine.DiscountPercent, transactionLine.DiscountValue, transactionLine.TotalValue)
+                {
+                    Id = transactionLine.Id,
+                    TransactionId = transactionLine.TransactionId,
+                    ItemId = transactionLine.ItemId,
+                    //Quantity = transactionLine.Quantity,
+                    //ItemPrice = transactionLine.ItemPrice,
+                    //NetValue = transactionLine.NetValue,
+                    //DiscountPercent = transactionLine.DiscountPercent,
+                    //DiscountValue = transactionLine.DiscountValue,
+                    //TotalValue = transactionLine.TotalValue,
                 }).ToList()
             };
             await Task.Run(() => { _transactionRepo.Add(newTransaction); });
-            return Ok();
-            //if (_validator.ValidateAddCustomer(_customerRepo.GetAll().ToList(), out _errorMessage))
-            //{
-            //    try
-            //    {
-            //        await Task.Run(() => { _customerRepo.Add(newCustomer); });
-            //        return Ok();
-            //    }
-            //    catch (DbException ex)
-            //    {
-            //        return BadRequest(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    return BadRequest(_errorMessage);
-            //}
         }
 
-        // PUT /<CustomersController>/5
+        // PUT api/<TransactionController>/5
         [HttpPut]
         public async Task Put(TransactionEditDto transaction)
         {
             var dbTransaction = await Task.Run(() => { return _transactionRepo.GetById(transaction.Id); });
             if (dbTransaction == null)
             {
-                // TODO if customer is null
+                //Todo: handle if dbTransaction is null
                 return;
             }
             dbTransaction.Date = transaction.Date;
@@ -147,11 +210,21 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
         // DELETE /<CustomersController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            await Task.Run(() => {
-                _transactionRepo.Delete(id);
-            });
+            try
+            {
+                await Task.Run(() => { _transactionRepo.Delete(id); });
+                return Ok();
+            }
+            catch (DbUpdateException)
+            {
+                return BadRequest($"Could not delete this transaction because it has transactionLines");
+            }
+            catch (KeyNotFoundException)
+            {
+                return BadRequest($"Transaction not found");
+            }
         }
     }
 }

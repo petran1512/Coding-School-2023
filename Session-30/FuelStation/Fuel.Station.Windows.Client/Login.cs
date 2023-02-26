@@ -70,23 +70,23 @@ namespace Fuel.Station.Windows.Client
             txtPassword.UseSystemPasswordChar = true;
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            if (txtPassword.PasswordChar == '\0')
-            {
-                pictureBox4.BringToFront();
-                txtPassword.PasswordChar = '*';
+        //private void pictureBox4_Click(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.PasswordChar == '\0')
+        //    {
+        //        pictureBox4.BringToFront();
+        //        txtPassword.PasswordChar = '*';
 
-            }
-        }
+        //    }
+        //}
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            if (txtPassword.PasswordChar == '*')
-            {
-                pictureBox3.BringToFront();
-                txtPassword.PasswordChar = '\0';
-            }
-        }
+        //private void pictureBox3_Click(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.PasswordChar == '*')
+        //    {
+        //        pictureBox3.BringToFront();
+        //        txtPassword.PasswordChar = '\0';
+        //    }
+        //}
     }
 }

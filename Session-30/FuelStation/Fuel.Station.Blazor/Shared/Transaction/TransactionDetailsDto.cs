@@ -1,4 +1,4 @@
-﻿using Fuel.Station.Model;
+﻿
 using FuelStation.Model.Enums;
 using System;
 using System.Collections.Generic;
@@ -16,9 +16,12 @@ namespace Fuel.Station.Blazor.Shared
         public decimal TotalValue { get; set; }
 
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public CustomerListDto Customer { get; set; } = null!;
 
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; } = null!;
+        public EmployeeListDto Employee { get; set; } = null!;
+
+        public List<TransactionLineDetailsDto> TransactionLines { get; set; } = new();
+
     }
 }

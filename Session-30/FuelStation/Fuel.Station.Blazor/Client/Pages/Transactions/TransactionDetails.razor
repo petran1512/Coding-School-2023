@@ -1,0 +1,122 @@
+﻿@page "/transactionlist/details/{Id:int?}"
+@*@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Manager, Staff")]*@
+@inject AuthenticationStateProvider authenticationStateProvider
+@using Fuel.Station.Blazor.Shared;
+@using Fuel.Station.Model;
+@using FuelStation.Model.Enums;
+@using Fuel.Solution.EF.Repositories;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Fuel Station</PageTitle>
+<h3>TransactionDetails</h3>
+
+@if (transaction == null)
+{
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label">Date</label>
+            <input class="form-control" disabled @bind="@transaction.Date" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Employee Id</label>
+            <input class="form-control" disabled @bind="@transaction.EmployeeId" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Customer Id</label>
+            <input class="form-control" disabled @bind="@transaction.CustomerId" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Payment Method</label>
+            <input class="form-control" disabled @bind="@transaction.PaymentMethod" />    
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Total Value</label>
+            <input class="form-control" disabled @bind="@transaction.TotalValue" />
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <h3>Transaction Lines</h3>
+    <div id="transactionLinesContainer" class="container-fluid">
+        @foreach (var transactionLine in transaction.TransactionLines)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-label">Transaction Id</label>
+                    <input class="form-control" disabled @bind="@transactionLine.TransactionId" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Item Id</label>
+                    <input class="form-control" disabled @bind="@transactionLine.ItemId" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Quantity</label>
+                    <input class="form-control" disabled @bind="@transactionLine.Quantity" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Item Price</label>
+                    <input class="form-control" disabled @bind="@transactionLine.ItemPrice" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Net Value</label>
+                    <input class="form-control" disabled @bind="@transactionLine.NetValue" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Discount Percent</label>
+                    <input class="form-control" disabled @bind="@transactionLine.DiscountPercent" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Discount Value</label>
+                    <input class="form-control" disabled @bind="@transactionLine.DiscountValue" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Total Value</label>
+                    <input class="form-control" disabled @bind="@transactionLine.TotalValue" />
+                </div>
+            </div>
+            }
+    </div>
+}
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    private TransactionDetailsDto? transaction { get; set; }
+
+    private bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        if (Id == null)
+        {
+            transaction = new();
+            transaction.Date = DateTime.Now;
+        }
+        else
+        {
+            transaction = await httpClient.GetFromJsonAsync<TransactionDetailsDto>($"transactionlist/details/{Id}");
+            if (transaction is null)
+            {
+                //Todo handle if Transaction is null
+                return;
+            }
+            //TODO: selected
+
+
+        }
+        isLoading = false;
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("transactionlist");
+    }
+}
+

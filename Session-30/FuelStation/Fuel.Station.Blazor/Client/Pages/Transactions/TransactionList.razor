@@ -20,29 +20,29 @@ else
         <thead>
             <tr>
                 <th>Date</th>
+                <th>Employee Id</th>
+                <th>Customer Id</th>
                 <th>Payment Method</th>
                 <th>Total Value</th>
-                <th>Customer</th>
-                <th>Employee</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var transaction in transactionList)
             {
                 <tr>
-                    <td>@transaction.Date</td>
+                @*@if (@transaction.PaymentMethod = FuelStation.Model.Enums.PaymentMethod.CreditCard)
+                {
+                <div class="nav-item px-3">
+                <NavLink class="nav-link" href="PaymentMethod">
+                <span class="oi oi-cart" aria-hidden="true"></span> PaymentMethod
+                </NavLink>
+                </div>
+                }*@
+                 <td>@transaction.Date</td>
+                <td>@GetEmployeeNameWithId(transaction.EmployeeId)</td>
+                <td>@GetCustomerSurnameWithId(transaction.CustomerId)</td>
+                <td>@transaction.PaymentMethod</td>
                     <td>@transaction.TotalValue</td>
-                    <td>@transaction.PaymentMethod</td>
-                    @*                    @if (@transaction.PaymentMethod = CoffeeShop.Model.Enums.PaymentMethod.CreditCard)
-            {
-            <div class="nav-item px-3">
-            <NavLink class="nav-link" href="PaymentMethod">
-            <span class="oi oi-cart" aria-hidden="true"></span> PaymentMethod
-            </NavLink>
-            </div>
-            }*@
-                    <td>@GetCustomerSurnameWithId(transaction.CustomerId)</td>
-                    <td>@GetEmployeeNameWithId(transaction.EmployeeId)</td>
                     <td>
                         <BootstrapButton ButtonType="BootstrapButtonType.Warning" OnClick="()=> EditItem(transaction)">Edit</BootstrapButton>
                         <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick="()=> DetailItem(transaction)">Details</BootstrapButton>
