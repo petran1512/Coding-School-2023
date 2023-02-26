@@ -9,8 +9,6 @@ namespace Fuel.Station.Blazor.Server.Controllers
     [ApiController]
     public class LedgerController : ControllerBase
     {
-        public class MonthlyLedgerController : ControllerBase
-        {
             // Properties
             private readonly IEntityRepo<Transaction> _transactionRepo;
             private readonly IEntityRepo<Employee> _employeeRepo;
@@ -20,7 +18,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
 
             // Constructors
-            public MonthlyLedgerController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo)
+            public LedgerController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo)
             {
                 _transactionRepo = transactionRepo;
                 _employeeRepo = employeeRepo;
@@ -86,10 +84,9 @@ namespace Fuel.Station.Blazor.Server.Controllers
 
                     }
                     monthlyLedger.Total = monthlyLedger.Income - monthlyLedger.Expenses;
-                    monthlyLedger.Transactions = null;
+                monthlyLedger.Transactions = new List<Transaction?>();
                 }
                 return monthlyLedgers;
             }
         }
     }
-}

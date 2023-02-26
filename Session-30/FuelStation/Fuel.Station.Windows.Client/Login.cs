@@ -19,7 +19,7 @@ namespace Fuel.Station.Windows.Client
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUserName.Text== "manager" && txtPassword.Text=="manager")
+            if (txtUserName.Text == "manager" && txtPassword.Text == "manager")
             {
                 new Manager().Show();
                 this.Hide();
@@ -68,6 +68,25 @@ namespace Fuel.Station.Windows.Client
         private void Login_Load(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '\0')
+            {
+                pictureBox4.BringToFront();
+                txtPassword.PasswordChar = '*';
+
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '*')
+            {
+                pictureBox3.BringToFront();
+                txtPassword.PasswordChar = '\0';
+            }
         }
     }
 }
