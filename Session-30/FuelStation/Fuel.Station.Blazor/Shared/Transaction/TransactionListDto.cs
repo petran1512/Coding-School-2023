@@ -21,5 +21,7 @@ namespace Fuel.Station.Blazor.Shared
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; } = null!;
 
+        public List<TransactionLineEditDto>? TransactionLines { get; set; } = new();
+
     }
 }

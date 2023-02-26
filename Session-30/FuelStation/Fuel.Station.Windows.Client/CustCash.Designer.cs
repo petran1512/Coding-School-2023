@@ -1,6 +1,6 @@
 ﻿namespace Fuel.Station.Windows.Client
 {
-    partial class Customer
+    partial class CustCash
     {
         /// <summary>
         /// Required designer variable.
@@ -36,8 +36,8 @@
             this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerSurname = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabCustomers.SuspendLayout();
@@ -48,16 +48,14 @@
             // 
             // tabControlMain
             // 
-            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabCustomers;
             this.tabControlMain.Size = new System.Drawing.Size(860, 390);
-            this.tabControlMain.TabIndex = 15;
+            this.tabControlMain.TabIndex = 16;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabCustomers});
+            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // xtraTabCustomers
             // 
@@ -79,6 +77,7 @@
             this.grvCustomers.UseEmbeddedNavigator = true;
             this.grvCustomers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grvCustomers.Click += new System.EventHandler(this.grvCustomers_Click);
             // 
             // gridView1
             // 
@@ -121,24 +120,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(387, 408);
+            this.button1.Location = new System.Drawing.Point(384, 416);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 33);
-            this.button1.TabIndex = 17;
+            this.button1.TabIndex = 18;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Customer
+            // customerBindingSource
+            // 
+            this.customerBindingSource.CurrentChanged += new System.EventHandler(this.customerBindingSource_CurrentChanged);
+            // 
+            // CustCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlMain);
-            this.Name = "Customer";
-            this.Text = "Customer";
-            this.Load += new System.EventHandler(this.Customer_Load);
+            this.Name = "CustCash";
+            this.Text = "Customers";
+            this.Load += new System.EventHandler(this.CustCash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabCustomers.ResumeLayout(false);
@@ -158,7 +161,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerSurname;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerCardNumber;
-        private BindingSource customerBindingSource;
         private Button button1;
+        private BindingSource customerBindingSource;
     }
 }

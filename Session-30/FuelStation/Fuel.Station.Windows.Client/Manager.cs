@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fuel.Station.Blazor.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,14 +32,11 @@ namespace Fuel.Station.Windows.Client
 
         private void btnTransactions_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AutoCustomerFinder trForm = new AutoCustomerFinder();
-
-            trForm.FormClosed += (s, args) => this.Show();
-            trForm.ShowDialog();
-
-            //new Transactions().Show();
+            //new AutoCustomerFinder().Show();
             //this.Hide();
+            Transactions form = new Transactions();
+            form.ShowDialog();
+            this.Hide();
         }
 
         private void Manager_Load(object sender, EventArgs e)

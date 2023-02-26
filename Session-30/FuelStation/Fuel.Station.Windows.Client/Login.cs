@@ -19,24 +19,24 @@ namespace Fuel.Station.Windows.Client
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUserName.Text== "manager" && txtPassword.Text=="manager")
+            if (txtUserName.Text == "manager" && txtPassword.Text == "manager")
             {
                 new Manager().Show();
                 this.Hide();
             }
             else if (txtUserName.Text == "cashier" && txtPassword.Text == "cashier")
             {
-                new Customer().Show();
+                new Cashier().Show();
                 this.Hide();
             }
             else if (txtUserName.Text == "staff" && txtPassword.Text == "staff")
             {
-                new Items().Show();
+                new Staff().Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("The dara are false");
+                MessageBox.Show("Wrong Username or Password please try again.");
                 txtUserName.Clear();
                 txtPassword.Clear();
                 txtUserName.Focus();
@@ -59,5 +59,34 @@ namespace Fuel.Station.Windows.Client
         {
 
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        //private void pictureBox4_Click(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.PasswordChar == '\0')
+        //    {
+        //        pictureBox4.BringToFront();
+        //        txtPassword.PasswordChar = '*';
+
+        //    }
+        //}
+
+        //private void pictureBox3_Click(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.PasswordChar == '*')
+        //    {
+        //        pictureBox3.BringToFront();
+        //        txtPassword.PasswordChar = '\0';
+        //    }
+        //}
     }
 }

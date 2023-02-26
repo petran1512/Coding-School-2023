@@ -26,6 +26,16 @@ namespace Fuel.Station.Model
             Total = income - expenses;
         }
 
+        public Ledger(DateTime datetime)
+        {
+            Year = datetime.Year;
+            Month = datetime.Month;
+        }
+
+        public void AddRent(decimal rent)
+        {
+            Expenses += rent;
+        }
 
     }
 }

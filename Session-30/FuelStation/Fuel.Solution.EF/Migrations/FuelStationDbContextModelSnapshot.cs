@@ -33,6 +33,7 @@ namespace Fuel.Solution.EF.Migrations
                     b.Property<string>("CardNumber")
                         .IsRequired()
                         .HasMaxLength(10)
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Name")
@@ -58,7 +59,7 @@ namespace Fuel.Solution.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("HireDateEnd")
+                    b.Property<DateTime?>("HireDateEnd")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDateStart")
@@ -96,6 +97,7 @@ namespace Fuel.Solution.EF.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Cost")

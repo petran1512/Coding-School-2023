@@ -1,6 +1,6 @@
 ﻿namespace Fuel.Station.Windows.Client
 {
-    partial class Transactions
+    partial class TranCash
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabTransactions = new DevExpress.XtraTab.XtraTabPage();
             this.grvTransactions = new DevExpress.XtraGrid.GridControl();
@@ -42,8 +40,6 @@
             this.colTransactionPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionTotalValue = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.transactionlineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.grvTransactionLines = new DevExpress.XtraGrid.GridControl();
@@ -59,21 +55,23 @@
             this.colTransactionLineDiscountPercent = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionLineDiscountValue = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionLineTotalValue = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bsItemTypes = new System.Windows.Forms.BindingSource(this.components);
-            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.comboItems = new System.Windows.Forms.ComboBox();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.listItems = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
+            this.listItems = new System.Windows.Forms.ListBox();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.comboItems = new System.Windows.Forms.ComboBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsItemTypes = new System.Windows.Forms.BindingSource(this.components);
+            this.transactionlineBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmployees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionlineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -81,44 +79,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repItemTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTreeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItemTypes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionlineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(963, 289);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(108, 29);
-            this.btnBack.TabIndex = 11;
-            this.btnBack.Text = "Login Page";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // tabControlMain
             // 
             this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlMain.Location = new System.Drawing.Point(8, 3);
+            this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabTransactions;
-            this.tabControlMain.Size = new System.Drawing.Size(869, 280);
-            this.tabControlMain.TabIndex = 14;
+            this.tabControlMain.Size = new System.Drawing.Size(878, 280);
+            this.tabControlMain.TabIndex = 15;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabTransactions});
-            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // xtraTabTransactions
             // 
             this.xtraTabTransactions.Controls.Add(this.grvTransactions);
             this.xtraTabTransactions.Name = "xtraTabTransactions";
-            this.xtraTabTransactions.Size = new System.Drawing.Size(867, 255);
+            this.xtraTabTransactions.Size = new System.Drawing.Size(876, 255);
             this.xtraTabTransactions.Text = "Transactions";
             // 
             // grvTransactions
@@ -131,12 +116,11 @@
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repEmployees});
-            this.grvTransactions.Size = new System.Drawing.Size(867, 255);
+            this.grvTransactions.Size = new System.Drawing.Size(876, 255);
             this.grvTransactions.TabIndex = 1;
             this.grvTransactions.UseEmbeddedNavigator = true;
             this.grvTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.grvTransactions.Click += new System.EventHandler(this.grvTransactions_Click);
             // 
             // gridView1
             // 
@@ -208,39 +192,24 @@
             this.colTransactionID.Visible = true;
             this.colTransactionID.VisibleIndex = 5;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(13, 519);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 30);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl1.Location = new System.Drawing.Point(8, 289);
+            this.xtraTabControl1.Location = new System.Drawing.Point(13, 300);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(869, 224);
-            this.xtraTabControl1.TabIndex = 16;
+            this.xtraTabControl1.Size = new System.Drawing.Size(876, 224);
+            this.xtraTabControl1.TabIndex = 17;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
-            this.xtraTabControl1.Click += new System.EventHandler(this.xtraTabControl1_Click);
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.grvTransactionLines);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(867, 199);
+            this.xtraTabPage1.Size = new System.Drawing.Size(874, 199);
             this.xtraTabPage1.Text = "TransactionLines";
             // 
             // grvTransactionLines
@@ -253,7 +222,7 @@
             this.grvTransactionLines.Name = "grvTransactionLines";
             this.grvTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repItemTree});
-            this.grvTransactionLines.Size = new System.Drawing.Size(867, 199);
+            this.grvTransactionLines.Size = new System.Drawing.Size(874, 199);
             this.grvTransactionLines.TabIndex = 1;
             this.grvTransactionLines.UseEmbeddedNavigator = true;
             this.grvTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -320,7 +289,7 @@
             // 
             // repositoryItemTreeListLookUpEdit1TreeList
             // 
-            this.repositoryItemTreeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.repositoryItemTreeListLookUpEdit1TreeList.Location = new System.Drawing.Point(181, 24);
             this.repositoryItemTreeListLookUpEdit1TreeList.Name = "repositoryItemTreeListLookUpEdit1TreeList";
             this.repositoryItemTreeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
             this.repositoryItemTreeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
@@ -362,56 +331,77 @@
             this.colTransactionLineTotalValue.VisibleIndex = 3;
             this.colTransactionLineTotalValue.Width = 60;
             // 
-            // bsItems
+            // button1
             // 
-            this.bsItems.CurrentChanged += new System.EventHandler(this.bindingSource2_CurrentChanged);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(12, 529);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 30);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboItems
+            // btnAdd
             // 
-            this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboItems.FormattingEnabled = true;
-            this.comboItems.Location = new System.Drawing.Point(982, 31);
-            this.comboItems.Name = "comboItems";
-            this.comboItems.Size = new System.Drawing.Size(99, 23);
-            this.comboItems.TabIndex = 35;
-            this.comboItems.SelectedIndexChanged += new System.EventHandler(this.comboItems_SelectedIndexChanged_1);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(909, 27);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(67, 25);
-            this.labelControl2.TabIndex = 38;
-            this.labelControl2.Text = "Items:";
-            this.labelControl2.Click += new System.EventHandler(this.labelControl2_Click);
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Location = new System.Drawing.Point(1100, 134);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(37, 23);
+            this.btnAdd.TabIndex = 45;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // listItems
             // 
             this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 15;
-            this.listItems.Location = new System.Drawing.Point(883, 60);
+            this.listItems.Location = new System.Drawing.Point(896, 63);
             this.listItems.Name = "listItems";
             this.listItems.Size = new System.Drawing.Size(198, 94);
-            this.listItems.TabIndex = 39;
-            this.listItems.SelectedIndexChanged += new System.EventHandler(this.listItems_SelectedIndexChanged);
+            this.listItems.TabIndex = 44;
             // 
-            // btnAdd
+            // labelControl2
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1087, 131);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(37, 23);
-            this.btnAdd.TabIndex = 40;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(914, 36);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(49, 21);
+            this.labelControl2.TabIndex = 43;
+            this.labelControl2.Text = "Items:";
             // 
-            // Transactions
+            // comboItems
+            // 
+            this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboItems.FormattingEnabled = true;
+            this.comboItems.Location = new System.Drawing.Point(995, 36);
+            this.comboItems.Name = "comboItems";
+            this.comboItems.Size = new System.Drawing.Size(99, 23);
+            this.comboItems.TabIndex = 42;
+            this.comboItems.SelectedIndexChanged += new System.EventHandler(this.comboItems_SelectedIndexChanged);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBack.Location = new System.Drawing.Point(965, 300);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(108, 30);
+            this.btnBack.TabIndex = 41;
+            this.btnBack.Text = "Login Page";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // TranCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -420,21 +410,19 @@
             this.Controls.Add(this.listItems);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.comboItems);
-            this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.btnBack);
-            this.Name = "Transactions";
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.tabControlMain);
+            this.Name = "TranCash";
             this.Text = "Transactions";
-            this.Load += new System.EventHandler(this.Transactions_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.TranCash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabTransactions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmployees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionlineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -442,50 +430,54 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repItemTree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTreeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItemTypes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionlineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private Button btnBack;
-        private BindingSource transactionBindingSource;
+
         private DevExpress.XtraTab.XtraTabControl tabControlMain;
         private DevExpress.XtraTab.XtraTabPage xtraTabTransactions;
         private DevExpress.XtraGrid.GridControl grvTransactions;
-        private BindingSource transactionlineBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private Button button1;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraGrid.GridControl grvTransactionLines;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemId;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineQuantity;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionEmployee;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repEmployees;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionCustomerId;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionDate;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionPaymentMethod;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionTotalValue;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionID;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraGrid.GridControl grvTransactionLines;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineId;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineTransactionId;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineQuantity;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemId;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTreeListLookUpEdit repItemTree;
+        private DevExpress.XtraTreeList.TreeList repositoryItemTreeListLookUpEdit1TreeList;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineNetValue;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineDiscountPercent;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineDiscountValue;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineTotalValue;
-        private BindingSource bsItemTypes;
-        private BindingSource bsItems;
-        private BindingSource bindingSource1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repEmployees;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionID;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineId;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineTransactionId;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTreeListLookUpEdit repItemTree;
-        private DevExpress.XtraTreeList.TreeList repositoryItemTreeListLookUpEdit1TreeList;
-        private ComboBox comboItems;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private ListBox listItems;
+        private Button button1;
         private Button btnAdd;
+        private ListBox listItems;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private ComboBox comboItems;
+        private Button btnBack;
+        private BindingSource transactionBindingSource;
+        private BindingSource bsItemTypes;
+        private BindingSource transactionlineBindingSource;
+        private BindingSource bindingSource1;
+        private BindingSource bsItems;
     }
 }

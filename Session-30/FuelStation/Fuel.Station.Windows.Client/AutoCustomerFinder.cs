@@ -23,10 +23,10 @@ namespace Fuel.Station.Windows.Client
             client.BaseAddress = new Uri("https://localhost:7095/");
         }
 
-        private void btnFind_Click(object sender, EventArgs e)
+        private void btnFind_Click_1(object sender, EventArgs e)
         {
             btnFind.Enabled = false;
-            string inputText = boxCustomFinder.Text;
+            string inputText = boxCustomerFind.Text;
 
             _ = FormFinderController(inputText);
         }
@@ -36,25 +36,25 @@ namespace Fuel.Station.Windows.Client
             var customer = await CustomerDetails(input);
             if (customer != null)
             {
-                OpenTransactions(customer);
+                OpenTransactionsForm(customer);
             }
             else
             {
-                OpenCustomers();
+                OpenCustomersForm();
             }
         }
 
-        private void OpenTransactions(CustomerListDto item)
+        private void OpenTransactionsForm(CustomerListDto item)
         {
             this.Hide();
 
-            Transactions formMenu = new Transactions(item);
+            Transactions formMenu = new Transactions(/*item*/);
 
             formMenu.FormClosed += (s, args) => this.Close();
             formMenu.ShowDialog();
         }
 
-        private void OpenCustomers()
+        private void OpenCustomersForm()
         {
             MessageBox.Show("Customer not found! Please insert new customer.", "Message");
             this.Hide();
@@ -72,29 +72,6 @@ namespace Fuel.Station.Windows.Client
                 return await response.Content.ReadAsAsync<CustomerListDto>();
             }
             return null;
-        }
-
-        private void boxCustomerFind_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnFind_Click(sender, e);
-            }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void AutoCustomerFinder_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void boxCustomFinder_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

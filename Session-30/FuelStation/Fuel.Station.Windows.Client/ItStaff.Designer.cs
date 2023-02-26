@@ -1,6 +1,6 @@
 ﻿namespace Fuel.Station.Windows.Client
 {
-    partial class Items
+    partial class ItStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabItems = new DevExpress.XtraTab.XtraTabPage();
             this.grvItems = new DevExpress.XtraGrid.GridControl();
@@ -40,12 +39,13 @@
             this.colItemPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -57,9 +57,10 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabItems;
             this.tabControlMain.Size = new System.Drawing.Size(860, 398);
-            this.tabControlMain.TabIndex = 14;
+            this.tabControlMain.TabIndex = 15;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabItems});
+            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // xtraTabItems
             // 
@@ -81,6 +82,7 @@
             this.grvItems.UseEmbeddedNavigator = true;
             this.grvItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grvItems.Click += new System.EventHandler(this.grvItems_Click);
             // 
             // gridView1
             // 
@@ -137,46 +139,50 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(335, 416);
+            this.button1.Location = new System.Drawing.Point(329, 416);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 33);
-            this.button1.TabIndex = 15;
+            this.button1.TabIndex = 16;
             this.button1.Text = "Back ";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Items
+            // ItStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlMain);
-            this.Name = "Items";
-            this.Text = "Items";
-            this.Load += new System.EventHandler(this.Items_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            this.Name = "ItStaff";
+            this.Text = "ItStaff";
+            this.Load += new System.EventHandler(this.ItStaff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grvItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private BindingSource itemBindingSource;
+
         private DevExpress.XtraTab.XtraTabControl tabControlMain;
         private DevExpress.XtraTab.XtraTabPage xtraTabItems;
         private DevExpress.XtraGrid.GridControl grvItems;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colItemCode;
         private DevExpress.XtraGrid.Columns.GridColumn colItemDescription;
-        private Button button1;
         private DevExpress.XtraGrid.Columns.GridColumn colItemitemType;
         private DevExpress.XtraGrid.Columns.GridColumn colItemPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colItemCost;
+        private Button button1;
+        private BindingSource itemBindingSource;
     }
 }

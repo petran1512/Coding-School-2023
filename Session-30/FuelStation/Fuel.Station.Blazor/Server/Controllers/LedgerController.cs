@@ -9,35 +9,84 @@ namespace Fuel.Station.Blazor.Server.Controllers
     [ApiController]
     public class LedgerController : ControllerBase
     {
-        public class MonthlyLedgerController : ControllerBase
-        {
             // Properties
             private readonly IEntityRepo<Transaction> _transactionRepo;
             private readonly IEntityRepo<Employee> _employeeRepo;
             private readonly IEntityRepo<Item> _itemRepo;
-
+            private readonly decimal _rent = 5000;
+            private readonly DateTime _openingDate = new DateTime(2022, 1, 1);
 
 
             // Constructors
-            public MonthlyLedgerController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo)
+            public LedgerController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo)
             {
                 _transactionRepo = transactionRepo;
                 _employeeRepo = employeeRepo;
                 _itemRepo = itemRepo;
             }
 
-            // GET: /<EmployeeController>
+            // GET: api/<TransactionController>
             [HttpGet]
-            public async Task<IEnumerable<Ledger>> Get()
+            public async Task<IEnumerable<LedgerDto>> Get()
             {
-                var employees = await Task.Run(() => { return _employeeRepo.GetAll(); });
-                var transactions = await Task.Run(() => { return _transactionRepo.GetAll(); });
+                var result = await Task.Run(() => { return _transactionRepo.GetAll(); });
+                List<LedgerDto?> monthlyLedgers = new List<LedgerDto?>();
+                if (result == null)
+                {
+                    return null;
+                }
 
-                var monthlyLedgerList = new LedgerSolution().GetAllMonthlyLedgers(employees, transactions);
+                var transactionList = _transactionRepo.GetAll();
 
-                return monthlyLedgerList;
+                var employees = _employeeRepo.GetAll();
+
+                decimal monthlyPayments = 0;
+
+                foreach (var employee in employees)
+                {
+                    monthlyPayments += employee.SallaryPerMonth;
+                }
+
+                DateTime dateTimeNow = DateTime.Now;
+                DateTime currentLedger = _openingDate;
+
+                int totalMonths = ((dateTimeNow.Year - _openingDate.Year) * 12) + dateTimeNow.Month - _openingDate.Month;
+
+                for (var i = 0; i < totalMonths + 1; i++)
+                {
+                    var ml = new LedgerDto(currentLedger);
+                    ml.Expenses += monthlyPayments;
+                    ml.AddRent(_rent);
+                    monthlyLedgers.Add(ml);
+                    currentLedger = currentLedger.AddMonths(1);
+                }
+
+                foreach (var transaction in transactionList)
+                {
+                    foreach (var monthlyLedger in monthlyLedgers)
+                    {
+                        if ((transaction.Date.Month == monthlyLedger.Month) && (transaction.Date.Year == monthlyLedger.Year))
+                        {
+                            monthlyLedger.Transactions.Add(transaction);
+                        }
+                    }
+                }
+
+                foreach (var monthlyLedger in monthlyLedgers)
+                {
+                    foreach (var transaction in monthlyLedger.Transactions)
+                    {
+                        foreach (var transactionLine in transaction.TransactionLines)
+                        {
+                            monthlyLedger.Expenses += _itemRepo.GetById(transactionLine.ItemId).Cost * transactionLine.Quantity;
+                            monthlyLedger.Income += transactionLine.TotalValue;
+                        }
+
+                    }
+                    monthlyLedger.Total = monthlyLedger.Income - monthlyLedger.Expenses;
+                monthlyLedger.Transactions = new List<Transaction?>();
+                }
+                return monthlyLedgers;
             }
         }
-
     }
-}

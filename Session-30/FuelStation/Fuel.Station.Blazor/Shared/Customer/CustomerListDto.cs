@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Fuel.Station.Blazor.Shared
 {
-    public class CustomerDetailsDto
+    public class CustomerListDto
     {
             public int Id { get; set; }
             public string Name { get; set; } = null!;
             public string Surname { get; set; } = null!;
             public string CardNumber { get; set; } = null!;
+
+        public List<TransactionListDto> Transactions { get; set; } = new();
+
     }
 }

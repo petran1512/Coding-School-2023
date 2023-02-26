@@ -1,5 +1,9 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+h1 {
+    text-align: center;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -68,6 +72,7 @@ a, .btn-link {
     }
 
 .loading-progress {
+    color: mediumpurple;
     position: relative;
     display: block;
     width: 8rem;
@@ -76,7 +81,7 @@ a, .btn-link {
 }
 
     .loading-progress circle {
-        fill: none;
+        fill: mediumpurple;
         stroke: #e0e0e0;
         stroke-width: 0.6rem;
         transform-origin: 50% 50%;

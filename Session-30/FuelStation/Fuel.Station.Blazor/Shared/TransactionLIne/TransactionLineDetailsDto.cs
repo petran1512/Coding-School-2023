@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fuel.Station.Blazor.Shared
 {
-    public class TransactionLineEditDto
+    public class TransactionLineDetailsDto
     {
         public int Id { get; set; }
         public decimal Quantity { get; set; }
@@ -18,6 +18,7 @@ namespace Fuel.Station.Blazor.Shared
 
         public int TransactionId { get; set; }
         public int ItemId { get; set; }
+
         public ItemListDto Item { get; set; } = null!;
 
     }

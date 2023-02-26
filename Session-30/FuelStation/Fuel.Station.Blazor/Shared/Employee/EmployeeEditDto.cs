@@ -23,16 +23,16 @@ namespace Fuel.Station.Blazor.Shared
         [LettersValidator(ErrorMessage = "The Surname must contain only Letters.")]
         public string Surname { get; set; } = null!;
 
+        [Required]
         public DateTime HireDateStart { get; set; }
 
-        public DateTime HireDateEnd { get; set; }
+        public DateTime? HireDateEnd { get; set; }
 
         [Required]
-        //[MinLength(0, ErrorMessage = "Value must be greater than 0.")]
+        [Range(0, 99999, ErrorMessage = "The range is from 0 to 99999!")]
+
         public decimal SallaryPerMonth { get; set; }
 
-        //[Required]
-        //[Range(1, 4, ErrorMessage = "You must choose a type!")]
         public EmployeeType employeeType { get; set; }
     }
 }

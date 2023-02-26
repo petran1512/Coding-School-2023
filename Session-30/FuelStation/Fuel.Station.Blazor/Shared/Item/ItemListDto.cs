@@ -1,4 +1,5 @@
-﻿using FuelStation.Model.Enums;
+﻿using Fuel.Station.Model;
+using FuelStation.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,8 @@ namespace Fuel.Station.Blazor.Shared
         public decimal Price { get; set; }
 
         public decimal Cost { get; set; }
+
+        public List<TransactionLine> TransactionLines { get; set; } = new List<TransactionLine>();
+
     }
 }

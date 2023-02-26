@@ -14,10 +14,11 @@ using System.Windows.Forms;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Items : Form
+    public partial class ItStaff : Form
     {
         private readonly HttpClient client;
-        public Items()
+
+        public ItStaff()
         {
             InitializeComponent();
             client = new HttpClient();
@@ -30,31 +31,26 @@ namespace Fuel.Station.Windows.Client
             return response.ToList();
         }
 
-        private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            GridView? view = sender as GridView;
-            if (view.GetFocusedRow != null)
-            {
-                ItemListDto? item = view.GetFocusedRow() as ItemListDto;
-                _ = DeleteItem(item.Id);
-            }
+            new Staff().Show();
+            this.Close();
         }
 
-        private void gridView1_ValidatingRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void grvItems_Click(object sender, EventArgs e)
         {
-            GridView? view = sender as GridView;
-            if (view.GetFocusedRow != null)
-            {
-                ItemListDto? item = view.GetFocusedRow() as ItemListDto;
-                if (item.Id == 0)
-                {
-                    _ = NewItem(item);
-                }
-                else
-                {
-                    _ = EditItem(item);
-                }
-            }
+
+        }
+
+        private void tabControlMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ItStaff_Load(object sender, EventArgs e)
+        {
+            _ = SetControlProperties();
+
         }
 
         //REQUEST METHODS
@@ -102,23 +98,37 @@ namespace Fuel.Station.Windows.Client
             }
         }
 
-
-        private void Items_Load(object sender, EventArgs e)
-        {
-            _ = SetControlProperties();
-
-        }
-
         private async Task SetControlProperties()
         {
             itemBindingSource.DataSource = await GetItems();
             grvItems.DataSource = itemBindingSource;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
         {
-            new Manager().Show();
-            this.Close();
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                ItemListDto? item = view.GetFocusedRow() as ItemListDto;
+                _ = DeleteItem(item.Id);
+            }
+        }
+
+        private void gridView1_ValidatingRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                ItemListDto? item = view.GetFocusedRow() as ItemListDto;
+                if (item.Id == 0)
+                {
+                    _ = NewItem(item);
+                }
+                else
+                {
+                    _ = EditItem(item);
+                }
+            }
         }
     }
 }

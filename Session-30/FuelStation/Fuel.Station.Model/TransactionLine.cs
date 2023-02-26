@@ -29,6 +29,17 @@ namespace Fuel.Station.Model
             ItemId= itemId;
         }
 
+        public TransactionLine(decimal quantity, decimal itemPrice, decimal netValue, decimal discountPercent,
+            decimal discountValue, decimal totalValue)
+        {
+            Quantity = quantity;
+            ItemPrice = itemPrice;
+            NetValue = netValue;
+            DiscountPercent = discountPercent;
+            DiscountValue = discountValue;
+            TotalValue = totalValue;
+        }
+
         //Relations
 
         public int TransactionId { get; set; }

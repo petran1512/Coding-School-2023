@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Shared\Fuel_Station.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Shared\Fuel_Station.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.SessionStorage" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.3" />

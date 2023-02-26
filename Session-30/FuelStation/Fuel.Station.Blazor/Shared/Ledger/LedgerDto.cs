@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fuel.Station.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,22 @@ namespace Fuel.Station.Blazor.Shared
         public decimal Expenses { get; set; }
         public decimal Total { get; set; }
 
+        public List<Transaction?> Transactions { get; set; } = new();
+
         public LedgerDto()
         {
 
+        }
+
+        public LedgerDto(DateTime datetime)
+        {
+            Year = datetime.Year;
+            Month = datetime.Month;
+        }
+
+        public void AddRent(decimal rent)
+        {
+            Expenses += rent;
         }
 
     }

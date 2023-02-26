@@ -28,7 +28,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 errorMessage = "Succeed ";
                 bool ret = true;
                 var cashiers = employees.Where(e => e.employeeType == EmployeeType.Cashier && e.HireDateEnd == null);
-                var managers = employees.Where(e => e.employeeType == EmployeeType.Manager) ;
+                var managers = employees.Where(e => e.employeeType == EmployeeType.Manager && e.HireDateEnd == null) ;
                 var staff = employees.Where(e => e.employeeType == EmployeeType.Staff && e.HireDateEnd == null);
                 if (type == EmployeeType.Manager && managers.Count() == ManagersLimits.Max)
                 {
@@ -45,21 +45,20 @@ namespace Fuel.Station.Blazor.Shared.Validator
                     ret = false;
                     errorMessage = $"You already have {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
                 }
-                if (ret)
-                {
+                if (ret){
                 if (employee.HireDateStart > employee.HireDateEnd)
-                {
-                    ret = false;
-                    errorMessage = $"Hire end date must be greater than start.";
-                }
+                    {
+                       ret = false;
+                       errorMessage = $"Hire End Date must be greater than Start Date.";
+                     }
                 else if (employee.HireDateStart <= employee.HireDateEnd)
-                {
-                    ret = true;
-                    errorMessage = "Succeed ";
-                }
-                }
-                return ret;
-            }
+                     {
+                        ret = true;
+                        errorMessage = "Succeed ";
+                     }
+                 }
+            return ret;
+        }
 
             public bool ValidateUpdateEmployee(EmployeeType NewType, Employee dbEmployee, List<Employee> employees, out string errorMessage)
             {
@@ -95,9 +94,8 @@ namespace Fuel.Station.Blazor.Shared.Validator
                         if (dbEmployee.HireDateStart > dbEmployee.HireDateEnd)
                         {
                             ret = false;
-                            errorMessage = $"Hire end date must be greater than start.";
-                        }
-                        else if (dbEmployee.HireDateStart < dbEmployee.HireDateEnd)
+                        errorMessage = $"Hire End Date must be greater than Start Date.";                    }
+                    else if (dbEmployee.HireDateStart < dbEmployee.HireDateEnd)
                         {
                             ret = true;
                             errorMessage = "Succeed ";
@@ -114,7 +112,7 @@ namespace Fuel.Station.Blazor.Shared.Validator
                 var cashiers = employees.Where(e => e.employeeType == EmployeeType.Cashier && e.HireDateEnd == null);
                 var staff = employees.Where(e => e.employeeType == EmployeeType.Staff && e.HireDateEnd == null);
                 var managers = employees.Where(e => e.employeeType == EmployeeType.Manager && e.HireDateEnd == null);
-                if (type == EmployeeType.Manager && managers.Count() <= ManagersLimits.Min)
+                if (type == EmployeeType.Manager && managers.Count() <= ManagersLimits.Min  )
                 {
                     errorMessage = $"You only have {ManagersLimits.Min} Manager. Min number of Managers is {ManagersLimits.Min}.";
                     ret = false;

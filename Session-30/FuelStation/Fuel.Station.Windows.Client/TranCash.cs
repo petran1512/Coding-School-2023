@@ -19,25 +19,69 @@ using System.Windows.Documents;
 
 namespace Fuel.Station.Windows.Client
 {
-    public partial class Transactions : Form
+    public partial class TranCash : Form
     {
         private readonly HttpClient client;
-        //private CustomerListDto _customer;
+        private CustomerListDto _customer;
         private List<ItemListDto?>? _items;
-
-        //public Transactions()
-        //{
-        //    InitializeComponent();
-        //    client = new HttpClient();
-        //    client.BaseAddress = new Uri("https://localhost:7095/");
-        //}
-
-        public Transactions(/*CustomerListDto customer*/)
+        public TranCash(CustomerListDto customer)
         {
             InitializeComponent();
-            //_customer = customer;
+            _customer = customer;
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
+        }
+
+ 
+
+        private void gridView5_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view != null && view.GetFocusedRow != null)
+            {//nullable warning
+                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    _ = DeleteTransaction(transaction.Id);
+                }
+            }
+
+        }
+
+        private void gridView5_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            GridView? view = sender as GridView;
+            if (view.GetFocusedRow != null)
+            {
+                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    transaction.CustomerId = _customer.Id;
+                    if (transaction.Id == 0)
+                    {
+                        _ = NewTransaction(transaction);
+                    }
+                    else
+                    {
+                        _ = EditTransaction(transaction);
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Cashier().Show();
+            this.Hide();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            int qty = 0;
+            string userInput = MessageGet("Enter item quantity:", "Quantity");
+            if (!Int32.TryParse(userInput, out qty)) MessageBox.Show("Error, try again with number.", "Error");
+            else if (qty <= 0) MessageBox.Show("Error, try again with number above 0.", "Error");
+            else AddNewTransactionLine(qty);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -46,30 +90,23 @@ namespace Fuel.Station.Windows.Client
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void comboItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            new Manager().Show();
-            this.Hide();
-        }
+            if (comboItems.SelectedItem != null)
+            {
+                listItems.DataSource = null;
+                var selectedItemType = (ItemType)comboItems.SelectedItem;
 
-        private void xtraTabControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControlMain_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Transactions_Load(object sender, EventArgs e)
-        {
-            _ = SetControlProperties();
+                var itemList = _items.Where(item => item != null && item.itemType == selectedItemType).ToList();
+                listItems.DataSource = itemList;
+                listItems.DisplayMember = "Description";
+                listItems.ValueMember = "Id";
+            }
         }
 
         private async Task SetControlProperties()
         {
-            var transactions = await GetTransactions(/*_customer.Id*/);
+            var transactions = await GetTransactions(_customer.Id);
             if (transactions != null)
             {
                 transactionBindingSource.DataSource = transactions;
@@ -95,6 +132,7 @@ namespace Fuel.Station.Windows.Client
                 if (_items != null) SetListBoxProperties();
             }
         }
+
         // transactionBindingSource.DataSource = await GetTransactions();
         //grvTransactions.DataSource = transactionBindingSource;
 
@@ -117,6 +155,9 @@ namespace Fuel.Station.Windows.Client
                 comboItems.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
+
+
+
 
         // ADD NEW TRANSACTION LINE
         private void AddNewTransactionLine(int qty)
@@ -159,6 +200,7 @@ namespace Fuel.Station.Windows.Client
 
         }
 
+
         public string MessageGet(string message, string title)
         {
             string userInput = Microsoft.VisualBasic.Interaction.InputBox(message, title);
@@ -169,7 +211,7 @@ namespace Fuel.Station.Windows.Client
         private void AddNewTransaction()
         {
             TransactionListDto newTempTransaction = new();
-            //newTempTransaction.CustomerId = _customer.Id;
+            newTempTransaction.CustomerId = _customer.Id;
             newTempTransaction.TotalValue = 0;
             transactionBindingSource.Add(newTempTransaction);
             CalculateTotalValue();
@@ -295,6 +337,7 @@ namespace Fuel.Station.Windows.Client
             }
         }
 
+
         // CALCULATE TOTAL VALUE FOR TRANSACTION
         public void CalculateTotalValue()
         {
@@ -317,6 +360,7 @@ namespace Fuel.Station.Windows.Client
 
         }
 
+
         // CELL VALUE CHANGE IF TOTAL VALUE IS 50 OR MORE 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -335,6 +379,7 @@ namespace Fuel.Station.Windows.Client
 
 
 
+
         private async Task<List<TransactionListDto?>> GetTransactions()
         {
             var response = await client.GetFromJsonAsync<List<TransactionListDto?>>("transaction");
@@ -347,16 +392,11 @@ namespace Fuel.Station.Windows.Client
             return response.ToList();
         }
 
-        private void grvTransactions_Click(object sender, EventArgs e)
+        private void TranCash_Load(object sender, EventArgs e)
         {
+            _ = SetControlProperties();
 
         }
-
-        private void bindingSource2_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //REQUESTS
         //TRANSACTIONS
         private async Task<List<TransactionListDto>> GetTransactions(int id)
@@ -423,7 +463,7 @@ namespace Fuel.Station.Windows.Client
             }
         }
 
-        // GET REQUEST EMPLOYEES
+        //REQUEST EMPLOYEES
         private async Task<List<EmployeeListDto?>> GetEmployees()
         {
             var response = await client.GetAsync("employee");
@@ -435,7 +475,7 @@ namespace Fuel.Station.Windows.Client
             return null;
         }
 
-        // GET REQUEST ITEMS
+        //REQUEST ITEMS
         private async Task<List<ItemListDto?>> GetItems()
         {
             var response = await client.GetAsync("item");
@@ -446,79 +486,5 @@ namespace Fuel.Station.Windows.Client
             }
             return null;
         }
-
-        // SET LISTBOX WHEN CHANGE COMBO VALUE
-
-        private void comboItems_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            if (comboItems.SelectedItem != null)
-            {
-                listItems.DataSource = null;
-                var selectedItemType = (ItemType)comboItems.SelectedItem;
-
-                var itemList = _items.Where(item => item != null && item.itemType == selectedItemType).ToList();
-                listItems.DataSource = itemList;
-                listItems.DisplayMember = "Description";
-                listItems.ValueMember = "Id";
-            }
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            int qty = 0;
-            string userInput = MessageGet("Enter item quantity:", "Quantity");
-            if (!Int32.TryParse(userInput, out qty)) MessageBox.Show("Error, try again with number.", "Error");
-            else if (qty <= 0) MessageBox.Show("Error, try again with number above 0.", "Error");
-            else AddNewTransactionLine(qty);
-
-        }
-
-        private void gridView5_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
-        {
-            GridView? view = sender as GridView;
-            if (view != null && view.GetFocusedRow != null)
-            {//nullable warning
-                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
-                if (transaction != null)
-                {
-                    _ = DeleteTransaction(transaction.Id);
-                }
-            }
-
-        }
-
-        private void gridView5_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
-        {
-            GridView? view = sender as GridView;
-            if (view.GetFocusedRow != null)
-            {
-                TransactionListDto? transaction = view.GetFocusedRow() as TransactionListDto;
-                if (transaction != null)
-                {
-                    //transaction.CustomerId = _customer.Id;
-                    if (transaction.Id == 0)
-                    {
-                        _ = NewTransaction(transaction);
-                    }
-                    else
-                    {
-                        _ = EditTransaction(transaction);
-                    }
-                }
-            }
-
-        }
-
-        private void listItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-
