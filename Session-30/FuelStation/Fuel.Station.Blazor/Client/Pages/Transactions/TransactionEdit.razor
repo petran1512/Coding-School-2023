@@ -169,12 +169,11 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Product</th>
                 <th>Quantity</th>
-                <th>Item Price(&euro;)</th>
-                <th>Net Value</th>
-                <th>Discount Percent(%)</th>
-                <th>Discount Value</th>
-                <th>Total Value(&euro;)</th>
+                <th>Price(&euro;)</th>
+                <th>Discount(%)</th>
+                <th>Total Price(&euro;)</th>
                 <th></th>
             </tr>
         </thead>
@@ -184,9 +183,9 @@ else
                 <tr>
                     <td>
                         <InputSelect class="form-control" @bind-Value="@transactionLine.ItemId" @bind-Value:after="() => OnItemSelect(transactionLine)">
-                            @foreach (var item in itemList)
+                            @foreach (var product in itemList)
                             {
-                                <option value="@item.Id">@item.Code- @item.Description</option>
+                                <option value="@product.Id">@product.Code - @product.Description</option>
                             }
                         </InputSelect>
                     </td>
@@ -249,7 +248,7 @@ else
         {
             employeeList = tempEmployeeList;
         }
-        itemList = await httpClient.GetFromJsonAsync<List<ItemListDto>>("item");
+        itemList = await httpClient.GetFromJsonAsync<List<ItemListDto>>("product");
         if (Id == null)
         {
             transaction = new();
