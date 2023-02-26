@@ -64,5 +64,10 @@ namespace Fuel.Station.Windows.Client
         {
 
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }

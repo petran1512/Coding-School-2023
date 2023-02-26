@@ -102,7 +102,6 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUserName.Location = new System.Drawing.Point(296, 120);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserName.Multiline = true;
@@ -116,6 +115,7 @@
             this.txtPassword.Location = new System.Drawing.Point(296, 218);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(284, 36);
             this.txtPassword.TabIndex = 8;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
@@ -140,6 +140,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

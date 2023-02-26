@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Fuel_Station.jpg" />
+    <None Remove="Shared\Fuel_Station.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Fuel_Station.jpg" />
+    <Content Include="Shared\Fuel_Station.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
