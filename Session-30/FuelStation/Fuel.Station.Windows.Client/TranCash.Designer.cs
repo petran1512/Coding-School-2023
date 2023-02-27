@@ -33,7 +33,7 @@
             this.xtraTabTransactions = new DevExpress.XtraTab.XtraTabPage();
             this.grvTransactions = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colTransactionEmployee = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTransactionEmployeeId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repEmployees = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colTransactionCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -122,7 +122,7 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colTransactionEmployee,
+            this.colTransactionEmployeeId,
             this.colTransactionCustomerId,
             this.colTransactionDate,
             this.colTransactionPaymentMethod,
@@ -133,14 +133,13 @@
             this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView5_RowDeleting);
             this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView5_ValidateRow);
             // 
-            // colTransactionEmployee
+            // colTransactionEmployeeId
             // 
-            this.colTransactionEmployee.Caption = "Employee";
-            this.colTransactionEmployee.ColumnEdit = this.repEmployees;
-            this.colTransactionEmployee.FieldName = "Employee";
-            this.colTransactionEmployee.Name = "colTransactionEmployee";
-            this.colTransactionEmployee.Visible = true;
-            this.colTransactionEmployee.VisibleIndex = 0;
+            this.colTransactionEmployeeId.Caption = "Employee";
+            this.colTransactionEmployeeId.FieldName = "EmployeeId";
+            this.colTransactionEmployeeId.Name = "colTransactionEmployeeId";
+            this.colTransactionEmployeeId.Visible = true;
+            this.colTransactionEmployeeId.VisibleIndex = 0;
             // 
             // repEmployees
             // 
@@ -151,7 +150,7 @@
             // 
             // colTransactionCustomerId
             // 
-            this.colTransactionCustomerId.Caption = "CustomerId";
+            this.colTransactionCustomerId.Caption = "Customer";
             this.colTransactionCustomerId.FieldName = "CustomerId";
             this.colTransactionCustomerId.Name = "colTransactionCustomerId";
             this.colTransactionCustomerId.Visible = true;
@@ -430,7 +429,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabTransactions;
         private DevExpress.XtraGrid.GridControl grvTransactions;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionEmployee;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionEmployeeId;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repEmployees;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionCustomerId;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionDate;

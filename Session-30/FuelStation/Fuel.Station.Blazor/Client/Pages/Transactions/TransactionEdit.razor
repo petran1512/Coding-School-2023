@@ -55,56 +55,6 @@ else
                 </div>
             </div>
 
-            <div class="col-md-1"></div>
-            <div class="col-md-3 flex-md-column d-flex justify-content-center">
-                <table id="TransactionLegendTable" class="table table-primary table-transactionLegend">
-                    <tbody>
-                        <tr>
-                            <td>
-                                Date:
-                            </td>
-                            <td>
-                                @transaction.Date
-                                <input class="form-control" @bind="@transaction.Date" hidden />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Quantity:
-                            </td>
-                            <td>
-                                @totalQuantity
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Subtotal:
-                            </td>
-                            <td>
-                                @preDiscountTotalPrice &euro;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Discount:
-                            </td>
-                            <td>
-                                @totalDiscount &euro;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Total:
-                            </td>
-                            <td>
-                                @transaction.TotalValue &euro;
-                                <input class="form-control" @bind="@transaction.TotalValue" hidden />
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
 
 
             <div class="col-md-2 flex-md-column d-flex justify-content-between payment-col">
@@ -112,10 +62,10 @@ else
                 <button class="@cashButtonClass oi oi-credit-card" @onclick="OnCard" @onclick:preventDefault>  </button>
             </div>
             <div class="col-md-1 flex-md-row d-flex justify-content-start payment-col">
-                <button class="btn btn-danger btn-cancel-transaction" @onclick="OnCancel">Cancel</button>
+                <button class="btn btn-success" @onclick="OnSave">Save</button>
             </div>
             <div class="col-md-1 flex-md-row d-flex justify-content-start payment-col">
-                <button class="btn btn-success" @onclick="OnSave">Save</button>
+                <button class="btn btn-danger btn-cancel-transaction" @onclick="OnCancel">Cancel</button>
             </div>
 
         }
@@ -144,7 +94,7 @@ else
                 </select>
             </div>
             <div class="col-md-2">
-                <label class="form-label">Total Price</label>
+                <label class="form-label">Total Value</label>
                 <input class="form-control" @bind="@transaction.TotalValue" disabled />
             </div>
             <div class="col-md-2">
@@ -169,12 +119,13 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Product</th>
+                <th>Item Code</th>
                 <th>Quantity</th>
-                <th>Price(&euro;)</th>
-                <th>Discount(%)</th>
-                <th>Total Price(&euro;)</th>
-                <th></th>
+                <th>Item Price(&euro;)</th>
+                <th>Net Value</th>
+                <th>Discount Percent(%)</th>
+                <th>Discount Value</th>
+                <th>Total Value(&euro;)</th>
             </tr>
         </thead>
         <tbody>
@@ -183,9 +134,9 @@ else
                 <tr>
                     <td>
                         <InputSelect class="form-control" @bind-Value="@transactionLine.ItemId" @bind-Value:after="() => OnItemSelect(transactionLine)">
-                            @foreach (var product in itemList)
+                            @foreach (var item in itemList)
                             {
-                                <option value="@product.Id">@product.Code - @product.Description</option>
+                                <option value="@item.Id">@item.Code - @item.Description</option>
                             }
                         </InputSelect>
                     </td>
@@ -193,7 +144,19 @@ else
                         <InputNumber class="form-control" @bind-Value=@transactionLine.Quantity @bind-Value:after="() => OnLineQuantityChange(transactionLine)" />
                     </td>
                     <td>
-                        <InputNumber class="form-control" @bind-Value=@transactionLine.TotalValue disabled />
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.ItemPrice @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled />
+                    </td>
+                    <td>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.NetValue @bind-Value:after="() => OnLineQuantityChange(transactionLine) " disabled />
+                    </td>
+                    <td>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountPercent @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled/>
+                    </td>
+                    <td>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountValue @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled/>
+                    </td>
+                    <td>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.TotalValue @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled />
                     </td>
                     <td>
                         <BootstrapButton ButtonType="BootstrapButtonType.Danger" OnClick="()=> RemoveLine(transactionLine)">X</BootstrapButton>
@@ -214,9 +177,12 @@ else
     private List<EmployeeListDto> employeeList = new();
     private List<ItemListDto> itemList = new();
     private bool isLoading { get; set; } = true;
-    private decimal totalQuantity { get; set; }
-    private decimal totalDiscount { get; set; }
-    private decimal preDiscountTotalPrice { get; set; }
+    private decimal netValue { get; set; }
+    //private decimal totalQuantity { get; set; }
+    private decimal totalValue { get; set; }
+    private decimal discountValue { get; set; }
+    //private decimal totalDiscountValue { get; set; }
+    //private decimal preDiscountTotalValue { get; set; }
     private bool isCashButtonClicked = false;
     private bool isCardButtonClicked = false;
     private string cardButtonClass = "btn btn-secondary btn-payment";
@@ -262,9 +228,9 @@ else
                 //Todo handle if Transaction is null
                 return;
             }
-            await UpdateTotalQuantity();
-            await UpdatePreDiscountTotalPrice();
-            await UpdateTransactionTotalPrice();
+            //await UpdateTotalQuantity();
+            //await UpdatePreDiscountTotalValue();
+            await UpdateTransactionTotalValue();
             //TODO: selected
         }
         isLoading = false;
@@ -309,7 +275,8 @@ else
 
         if (Id == null)
         {
-            response = await httpClient.PostAsJsonAsync("transaction", transaction);
+
+        response = await httpClient.PostAsJsonAsync("transaction", transaction);
         }
         else
         {
@@ -356,9 +323,9 @@ else
     async Task RemoveLine(TransactionLineEditDto transactionLine)
     {
         transaction.TransactionLines.Remove(transactionLine);
-        await UpdateTotalQuantity();
-        await UpdatePreDiscountTotalPrice();
-        await UpdateTransactionTotalPrice();
+        //await UpdateTotalQuantity();
+        //await UpdatePreDiscountTotalValue();
+        await UpdateTransactionTotalValue();
     }
 
 
@@ -366,41 +333,45 @@ else
     {
         var item = itemList.Find(item => item.Id == transactionLine.ItemId);
         transactionLine.ItemPrice = item.Price;
-        await UpdateLineTotalPrice(transactionLine);
-        await UpdatePreDiscountTotalPrice();
-        await UpdateTransactionTotalPrice();
+        await UpdateLineTotalValue(transactionLine);
+        await ApplyLineNetValue(transactionLine);
+        //await ApplyLineDiscountPercent(transactionLine);
+        //await ApplyLineDiscountValue(transactionLine);
+
     }
 
     async Task OnLineQuantityChange(TransactionLineEditDto transactionLine)
     {
-        await UpdateLineTotalPrice(transactionLine);
-        await UpdatePreDiscountTotalPrice();
-        await UpdateTransactionTotalPrice();
-        await UpdateTotalQuantity();
+        await UpdateLineTotalValue(transactionLine);
+        await ApplyLineNetValue(transactionLine);
+        //await ApplyLineDiscountPercent(transactionLine);
+        //await ApplyLineDiscountValue(transactionLine);
+        await UpdateTransactionTotalValue();
     }
 
     async Task OnDiscountChange(TransactionLineEditDto transactionLine)
     {
-        await UpdateLineTotalPrice(transactionLine);
-        await UpdateTransactionTotalPrice();
+        await UpdateLineTotalValue(transactionLine);
+        await UpdateTransactionTotalValue();
     }
 
-    async Task UpdateLineTotalPrice(TransactionLineEditDto transactionLine)
+    async Task UpdateLineTotalValue(TransactionLineEditDto transactionLine)
     {
-        transactionLine.TotalValue = transactionLine.ItemPrice * transactionLine.Quantity * (1 - 1/*(transactionLine.Discount / 100)*/);
+        transactionLine.TotalValue = transactionLine.ItemPrice * transactionLine.Quantity * (1 - (transactionLine.DiscountPercent));
         transactionLine.TotalValue = Math.Round(transactionLine.TotalValue, 2);
     }
 
-    async Task UpdateTotalQuantity()
-    {
-        totalQuantity = 0;
-        foreach (var transactionLine in transaction.TransactionLines)
-        {
-            totalQuantity += transactionLine.Quantity;
-        }
-    }
 
-    async Task UpdateTransactionTotalPrice()
+    //async Task UpdateTotalQuantity()
+    //{
+    //    totalQuantity = 0;
+    //    foreach (var transactionLine in transaction.TransactionLines)
+    //    {
+    //        totalQuantity += transactionLine.Quantity;
+    //    }
+    //}
+
+    async Task UpdateTransactionTotalValue()
     {
         transaction.TotalValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
@@ -410,56 +381,45 @@ else
         transaction.TotalValue = Math.Round(transaction.TotalValue, 2);
     }
 
-    async Task UpdatePreDiscountTotalPrice()
-    {
-        preDiscountTotalPrice = 0;
-        foreach (var transactionLine in transaction.TransactionLines)
-        {
-            preDiscountTotalPrice += transactionLine.Quantity * transactionLine.ItemPrice;
-        }
-        preDiscountTotalPrice = Math.Round(preDiscountTotalPrice, 2);
 
-        if (await DiscountEligible())
-        {
-            await ApplyDiscount();
-        }
-        else
-        {
-            await RemoveDiscount();
-        }
-        totalDiscount = Math.Round(totalDiscount, 2);
+    async Task ApplyLineNetValue(TransactionLineEditDto transactionLine)
+    {
+       
+        transactionLine.NetValue =Math.Round(transactionLine.ItemPrice * transactionLine.Quantity, 2);
+        await UpdateLineTotalValue(transactionLine);
+
     }
 
-    async Task<bool> DiscountEligible()
-    {
-        if (preDiscountTotalPrice > 10)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    async Task ApplyDiscount()
-    {
-        totalDiscount = 0;
-        foreach (var transactionLine in transaction.TransactionLines)
-        {
-            //transactionLine.Discount = 15;
-            totalDiscount += transactionLine.ItemPrice * transactionLine.Quantity * 1/*(transactionLine.Discount / 100)*/;
-            await UpdateLineTotalPrice(transactionLine);
-        }
-    }
 
-    async Task RemoveDiscount()
+    async Task RemoveLineNetValue()
     {
-        totalDiscount = 0;
+        netValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
         {
             //transactionLine.Discount = 0;
-            await UpdateLineTotalPrice(transactionLine);
+            await UpdateLineTotalValue(transactionLine);
+        }
+    }
+
+    async Task ApplyLineDiscountValue()
+    {
+        discountValue = 0;
+        foreach (var transactionLine in transaction.TransactionLines)
+        {
+            //transactionLine.Discount = 15;
+            discountValue += transactionLine.NetValue * (transactionLine.DiscountPercent);
+            await UpdateLineTotalValue(transactionLine);
+        }
+    }
+
+    async Task RemoveLineDiscountValue()
+    {
+        discountValue = 0;
+        foreach (var transactionLine in transaction.TransactionLines)
+        {
+            //transactionLine.Discount = 0;
+            await UpdateLineTotalValue(transactionLine);
         }
     }
 
