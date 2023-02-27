@@ -54,9 +54,8 @@
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(223, 220);
+            this.btnBack.Location = new System.Drawing.Point(235, 187);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(72, 29);
             this.btnBack.TabIndex = 38;
@@ -66,11 +65,10 @@
             // 
             // btnFind
             // 
-            this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFind.Location = new System.Drawing.Point(223, 128);
+            this.btnFind.Location = new System.Drawing.Point(222, 125);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(72, 29);
+            this.btnFind.Size = new System.Drawing.Size(100, 35);
             this.btnFind.TabIndex = 39;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
