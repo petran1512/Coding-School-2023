@@ -84,8 +84,8 @@ namespace Fuel.Station.Blazor.Server.Controllers
         // GET: api/<TransactionController>
         [Route("/transactionlist/details/{id}")]
         [HttpGet]
-            public async Task<TransactionDetailsDto?> GetDetailsById(int id)
-            {
+        public async Task<TransactionDetailsDto?> GetDetailsById(int id)
+        {
             var tran = await Task.Run(() => { return _transactionRepo.GetById(id); });
             if (tran is null)
             {
@@ -157,9 +157,9 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 Date = transaction.Date,
                 EmployeeId = transaction.EmployeeId,
                 CustomerId = transaction.CustomerId,
-                PaymentMethod= transaction.PaymentMethod,
-                TotalValue= transaction.TotalValue,
-                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, 
+                PaymentMethod = transaction.PaymentMethod,
+                TotalValue = transaction.TotalValue,
+                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue,
                 transactionLine.DiscountPercent, transactionLine.DiscountValue, transactionLine.TotalValue)
                 {
                     Id = transactionLine.Id,
