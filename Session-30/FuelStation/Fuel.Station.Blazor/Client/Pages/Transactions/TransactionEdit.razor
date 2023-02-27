@@ -150,10 +150,10 @@ else
                         <InputNumber class="form-control" @bind-Value=@transactionLine.NetValue @bind-Value:after="() => OnLineQuantityChange(transactionLine) " disabled />
                     </td>
                     <td>
-                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountPercent @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled/>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountPercent @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled />
                     </td>
                     <td>
-                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountValue @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled/>
+                        <InputNumber class="form-control" @bind-Value=@transactionLine.DiscountValue @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled />
                     </td>
                     <td>
                         <InputNumber class="form-control" @bind-Value=@transactionLine.TotalValue @bind-Value:after="() => OnLineQuantityChange(transactionLine)" disabled />
@@ -213,7 +213,7 @@ else
         {
             employeeList = tempEmployeeList;
         }
-        itemList = await httpClient.GetFromJsonAsync<List<ItemListDto>>("product");
+        itemList = await httpClient.GetFromJsonAsync<List<ItemListDto>>("item");
         if (Id == null)
         {
             transaction = new();
@@ -276,7 +276,7 @@ else
         if (Id == null)
         {
 
-        response = await httpClient.PostAsJsonAsync("transaction", transaction);
+            response = await httpClient.PostAsJsonAsync("transaction", transaction);
         }
         else
         {
@@ -384,8 +384,8 @@ else
 
     async Task ApplyLineNetValue(TransactionLineEditDto transactionLine)
     {
-       
-        transactionLine.NetValue =Math.Round(transactionLine.ItemPrice * transactionLine.Quantity, 2);
+
+        transactionLine.NetValue = Math.Round(transactionLine.ItemPrice * transactionLine.Quantity, 2);
         await UpdateLineTotalValue(transactionLine);
 
     }
