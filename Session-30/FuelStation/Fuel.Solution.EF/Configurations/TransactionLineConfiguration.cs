@@ -21,7 +21,7 @@ namespace Fuel.Solution.EF.Configurations
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
             // Properties
-            builder.Property(t => t.Quantity).HasPrecision(10, 2).IsRequired();
+            builder.Property(t => t.Quantity).IsRequired();
             builder.Property(t => t.ItemPrice).HasPrecision(10, 2).IsRequired();
             builder.Property(t => t.NetValue).HasPrecision(10, 2).IsRequired();
             builder.Property(t => t.DiscountPercent).HasPrecision(10, 2).IsRequired();

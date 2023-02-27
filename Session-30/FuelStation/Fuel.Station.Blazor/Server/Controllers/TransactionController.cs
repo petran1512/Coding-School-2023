@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using System.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Fuel.Station.Blazor.Server.Controllers
@@ -159,7 +160,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 CustomerId = transaction.CustomerId,
                 PaymentMethod = transaction.PaymentMethod,
                 TotalValue = transaction.TotalValue,
-                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue,
+                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine((int)transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue,
                 transactionLine.DiscountPercent, transactionLine.DiscountValue, transactionLine.TotalValue)
                 {
                     Id = transactionLine.Id,
@@ -176,7 +177,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
             await Task.Run(() => { _transactionRepo.Add(newTransaction); });
         }
 
-        // PUT api/<TransactionController>/5
+        //PUT api/<TransactionController>/5
         [HttpPut]
         public async Task Put(TransactionEditDto transaction)
         {
@@ -197,7 +198,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
                     transactionLine.ItemId)
                 {
                     Id = transactionLine.Id,
-                    Quantity = transactionLine.Quantity,
+                    Quantity = (int)transactionLine.Quantity,
                     ItemPrice = transactionLine.ItemPrice,
                     NetValue = transactionLine.NetValue,
                     DiscountPercent = transactionLine.DiscountPercent,

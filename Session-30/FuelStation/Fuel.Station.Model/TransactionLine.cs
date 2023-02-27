@@ -10,7 +10,7 @@ namespace Fuel.Station.Model
     {
         //Properties
         public int Id { get; set; }
-        public decimal Quantity { get; set; }
+        public int Quantity { get; set; }
         public decimal ItemPrice { get; set; }
         public decimal NetValue { get; set; }
         public decimal DiscountPercent { get; set; }
@@ -34,7 +34,7 @@ namespace Fuel.Station.Model
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public TransactionLine(decimal quantity, decimal itemPrice, decimal netValue, decimal discountPercent,
+        public TransactionLine(int quantity, decimal itemPrice, decimal netValue, decimal discountPercent,
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
             decimal discountValue, decimal totalValue)
         {
