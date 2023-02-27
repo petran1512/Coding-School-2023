@@ -35,7 +35,7 @@
             this.xtraTabTransactions = new DevExpress.XtraTab.XtraTabPage();
             this.grvTransactions = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colTransactionEmployee = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTransactionEmployeeId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repEmployees = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colTransactionCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -88,9 +88,6 @@
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBack.Location = new System.Drawing.Point(963, 289);
             this.btnBack.Name = "btnBack";
@@ -102,9 +99,6 @@
             // 
             // tabControlMain
             // 
-            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Location = new System.Drawing.Point(8, 3);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabTransactions;
@@ -141,7 +135,7 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colTransactionEmployee,
+            this.colTransactionEmployeeId,
             this.colTransactionCustomerId,
             this.colTransactionDate,
             this.colTransactionPaymentMethod,
@@ -152,14 +146,13 @@
             this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView5_RowDeleting);
             this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView5_ValidateRow);
             // 
-            // colTransactionEmployee
+            // colTransactionEmployeeId
             // 
-            this.colTransactionEmployee.Caption = "Employee";
-            this.colTransactionEmployee.ColumnEdit = this.repEmployees;
-            this.colTransactionEmployee.FieldName = "Employee";
-            this.colTransactionEmployee.Name = "colTransactionEmployee";
-            this.colTransactionEmployee.Visible = true;
-            this.colTransactionEmployee.VisibleIndex = 0;
+            this.colTransactionEmployeeId.Caption = "Employee";
+            this.colTransactionEmployeeId.FieldName = "EmployeeId";
+            this.colTransactionEmployeeId.Name = "colTransactionEmployeeId";
+            this.colTransactionEmployeeId.Visible = true;
+            this.colTransactionEmployeeId.VisibleIndex = 0;
             // 
             // repEmployees
             // 
@@ -170,7 +163,7 @@
             // 
             // colTransactionCustomerId
             // 
-            this.colTransactionCustomerId.Caption = "CustomerId";
+            this.colTransactionCustomerId.Caption = "Customer";
             this.colTransactionCustomerId.FieldName = "CustomerId";
             this.colTransactionCustomerId.Name = "colTransactionCustomerId";
             this.colTransactionCustomerId.Visible = true;
@@ -210,9 +203,6 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(13, 519);
             this.button1.Name = "button1";
@@ -224,9 +214,6 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraTabControl1.Location = new System.Drawing.Point(8, 289);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
@@ -368,7 +355,6 @@
             // 
             // comboItems
             // 
-            this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboItems.FormattingEnabled = true;
             this.comboItems.Location = new System.Drawing.Point(982, 31);
             this.comboItems.Name = "comboItems";
@@ -378,7 +364,6 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
@@ -391,7 +376,6 @@
             // 
             // listItems
             // 
-            this.listItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 15;
             this.listItems.Location = new System.Drawing.Point(883, 60);
@@ -402,7 +386,6 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Location = new System.Drawing.Point(1087, 131);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(37, 23);
@@ -465,7 +448,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemId;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineQuantity;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionLineItemPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionEmployee;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransactionEmployeeId;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionCustomerId;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionDate;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionPaymentMethod;

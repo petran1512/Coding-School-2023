@@ -1,18 +1,30 @@
 ﻿@page "/"
+@using BlazorWasmAuthenticationAndAuthorization.Client.Authentication;
 @inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navigationManager
 
 <PageTitle>Index</PageTitle>
 
 
 
-<h1>Welcome to our new app.!</h1>
+<h1>Welcome to our new app!</h1>
 
-
+@*<div class="mb-2 text-center ">
+    <AuthorizeView>
+        <Authorized>
+            <a @onclick="Logout" href="javascript:void(0)">Logout</a>
+        </Authorized>
+        <NotAuthorized>
+            <a href="/login">Login</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>*@
 
 <AuthorizeView>
     <Authorized>
         <br /><br />
-        <button class="btn btn-outline-primary" @onclick="DisplayGreetingAlert">Display Greeting Alert</button>
+        <button class="btn btn-outline-primary" @onclick="DisplayGreetingAlert">Hello!</button>
     </Authorized>
 </AuthorizeView>
 
@@ -26,4 +38,13 @@
         var message = $"Hello {authState.User.Identity.Name}";
         await js.InvokeVoidAsync("alert", message);
     }
+
+     //private async Task Logout()
+     //   {
+     //       var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+     //       await customAuthStateProvider.UpdateAuthenticationState(null);
+     //   }
+
+
+
 }

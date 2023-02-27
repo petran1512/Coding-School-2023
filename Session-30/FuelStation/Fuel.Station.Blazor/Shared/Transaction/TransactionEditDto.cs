@@ -20,10 +20,10 @@ namespace Fuel.Station.Blazor.Shared
         public decimal TotalValue { get; set; }
 
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
+        //public CustomerEditDto Customer { get; set; } = null!;
 
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; } = null!;
+        //public EmployeeEditDto Employee { get; set; } = null!;
 
         public List<TransactionLineEditDto> TransactionLines { get; set; }
     }

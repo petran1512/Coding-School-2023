@@ -187,7 +187,7 @@ namespace Fuel.Station.Windows.Client
                         var transaction = gridView.GetRow(gridView.FocusedRowHandle) as TransactionListDto;
                         if (transaction != null) newTempTL.TransactionId = transaction.Id;
 
-                        newTempTL.Item = item;
+                        //newTempTL.Item = item;
                         transactionlineBindingSource.Add(newTempTL);
                         CalculateTotalValue();
                     }
@@ -250,7 +250,7 @@ namespace Fuel.Station.Windows.Client
                 for (int i = 0; i < gridViewTL.RowCount; i++)
                 {
                     TransactionLineEditDto? transactionLine = gridViewTL.GetRow(i) as TransactionLineEditDto;
-                    if (transactionLine != null && transactionLine.Item.itemType == ItemType.Fuel)
+                    //if (transactionLine != null && transactionLine.Item.itemType == ItemType.Fuel)
                     {
                         foundFuelItem = true;
                         break;

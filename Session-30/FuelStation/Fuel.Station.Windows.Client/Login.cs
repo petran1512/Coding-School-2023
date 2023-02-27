@@ -50,11 +50,6 @@ namespace Fuel.Station.Windows.Client
             txtUserName.Focus();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
 
@@ -68,6 +63,11 @@ namespace Fuel.Station.Windows.Client
         private void Login_Load(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         //private void pictureBox4_Click(object sender, EventArgs e)
