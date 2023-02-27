@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fuel.Station.Blazor.Shared;
+using Fuel.Station.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ namespace Fuel.Station.Windows.Client
 {
     public partial class AutoCustomerFinder : Form
     {
+
         private readonly HttpClient client;
 
         public AutoCustomerFinder()
@@ -24,7 +27,7 @@ namespace Fuel.Station.Windows.Client
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-
+            if (boxCustomerFind.Text == "") ;
         }
     }
 }
