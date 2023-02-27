@@ -21,7 +21,7 @@ namespace Fuel.Solution.EF.Configurations
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
             //Properties
-            builder.Property(t => t.Code).IsRequired().IsUnicode();
+            builder.Property(t => t.Code).IsRequired().HasMaxLength(5).IsUnicode();
             builder.Property(t => t.Description).HasMaxLength(150).IsRequired();
             builder.Property(t => t.itemType).IsRequired();
             builder.Property(t => t.Price).HasPrecision(10, 3).IsRequired();
