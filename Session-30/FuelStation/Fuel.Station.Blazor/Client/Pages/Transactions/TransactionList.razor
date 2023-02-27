@@ -20,8 +20,8 @@ else
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Employee Id</th>
-                <th>Customer Id</th>
+                <th>Employee</th>
+                <th>Customer</th>
                 <th>Payment Method</th>
                 <th>Total Value</th>
             </tr>
@@ -30,18 +30,18 @@ else
             @foreach (var transaction in transactionList)
             {
                 <tr>
-                @*@if (@transaction.PaymentMethod = FuelStation.Model.Enums.PaymentMethod.CreditCard)
-                {
-                <div class="nav-item px-3">
-                <NavLink class="nav-link" href="PaymentMethod">
-                <span class="oi oi-cart" aria-hidden="true"></span> PaymentMethod
-                </NavLink>
-                </div>
-                }*@
-                 <td>@transaction.Date</td>
-                <td>@GetEmployeeNameWithId(transaction.EmployeeId)</td>
-                <td>@GetCustomerSurnameWithId(transaction.CustomerId)</td>
-                <td>@transaction.PaymentMethod</td>
+                    @*@if (@transaction.PaymentMethod = FuelStation.Model.Enums.PaymentMethod.CreditCard)
+            {
+            <div class="nav-item px-3">
+            <NavLink class="nav-link" href="PaymentMethod">
+            <span class="oi oi-cart" aria-hidden="true"></span> PaymentMethod
+            </NavLink>
+            </div>
+            }*@
+                    <td>@transaction.Date</td>
+                    <td>@GetEmployeeNameWithId(transaction.EmployeeId)</td>
+                    <td>@GetCustomerSurnameWithId(transaction.CustomerId)</td>
+                    <td>@transaction.PaymentMethod</td>
                     <td>@transaction.TotalValue</td>
                     <td>
                         <BootstrapButton ButtonType="BootstrapButtonType.Warning" OnClick="()=> EditItem(transaction)">Edit</BootstrapButton>

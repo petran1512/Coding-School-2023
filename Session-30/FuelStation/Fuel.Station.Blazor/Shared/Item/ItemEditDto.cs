@@ -1,5 +1,6 @@
 ﻿using Fuel.Station.Blazor.Shared.Validator;
 using FuelStation.Model.Enums;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,10 @@ namespace Fuel.Station.Blazor.Shared
     public class ItemEditDto
     {
         public int Id { get; set; }
+
         [Required]
+        //[Index("Code", IsUnique = true)]
+        [MaxLength(5, ErrorMessage = "Type less than 6 characters")]
         public string? Code { get; set; }
 
         [Required]

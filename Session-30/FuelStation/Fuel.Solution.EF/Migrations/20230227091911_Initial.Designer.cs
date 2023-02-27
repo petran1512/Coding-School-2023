@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.Solution.EF.Migrations
 {
     [DbContext(typeof(FuelStationDbContext))]
-    [Migration("20230226144609_Initial")]
+    [Migration("20230227091911_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -100,8 +100,9 @@ namespace Fuel.Solution.EF.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .HasMaxLength(5)
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<decimal>("Cost")
                         .HasPrecision(10, 3)

@@ -108,8 +108,8 @@ else
 
 
             <div class="col-md-2 flex-md-column d-flex justify-content-between payment-col">
-                <button class="@cardButtonClass" @onclick="OnCash" @onclick:preventDefault> Cash </button>
-                <button class="@cashButtonClass" @onclick="OnCard" @onclick:preventDefault> Card </button>
+                <button class="@cardButtonClass oi oi-dollar" @onclick="OnCash" @onclick:preventDefault>  </button>
+                <button class="@cashButtonClass oi oi-credit-card" @onclick="OnCard" @onclick:preventDefault>  </button>
             </div>
             <div class="col-md-1 flex-md-row d-flex justify-content-start payment-col">
                 <button class="btn btn-danger btn-cancel-transaction" @onclick="OnCancel">Cancel</button>
@@ -263,11 +263,11 @@ else
                 //Todo handle if Transaction is null
                 return;
             }
+            await UpdateTotalQuantity();
+            await UpdatePreDiscountTotalPrice();
+            await UpdateTransactionTotalPrice();
             //TODO: selected
         }
-        await UpdateTotalQuantity();
-        await UpdatePreDiscountTotalPrice();
-        await UpdateTransactionTotalPrice();
         isLoading = false;
     }
 

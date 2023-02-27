@@ -50,6 +50,7 @@
             this.boxCustomerFind.Name = "boxCustomerFind";
             this.boxCustomerFind.Size = new System.Drawing.Size(212, 23);
             this.boxCustomerFind.TabIndex = 37;
+            this.boxCustomerFind.TextChanged += new System.EventHandler(this.boxCustomerFind_TextChanged);
             // 
             // btnBack
             // 
@@ -61,6 +62,7 @@
             this.btnBack.TabIndex = 38;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnFind
             // 
@@ -85,6 +87,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AutoCustomerFinder";
             this.Text = "AutoCustomerFinder";
+            this.Load += new System.EventHandler(this.AutoCustomerFinder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

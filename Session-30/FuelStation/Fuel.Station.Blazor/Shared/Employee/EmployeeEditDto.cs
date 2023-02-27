@@ -24,8 +24,11 @@ namespace Fuel.Station.Blazor.Shared
         public string Surname { get; set; } = null!;
 
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:01/01/2021}")]
+        [Range(typeof(DateTime), "01/01/2021", "01/01/2100")]
         public DateTime HireDateStart { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? HireDateEnd { get; set; }
 
         [Required]

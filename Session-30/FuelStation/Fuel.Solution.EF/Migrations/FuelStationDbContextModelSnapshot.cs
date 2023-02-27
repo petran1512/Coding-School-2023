@@ -97,8 +97,9 @@ namespace Fuel.Solution.EF.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .HasMaxLength(5)
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<decimal>("Cost")
                         .HasPrecision(10, 3)
