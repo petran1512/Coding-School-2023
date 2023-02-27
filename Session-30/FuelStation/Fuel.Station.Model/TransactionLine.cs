@@ -18,18 +18,24 @@ namespace Fuel.Station.Model
         public decimal TotalValue { get; set; }
 
         //Constructors
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public TransactionLine()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
 
         }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public TransactionLine(int transactionId, int itemId)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             TransactionId= transactionId;
             ItemId= itemId;
         }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public TransactionLine(decimal quantity, decimal itemPrice, decimal netValue, decimal discountPercent,
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
             decimal discountValue, decimal totalValue)
         {
             Quantity = quantity;
