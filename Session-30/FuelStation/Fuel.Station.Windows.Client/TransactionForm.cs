@@ -16,5 +16,10 @@ namespace Fuel.Station.Windows.Client
         {
             InitializeComponent();
         }
+
+        private void TransactionForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

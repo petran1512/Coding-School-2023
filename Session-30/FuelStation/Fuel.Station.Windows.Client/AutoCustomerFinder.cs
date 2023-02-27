@@ -1,4 +1,7 @@
-﻿using Fuel.Station.Blazor.Shared;
+﻿using Fuel.Station.Blazor.Client.Pages.Customers;
+using Fuel.Station.Blazor.Client.Pages.Transactions;
+using Fuel.Station.Blazor.Shared;
+using Fuel.Station.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,16 +19,14 @@ namespace Fuel.Station.Windows.Client
 {
     public partial class AutoCustomerFinder : Form
     {
+        private readonly HttpClient httpClient = new HttpClient();
         private readonly HttpClient client;
-        private CustomerEditDto _customerEditDto;
-        private CustomerListDto _customerListDto;
-        public CustomerEditDto outCustomer = new();
 
 
-        public AutoCustomerFinder(CustomerListDto customerListDto)
+
+        public AutoCustomerFinder()
         {
-            _customerListDto = customerListDto;
-            _customerEditDto= new CustomerEditDto();
+ 
             InitializeComponent();
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7095/");
@@ -34,10 +36,42 @@ namespace Fuel.Station.Windows.Client
         {
             //btnFind.Enabled = false;
             //string inputText = boxCustomerFind.Text;
-            AutoCN();
-            boxCustomerFind.Refresh();
+            //boxCustomerFind.Refresh();
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            //customers = await httpClient.GetFromJsonAsync<List<CustomerListDto>>("customer");
+            //Guid foundID = Guid.Empty;
+            //bool found = false;
+
+            //CustomerListDto foundcus = new();
+            //foreach (var cus in customers)
+            //{
+
+            //    if (cus.CardNumber.ToString() == boxCustomerFind.Text.ToString())
+            //    {
+            //        foundcus = cus;
+            //        found = true;
+            //        break;
+            //    }
+            //}
+            //if (found && foundcus != null)
+            //{
+            //    MessageBox.Show("Customer Found!\n" + foundcus.Name + " " + foundcus.Surname);
+            //    var trForm = new Transactions(_loginStatus.EmployeeID, foundcus.Id);
+            //    trForm.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Customer not Found!\n");
+            //    var form = new CustomerEditF(null);
+            //    form.ShowDialog();
+            //    customers = await httpClient.GetFromJsonAsync<List<CustomerListDto>>("customer");
+            //    var trForm = new Transactions(_loginStatus.EmployeeID, customers.Where(c => c.CardNumber == form.resultCustomer.CardNumber).Select(c => c.ID).SingleOrDefault());
+            //    trForm.ShowDialog();
+            //}
+        }
 
         private void OpenTransactionsForm(CustomerListDto item)
         {
@@ -51,11 +85,11 @@ namespace Fuel.Station.Windows.Client
 
         private void OpenCustomersForm()
         {
-            MessageBox.Show("Customer not found! Please insert new customer.", "Message");
-            this.Hide();
-            Customer formMenu = new Customer();
-            formMenu.FormClosed += (s, args) => this.Close();
-            formMenu.ShowDialog();
+            //MessageBox.Show("Customer not found! Please insert new customer.", "Message");
+            //this.Hide();
+            //Customer formMenu = new Customer();
+            //formMenu.FormClosed += (s, args) => this.Close();
+            //formMenu.ShowDialog();
         }
 
         private async Task<CustomerListDto?> CustomerDetails(string cardnumber)
@@ -76,56 +110,13 @@ namespace Fuel.Station.Windows.Client
 
         private void AutoCustomerFinder_Load(object sender, EventArgs e)
         {
-            Finder();
-        }
 
-        private async Task Finder()
-        {
-            if (_customerListDto != null)
-            {
-                if (_customerListDto.Id != null)
-                {
-                    try
-                    {
-
-                        _customerEditDto = await HttpClient.GetFromJsonAsync<_customerEditDto>($"customer/{_customerListDto.Id}");
-                        boxCustomerFind.ReadOnly = true;
-                        boxCustomerFind.Text = _customerEditDto.CardNumber;
-                        Finder();
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.Message);
-                    }
-                }
-            }
-        }
-
-        private void UpdateFinder()
-        {
-            boxCustomerFind.Refresh();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
 
-        }
-
-        private void AutoCN()
-        {
-            if (_customerEditDto.Id == Id.Empty)
-            {
-                string guidString = Guid.NewGuid().ToString().Replace("-", "");
-                guidString = "A" + guidString;
-
-                if (guidString.Length > 20)
-                {
-                    guidString = guidString.Substring(0, 20);
-                }
-                boxCustomerFind.Text = guidString;
-            }
-            else { MessageBox.Show("Customer Already Has a Card!"); }
         }
 
     }
