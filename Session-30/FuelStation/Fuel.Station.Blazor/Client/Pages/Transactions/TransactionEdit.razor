@@ -253,11 +253,11 @@ else
             await jsRuntime.InvokeVoidAsync("alert", "Please add a transaction line!");
             return;
         }
-        if (transaction.PaymentMethod == 0)
-        {
-            await jsRuntime.InvokeVoidAsync("alert", "Please choose payment method!@");
-            return;
-        }
+        //if (transaction.PaymentMethod == 0)
+        //{
+        //    await jsRuntime.InvokeVoidAsync("alert", "Please choose payment method!");
+        //    return;
+        //}
         if (!CardEligible() && transaction.PaymentMethod == PaymentMethod.CreditCard)
         {
             await jsRuntime.InvokeVoidAsync("alert", "Please choose cash method!");
@@ -271,9 +271,11 @@ else
                 return;
             }
         }
+        await jsRuntime.InvokeVoidAsync("console.log", transaction);
 
         if (Id == null)
         {
+            await jsRuntime.InvokeVoidAsync("console.log", transaction);
 
             response = await httpClient.PostAsJsonAsync("transaction", transaction);
         }
