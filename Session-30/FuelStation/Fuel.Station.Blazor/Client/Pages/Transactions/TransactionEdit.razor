@@ -2,6 +2,9 @@
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
 @page "/transactionlist/edit/{Id:int?}"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize(Roles = "Manager")]
+@inject AuthenticationStateProvider authenticationStateProvider
 @using Fuel.Solution.EF.Repositories;
 @using Fuel.Station.Blazor.Shared;
 @using Fuel.Station.Model;
@@ -75,12 +78,6 @@ else
         }
         else
         {
-@*            <div class=" row">
-            <div class="col-md-2 flex-md-column">
-                <label class="form-label">Date</label>
-                <input class="form-control" @bind="@transaction.Date"  />
-            </div>
-            </div>*@
             <div class="col-md-2">
                 <label class="form-label">Customer</label>
                 <select class="form-control" @bind="transaction.CustomerId">
@@ -184,11 +181,9 @@ else
     private List<ItemListDto> itemList = new();
     private bool isLoading { get; set; } = true;
     private decimal netValue { get; set; }
-    //private decimal totalQuantity { get; set; }
     private decimal totalValue { get; set; }
+    private decimal discountPercent { get; set; }
     private decimal discountValue { get; set; }
-    //private decimal totalDiscountValue { get; set; }
-    //private decimal preDiscountTotalValue { get; set; }
     private bool isCashButtonClicked = false;
     private bool isCardButtonClicked = false;
     private string cardButtonClass = "btn btn-secondary btn-payment";
@@ -234,9 +229,7 @@ else
                 //Todo handle if Transaction is null
                 return;
             }
-            //await UpdateTotalQuantity();
-            //await UpdatePreDiscountTotalValue();
-            await UpdateTransactionTotalValue();
+            await ApplyTransactionTotalValue();
             //TODO: selected
         }
         isLoading = false;
@@ -329,9 +322,7 @@ else
     async Task RemoveLine(TransactionLineEditDto transactionLine)
     {
         transaction.TransactionLines.Remove(transactionLine);
-        //await UpdateTotalQuantity();
-        //await UpdatePreDiscountTotalValue();
-        await UpdateTransactionTotalValue();
+        await ApplyTransactionTotalValue();
     }
 
 
@@ -341,8 +332,8 @@ else
         transactionLine.ItemPrice = item.Price;
         await UpdateLineTotalValue(transactionLine);
         await ApplyLineNetValue(transactionLine);
-        //await ApplyLineDiscountPercent(transactionLine);
-        //await ApplyLineDiscountValue(transactionLine);
+        await ApplyLineDiscountPercent(transactionLine);
+        await ApplyLineDiscountValue(transactionLine);
 
     }
 
@@ -350,34 +341,25 @@ else
     {
         await UpdateLineTotalValue(transactionLine);
         await ApplyLineNetValue(transactionLine);
-        //await ApplyLineDiscountPercent(transactionLine);
-        //await ApplyLineDiscountValue(transactionLine);
-        await UpdateTransactionTotalValue();
+        await ApplyLineDiscountPercent(transactionLine);
+        await ApplyLineDiscountValue(transactionLine);
+        await ApplyTransactionTotalValue();
     }
 
     async Task OnDiscountChange(TransactionLineEditDto transactionLine)
     {
         await UpdateLineTotalValue(transactionLine);
-        await UpdateTransactionTotalValue();
+        await ApplyTransactionTotalValue();
     }
 
     async Task UpdateLineTotalValue(TransactionLineEditDto transactionLine)
     {
-        transactionLine.TotalValue = transactionLine.ItemPrice * transactionLine.Quantity * (1 - (transactionLine.DiscountPercent));
+        transactionLine.TotalValue = transactionLine.NetValue - transactionLine.DiscountValue;
         transactionLine.TotalValue = Math.Round(transactionLine.TotalValue, 2);
     }
 
 
-    //async Task UpdateTotalQuantity()
-    //{
-    //    totalQuantity = 0;
-    //    foreach (var transactionLine in transaction.TransactionLines)
-    //    {
-    //        totalQuantity += transactionLine.Quantity;
-    //    }
-    //}
-
-    async Task UpdateTransactionTotalValue()
+    async Task ApplyTransactionTotalValue()
     {
         transaction.TotalValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
@@ -387,7 +369,7 @@ else
         transaction.TotalValue = Math.Round(transaction.TotalValue, 2);
     }
 
-
+    //NetValue
     async Task ApplyLineNetValue(TransactionLineEditDto transactionLine)
     {
 
@@ -396,27 +378,40 @@ else
 
     }
 
-
-
     async Task RemoveLineNetValue()
     {
         netValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
         {
-            //transactionLine.Discount = 0;
             await UpdateLineTotalValue(transactionLine);
         }
     }
 
-    async Task ApplyLineDiscountValue()
+    //DiscountPercent
+    async Task ApplyLineDiscountPercent(TransactionLineEditDto transactionLine)
+    {
+
+
+        transactionLine.DiscountPercent  = 10;
+            await UpdateLineTotalValue(transactionLine);
+
+    }
+
+    async Task RemoveLineDiscountPercent()
     {
         discountValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
         {
-            //transactionLine.Discount = 15;
-            discountValue += transactionLine.NetValue * (transactionLine.DiscountPercent);
             await UpdateLineTotalValue(transactionLine);
         }
+    }
+
+    //DiscountValue
+    async Task ApplyLineDiscountValue(TransactionLineEditDto transactionLine)
+    {
+
+            transactionLine.DiscountValue = (transactionLine.NetValue * transactionLine.DiscountPercent) /100;
+            await UpdateLineTotalValue(transactionLine);
     }
 
     async Task RemoveLineDiscountValue()
@@ -424,10 +419,12 @@ else
         discountValue = 0;
         foreach (var transactionLine in transaction.TransactionLines)
         {
-            //transactionLine.Discount = 0;
             await UpdateLineTotalValue(transactionLine);
         }
     }
+
+
+
 
     async Task OnCash()
     {

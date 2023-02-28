@@ -16,13 +16,11 @@ namespace Fuel.Station.Blazor.Server.Controllers
     {
         // Properties
         private readonly IEntityRepo<Customer> _customerRepo;
-        private string _errorMessage;
 
         // Constructors
         public CustomerController(IEntityRepo<Customer> cutomerRepo)
         {
             _customerRepo = cutomerRepo;
-            _errorMessage = string.Empty;
         }
 
         // GET: api/<CustomersController>
@@ -100,10 +98,10 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 await Task.Run(() => { _customerRepo.Update(customer.Id, dbCustomer); });
                 return Ok();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException exception)
+            when (exception?.InnerException?.Message.Contains("Cannot insert duplicate key row in object") ?? false)
             {
-
-                return BadRequest("Card number already assigned. Please try again.");
+                return BadRequest("This CardNumber is already in use,try again.");
             }
         }
 
