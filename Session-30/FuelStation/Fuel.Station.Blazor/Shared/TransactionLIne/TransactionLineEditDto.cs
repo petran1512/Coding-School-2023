@@ -14,16 +14,12 @@ namespace Fuel.Station.Blazor.Shared
         public decimal Quantity { get; set; }
         [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal ItemPrice { get; set; }
-        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal NetValue { get; set; }
 
-        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal DiscountPercent { get; set; }
 
-        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal DiscountValue { get; set; }
 
-        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal TotalValue { get; set; }
 
         public int TransactionId { get; set; }
