@@ -25,9 +25,13 @@ namespace Fuel.Station.Blazor.Shared
         public string? Description { get; set; }
         [Required]
         public ItemType itemType { get; set; }
+
         [Required]
+        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
         public decimal Price { get; set; }
         [Required]
+        [Range(0, 99999, ErrorMessage = "Enter a number greater than 0!")]
+
         public decimal Cost { get; set; }
     }
 }
