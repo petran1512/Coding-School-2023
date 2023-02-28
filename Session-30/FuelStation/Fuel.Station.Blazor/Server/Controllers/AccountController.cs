@@ -23,7 +23,9 @@ namespace Fuel.Station.Blazor.Server.Controllers
         public ActionResult<UserSession> Login([FromBody] LoginRequest loginRequest)
         {
             var jwtAuthenticationManager = new JwtAuthenticationManager(_userAccountService);
+#pragma warning disable CS8604 // Possible null reference argument.
             var userSession = jwtAuthenticationManager.GenerateJwtToken(loginRequest.UserName, loginRequest.Password);
+#pragma warning restore CS8604 // Possible null reference argument.
             if (userSession is null)
                 return Unauthorized();
             else

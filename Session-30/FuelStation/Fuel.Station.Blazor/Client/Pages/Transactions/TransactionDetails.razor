@@ -24,12 +24,12 @@ else
             <input class="form-control" disabled @bind="@transaction.Date" />
         </div>
         <div class="col-md-6">
-            <label class="form-label">Employee Id</label>
-            <input class="form-control" disabled @bind="@transaction.EmployeeId" />
+            <label class="form-label">Employee Name</label>
+            <input class="form-control" disabled @bind="@transaction.Employee.Surname" />
         </div>
         <div class="col-md-6">
-            <label class="form-label">Customer Id</label>
-            <input class="form-control" disabled @bind="@transaction.CustomerId" />
+            <label class="form-label">Customer Name</label>
+            <input class="form-control" disabled @bind="@transaction.Customer.Surname" />
         </div>
         <div class="col-md-6">
             <label class="form-label">Payment Method</label>

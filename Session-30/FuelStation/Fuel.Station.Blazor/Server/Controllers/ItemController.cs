@@ -2,6 +2,8 @@
 using Fuel.Station.Blazor.Shared;
 using Fuel.Station.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -72,25 +74,20 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 Price = item.Price,
                 Cost = item.Cost,
             };
-            await Task.Run(() => { _itemRepo.Add(newItem); });
-            return Ok();
-            //if (_validator.ValidateAddEmployee(_employeeRepo.GetAll().ToList(), out _errorMessage))
-            //{
-            //    try
-            //    {
-            //        await Task.Run(() => { _employeeRepo.Add(newEmployee); });
-            //        return Ok();
-            //    }
-            //    catch (DbException ex)
-            //    {
-            //        return BadRequest(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    return BadRequest(_errorMessage);
-            //}
+            try
+            {
+                await Task.Run(() => { _itemRepo.Add(newItem); });
+                return Ok();
+            }
+            catch (DbUpdateException exception)
+            when (exception?.InnerException?.Message.Contains("Cannot insert duplicate key row in object") ?? false)
+            {
+                return BadRequest("This Code is already in use,try again.");
+            }
+
         }
+
+
 
         // PUT /<ItemController>/5
         [HttpPut]

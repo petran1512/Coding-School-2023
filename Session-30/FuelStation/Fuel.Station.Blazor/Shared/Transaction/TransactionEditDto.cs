@@ -12,6 +12,9 @@ namespace Fuel.Station.Blazor.Shared
     public class TransactionEditDto
     {
         public int Id { get; set; }
+
+        [Required]
+        [Range(typeof(DateTime), "01/01/2022", "01/01/2100")]
         public DateTime Date { get; set; }
 
         [Required]
@@ -20,11 +23,9 @@ namespace Fuel.Station.Blazor.Shared
         public decimal TotalValue { get; set; }
 
         public int CustomerId { get; set; }
-        //public CustomerEditDto Customer { get; set; } = null!;
 
         public int EmployeeId { get; set; }
-        //public EmployeeEditDto Employee { get; set; } = null!;
 
-        public List<TransactionLineEditDto> TransactionLines { get; set; }
+        public List<TransactionLineEditDto>? TransactionLines { get; set; }
     }
 }

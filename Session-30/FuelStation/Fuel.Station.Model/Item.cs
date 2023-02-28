@@ -1,7 +1,10 @@
 ﻿using FuelStation.Model.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fuel.Station.Model
 {
+    [Index(nameof(Code), IsUnique = true)]
+
     public class Item
     {
         //Properties

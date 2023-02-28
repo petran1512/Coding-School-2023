@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
   </ItemGroup>

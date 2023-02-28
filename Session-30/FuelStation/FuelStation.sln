@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Blazor.Client"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuel.Station.Blazor.Shared", "Fuel.Station.Blazor\Shared\Fuel.Station.Blazor.Shared.csproj", "{1C7C00AD-6687-4E85-B61A-F9782428EFDD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FC6AB32-55E4-4F51-9124-1F46BC40D870}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

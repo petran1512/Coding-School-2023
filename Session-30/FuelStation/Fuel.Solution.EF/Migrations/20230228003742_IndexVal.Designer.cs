@@ -4,6 +4,7 @@ using FuelStation.EF.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.Solution.EF.Migrations
 {
     [DbContext(typeof(FuelStationDbContext))]
-    partial class FuelStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230228003742_IndexVal")]
+    partial class IndexVal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -205,6 +205,7 @@ namespace Fuel.Station.Windows.Client
 
             if (gridViewTL != null)
             {
+#pragma warning disable CS0162 // Unreachable code detected
                 for (int i = 0; i < gridViewTL.RowCount; i++)
                 {
                     TransactionLineEditDto? transactionLine = gridViewTL.GetRow(i) as TransactionLineEditDto;
@@ -214,6 +215,7 @@ namespace Fuel.Station.Windows.Client
                         break;
                     }
                 }
+#pragma warning restore CS0162 // Unreachable code detected
             }
             return foundFuelItem;
         }
@@ -359,7 +361,7 @@ namespace Fuel.Station.Windows.Client
 
         //REQUESTS
         //TRANSACTIONS
-        private async Task<List<TransactionListDto>> GetTransactions(int id)
+        private async Task<List<TransactionListDto>?> GetTransactions(int id)
         {
             var response = await client.GetAsync($"transaction/customer/{id}");
             if (response.IsSuccessStatusCode)
@@ -424,7 +426,7 @@ namespace Fuel.Station.Windows.Client
         }
 
         // GET REQUEST EMPLOYEES
-        private async Task<List<EmployeeListDto?>> GetEmployees()
+        private async Task<List<EmployeeListDto?>?> GetEmployees()
         {
             var response = await client.GetAsync("employee");
             if (response.IsSuccessStatusCode)
@@ -436,7 +438,7 @@ namespace Fuel.Station.Windows.Client
         }
 
         // GET REQUEST ITEMS
-        private async Task<List<ItemListDto?>> GetItems()
+        private async Task<List<ItemListDto?>?> GetItems()
         {
             var response = await client.GetAsync("item");
             if (response.IsSuccessStatusCode)

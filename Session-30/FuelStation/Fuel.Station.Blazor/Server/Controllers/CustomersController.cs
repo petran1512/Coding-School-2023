@@ -49,6 +49,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
             {
                 return null;
             }
+#pragma warning disable CS8601 // Possible null reference assignment.
             CustomerEditDto customer = new CustomerEditDto
             {
                 Id = id,
@@ -56,6 +57,7 @@ namespace Fuel.Station.Blazor.Server.Controllers
                 Surname = result.Surname,
                 CardNumber = result.CardNumber,
             };
+#pragma warning restore CS8601 // Possible null reference assignment.
             return customer;
         }
 
@@ -68,11 +70,12 @@ namespace Fuel.Station.Blazor.Server.Controllers
             {
                 await Task.Run(() => { _customerRepo.Add(newCustomer); });
                 return Ok();
-            }
-            catch (DbUpdateException)
-            {
+            }          
 
-                return BadRequest("Card number already assigned. Please try again.");
+            catch (DbUpdateException exception)
+            when (exception?.InnerException?.Message.Contains("Cannot insert duplicate key row in object") ?? false)
+            {
+                return BadRequest("This CardNumber is already in use,try again.");
             }
 
         }

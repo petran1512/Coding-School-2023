@@ -1,5 +1,9 @@
-﻿namespace Fuel.Station.Model
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Fuel.Station.Model
 {
+    [Index(nameof(CardNumber), IsUnique = true)]
+
     public class Customer
     {
         //Properties
