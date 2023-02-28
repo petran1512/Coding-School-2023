@@ -3,7 +3,7 @@
 @inject IJSRuntime jsRuntime
 @page "/transactionlist"
 @using Microsoft.AspNetCore.Authorization;
-@attribute [Authorize(Roles = "Manager")]
+@attribute [Authorize(Roles = "Manager, Cashier")]
 @inject AuthenticationStateProvider authenticationStateProvider
 @using Fuel.Station.Blazor.Shared;
 @using System.Net.Http.Json

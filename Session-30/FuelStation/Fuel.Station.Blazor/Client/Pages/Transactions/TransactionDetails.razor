@@ -4,7 +4,7 @@
 @using FuelStation.Model.Enums;
 @using Fuel.Solution.EF.Repositories;
 @using Microsoft.AspNetCore.Authorization;
-@attribute [Authorize(Roles = "Manager")]
+@attribute [Authorize(Roles = "Manager, Cashier")]
 @inject AuthenticationStateProvider authenticationStateProvider
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
