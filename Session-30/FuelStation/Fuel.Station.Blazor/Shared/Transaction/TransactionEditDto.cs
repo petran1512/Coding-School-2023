@@ -18,7 +18,7 @@ namespace Fuel.Station.Blazor.Shared
         public DateTime Date { get; set; }
 
         [Required]
-        [Range(1, 2, ErrorMessage = "You must choose a Payment Method!")]
+        [Range(0, 1, ErrorMessage = "You must choose a Payment Method!")]
         public PaymentMethod PaymentMethod { get; set; }
         public decimal TotalValue { get; set; }
 
@@ -26,6 +26,6 @@ namespace Fuel.Station.Blazor.Shared
 
         public int EmployeeId { get; set; }
 
-        public List<TransactionLineEditDto>? TransactionLines { get; set; }
+        public List<TransactionLineEditDto>? TransactionLines { get; set; } = new();
     }
 }
